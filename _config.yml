@@ -17,7 +17,7 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/jkgv92/CB_informes_Ubi  # Online location of your book
+  url: https://github.com/jkgv92/CB_Informe_Mensual  # Online location of your book
   path_to_book: docs  # Optional path to your book, relative to the repository root
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
@@ -31,7 +31,7 @@ sphinx:
   config:
     html_theme_options:
       use_download_button: false
-      repository_url: https://github.com/jkgv92/CB_informes_Ubi
+      repository_url: https://github.com/jkgv92/CB_Informe_Mensual
       use_issues_button: true
-      use_repository_button: true
+      use_repository_button: false
       use_edit_page_button: true
