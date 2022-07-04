@@ -1,0 +1,1652 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Proyecto monitoreo Bancolombia – Reporte semanal &#8212; Informe bancolombia semanal</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Introducción" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Informe bancolombia semanal</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Proyecto monitoreo Bancolombia – Reporte semanal
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/jkgv92/CB_informes_Ubi"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jkgv92/CB_informes_Ubi/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/jkgv92/CB_informes_Ubi/edit/master/notebooks.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Proyecto monitoreo Bancolombia – Reporte semanal
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sedes-disponibles">
+   Sedes disponibles
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-291-las-palmas">
+   BC 291 - Las Palmas
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hallazgos">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-90-megamall">
+   BC 90 - Megamall
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-799-floridablanca">
+   BC 799 - Floridablanca
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-749-santa-monica">
+   BC 749 - Santa Monica
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-66-palmira">
+   BC 66 - Palmira
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-205-villa-colombia">
+   BC 205 - Villa Colombia
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-424-honda">
+   BC 424 - Honda
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-863-los-patios">
+   BC 863 - Los Patios
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-834-san-mateo">
+   BC 834 - San Mateo
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-044-piedecuesta">
+   BC 044 - Piedecuesta
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-776-lebrija">
+   BC 776 - Lebrija
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-792-paseo-del-comercio">
+   BC 792 - Paseo del comercio
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-824-ventura-plaza">
+   BC 824 - Ventura Plaza
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-459-campo-alegre">
+   BC 459 - Campo Alegre
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-306-barrancabermeja">
+   BC 306 - Barrancabermeja
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-311-bello">
+   BC 311 - Bello
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-185-llano-grande-palmira">
+   BC 185 - Llano Grande Palmira
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-88-cucuta">
+   BC 88 - Cúcuta
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-197-guatapuri">
+   BC 197 - Guatapuri
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-78-el-cacique">
+   BC 78 - El Cacique
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-659-girardot">
+   BC 659 - Girardot
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Proyecto monitoreo Bancolombia – Reporte semanal</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Proyecto monitoreo Bancolombia – Reporte semanal
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sedes-disponibles">
+   Sedes disponibles
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-291-las-palmas">
+   BC 291 - Las Palmas
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#hallazgos">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-90-megamall">
+   BC 90 - Megamall
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-799-floridablanca">
+   BC 799 - Floridablanca
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-749-santa-monica">
+   BC 749 - Santa Monica
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-66-palmira">
+   BC 66 - Palmira
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-205-villa-colombia">
+   BC 205 - Villa Colombia
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-424-honda">
+   BC 424 - Honda
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-863-los-patios">
+   BC 863 - Los Patios
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-834-san-mateo">
+   BC 834 - San Mateo
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id8">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-044-piedecuesta">
+   BC 044 - Piedecuesta
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-776-lebrija">
+   BC 776 - Lebrija
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-792-paseo-del-comercio">
+   BC 792 - Paseo del comercio
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id11">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-824-ventura-plaza">
+   BC 824 - Ventura Plaza
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id12">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-459-campo-alegre">
+   BC 459 - Campo Alegre
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id13">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-306-barrancabermeja">
+   BC 306 - Barrancabermeja
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id14">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-311-bello">
+   BC 311 - Bello
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id15">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-185-llano-grande-palmira">
+   BC 185 - Llano Grande Palmira
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-88-cucuta">
+   BC 88 - Cúcuta
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id17">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-197-guatapuri">
+   BC 197 - Guatapuri
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id18">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-78-el-cacique">
+   BC 78 - El Cacique
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id19">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bc-659-girardot">
+   BC 659 - Girardot
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id20">
+     <strong>
+      Hallazgos
+     </strong>
+     :
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="proyecto-monitoreo-bancolombia-reporte-semanal">
+<h1>Proyecto monitoreo Bancolombia – Reporte semanal<a class="headerlink" href="#proyecto-monitoreo-bancolombia-reporte-semanal" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="sedes-disponibles">
+<h1>Sedes disponibles<a class="headerlink" href="#sedes-disponibles" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El rango de visualización de este informe es desde:  2022-06-19  hasta:  2022-06-26
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;BC 291 - Las Palmas&#39;,
+ &#39;BC 90 - Megamall&#39;,
+ &#39;BC 799 - Floridablanca&#39;,
+ &#39;BC 749 - Santa Monica&#39;,
+ &#39;BC 66 - Palmira&#39;,
+ &#39;BC 205 - Villa Colombia&#39;,
+ &#39;BC 424 - Honda&#39;,
+ &#39;BC 863 - Los Patios&#39;,
+ &#39;BC 834 - San Mateo&#39;,
+ &#39;BC 044 - Piedecuesta&#39;,
+ &#39;BC 776 - Lebrija&#39;,
+ &#39;BC 792 - Paseo del comercio&#39;,
+ &#39;BC 824 - Ventura Plaza&#39;,
+ &#39;BC 459 - Campo Alegre&#39;,
+ &#39;BC 306 - Barrancabermeja&#39;,
+ &#39;BC 311 - Bello&#39;,
+ &#39;BC 185 - Llano Grande Palmira&#39;,
+ &#39;BC 88 - Cúcuta&#39;,
+ &#39;BC 197 - Guatapuri&#39;,
+ &#39;BC 78 - El Cacique&#39;,
+ &#39;BC 659 - Girardot&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bc-291-las-palmas">
+<h1>BC 291 - Las Palmas<a class="headerlink" href="#bc-291-las-palmas" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_6_0.png" src="_images/notebooks_6_0.png" />
+<img alt="_images/notebooks_6_1.png" src="_images/notebooks_6_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       176.19        66.460         17.600          92.130  
+2022-06-20 00:00:00       225.52       101.160         20.980         103.380  
+2022-06-21 00:00:00       365.74       169.680         20.980         175.080  
+2022-06-22 00:00:00       425.10       268.590         44.720         111.790  
+2022-06-23 00:00:00       425.10       268.590         43.290         113.220  
+2022-06-24 00:00:00       371.66       230.800         42.880          97.980  
+2022-06-25 00:00:00       333.48       107.240         31.050         195.190  
+2022-06-26 00:00:00        59.02        18.380          3.860          36.780  
+Total                    2381.81      1230.900        225.360         925.550  
+%                         100.00        51.679          9.462          38.859  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="hallazgos">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#hallazgos" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Manejo adecuado de las luces durante fin de semana</p></li>
+<li><p>Consumo constante de energía en circuito de Aires durante fin de semana ~ 12 kWh con pico durante una hora aproximadamente el lunes 20 de junio</p></li>
+<li><p>Se visualizan consumos anómalos de energía asociados a pérdida de datos en el sistema de monitoreo</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-90-megamall">
+<h1>BC 90 - Megamall<a class="headerlink" href="#bc-90-megamall" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_9_0.png" src="_images/notebooks_9_0.png" />
+<img alt="_images/notebooks_9_1.png" src="_images/notebooks_9_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00        46.55         0.240         45.300          1.010   
+2022-06-20 00:00:00        54.18         0.340         57.020         -3.180   
+2022-06-21 00:00:00       212.80        87.640        114.100         11.060   
+2022-06-22 00:00:00       212.00        90.880        127.400         -6.280   
+2022-06-23 00:00:00       212.00        93.330        127.400         -8.730   
+2022-06-24 00:00:00       231.17        93.330        120.900         16.940   
+2022-06-25 00:00:00       128.11        64.890         75.950        -12.730   
+2022-06-26 00:00:00        15.32         0.070         14.480          0.770   
+Total                    1112.13       430.720        682.550         -1.140   
+%                         100.00        38.729         61.373         -0.103   
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id1">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Manejo adecuado de las luces durante fin de semana</p></li>
+<li><p>Consumo nocturno asociado casi en su totalidad al circuito de iluminación</p></li>
+<li><p>Consumo en circuito de Aire acondicionado durante el Domingo 26 de junio ~ 40 kWh</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-799-floridablanca">
+<h1>BC 799 - Floridablanca<a class="headerlink" href="#bc-799-floridablanca" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_12_0.png" src="_images/notebooks_12_0.png" />
+<img alt="_images/notebooks_12_1.png" src="_images/notebooks_12_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       114.32        84.470          8.200          21.650  
+2022-06-20 00:00:00       138.21        88.830          9.950          39.430  
+2022-06-21 00:00:00       227.75        88.830          9.950         128.970  
+2022-06-22 00:00:00       227.75       159.090         24.190          44.470  
+2022-06-23 00:00:00       220.74       159.240         19.490          42.010  
+2022-06-24 00:00:00       215.59       139.820         23.270          52.500  
+2022-06-25 00:00:00        98.38        75.910         10.310          12.160  
+2022-06-26 00:00:00        11.07        15.050          2.110          -6.090  
+Total                    1253.81       811.240        107.470         335.100  
+%                         100.00        64.702          8.571          26.727  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id2">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Consumo nocturo del circuito de Aire acondicionado durante el Lunes festivo, 20 de Junio ~ 20 kWh</p></li>
+<li><p>Consumo atípico del circuito de aire acondicionado, se continuará monitoreando</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-749-santa-monica">
+<h1>BC 749 - Santa Monica<a class="headerlink" href="#bc-749-santa-monica" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_16_0.png" src="_images/notebooks_16_0.png" />
+<img alt="_images/notebooks_16_1.png" src="_images/notebooks_16_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00        52.93         0.600          9.810          42.520  
+2022-06-20 00:00:00        63.93         0.640         11.550          51.740  
+2022-06-21 00:00:00       230.88       104.580         26.240         100.060  
+2022-06-22 00:00:00       230.23       104.580         24.970         100.680  
+2022-06-23 00:00:00       230.25       135.920         24.930          69.400  
+2022-06-24 00:00:00       230.25       154.380         24.930          50.940  
+2022-06-25 00:00:00        64.24         0.750         13.780          49.710  
+2022-06-26 00:00:00        20.76         0.170          2.570          18.020  
+Total                    1123.47       501.620        138.780         483.070  
+%                         100.00        44.649         12.353          42.998  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id3">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Sin hallazgos de relevancia, consumo adecuado en el circuito de Aire acondicionado e Iluminación con consumos residuales ~ 2 kWh posiblemente causados por la presencia de algún cajero o sistemas de seguridad</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-66-palmira">
+<h1>BC 66 - Palmira<a class="headerlink" href="#bc-66-palmira" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_19_0.png" src="_images/notebooks_19_0.png" />
+<img alt="_images/notebooks_19_1.png" src="_images/notebooks_19_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00        79.38        44.970          0.0            34.410  
+2022-06-20 00:00:00        95.58        52.570          0.0            43.010  
+2022-06-21 00:00:00       206.05        52.570          0.0           153.480  
+2022-06-22 00:00:00       206.05       183.050          0.0            23.000  
+2022-06-23 00:00:00       211.97       180.400          0.0            31.570  
+2022-06-24 00:00:00       321.80       176.220          0.0           145.580  
+2022-06-25 00:00:00       148.90        83.070          0.0            65.830  
+2022-06-26 00:00:00        21.45         7.200          0.0            14.250  
+Total                    1291.18       780.050          0.0           511.130  
+%                         100.00        60.414          0.0            39.586  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id4">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Consumo de Aire acondicionado durante fines de semana ~ 12 kWh durante todo el día del Domingo 19 y Lunes 20 de junio</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-205-villa-colombia">
+<h1>BC 205 - Villa Colombia<a class="headerlink" href="#bc-205-villa-colombia" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_22_0.png" src="_images/notebooks_22_0.png" />
+<img alt="_images/notebooks_22_1.png" src="_images/notebooks_22_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       11.14         11.91           0.0            -0.77   
+2022-06-20 00:00:00       21.34         15.98           0.0             5.36   
+2022-06-21 00:00:00      160.66        115.45           0.0            45.21   
+2022-06-22 00:00:00      160.48        115.45           0.0            45.03   
+2022-06-23 00:00:00      149.30        117.71           0.0            31.59   
+2022-06-24 00:00:00      149.30        137.97           0.0            11.33   
+2022-06-25 00:00:00       34.78         17.12           0.0            17.66   
+2022-06-26 00:00:00        9.36          4.47           0.0             4.89   
+Total                    696.36        536.06           0.0           160.30   
+%                        100.00         76.98           0.0            23.02   
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id5">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Consumo de Aire acondicionado durante periodos nocturnos y fines de semana ~ 4 kWh</p></li>
+<li><p>Se presenta una pérdida de datos durante la madrugada del Miércoles 22 de Junio, se seguirá monitoreando</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-424-honda">
+<h1>BC 424 - Honda<a class="headerlink" href="#bc-424-honda" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_25_0.png" src="_images/notebooks_25_0.png" />
+<img alt="_images/notebooks_25_1.png" src="_images/notebooks_25_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       28.56          4.990          0.0            23.570  
+2022-06-20 00:00:00       36.06          5.780          0.0            30.280  
+2022-06-21 00:00:00       36.06        128.650          0.0           -92.590  
+2022-06-22 00:00:00      184.46        128.650          0.0            55.810  
+2022-06-23 00:00:00      174.58        121.940          0.0            52.640  
+2022-06-24 00:00:00      161.74        112.020          0.0            49.720  
+2022-06-25 00:00:00       36.71          5.650          0.0            31.060  
+2022-06-26 00:00:00        9.79          1.480          0.0             8.310  
+Total                    667.96        509.160          0.0           158.800  
+%                        100.00         76.226          0.0            23.774  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id6">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Sin hallazgos de relevancia</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-863-los-patios">
+<h1>BC 863 - Los Patios<a class="headerlink" href="#bc-863-los-patios" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_28_0.png" src="_images/notebooks_28_0.png" />
+<img alt="_images/notebooks_28_1.png" src="_images/notebooks_28_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       64.86         12.94           0.0            51.92   
+2022-06-20 00:00:00       58.44         21.48           0.0            36.96   
+2022-06-21 00:00:00      103.49         63.83           0.0            39.66   
+2022-06-22 00:00:00      111.70         64.35           0.0            47.35   
+2022-06-23 00:00:00      111.70         64.35           0.0            47.35   
+2022-06-24 00:00:00       98.81         54.40           0.0            44.41   
+2022-06-25 00:00:00       50.73         14.58           0.0            36.15   
+2022-06-26 00:00:00       15.73          5.71           0.0            10.02   
+Total                    615.46        301.64           0.0           313.82   
+%                        100.00         49.01           0.0            50.99   
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id7">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Consumo residual en circuito de aire acondicionado ~ 4 kWh durante las noches</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-834-san-mateo">
+<h1>BC 834 - San Mateo<a class="headerlink" href="#bc-834-san-mateo" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_31_0.png" src="_images/notebooks_31_0.png" />
+<img alt="_images/notebooks_31_1.png" src="_images/notebooks_31_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       42.19          1.090          0.0            41.100  
+2022-06-20 00:00:00       51.45          1.310          0.0            50.140  
+2022-06-21 00:00:00      251.47         88.900          0.0           162.570  
+2022-06-22 00:00:00       71.35         93.090          0.0           -21.740  
+2022-06-23 00:00:00       71.35         93.090          0.0           -21.740  
+2022-06-24 00:00:00      221.21         71.110          0.0           150.100  
+2022-06-25 00:00:00      144.81         41.790          0.0           103.020  
+2022-06-26 00:00:00       11.07          0.230          0.0            10.840  
+Total                    864.90        390.610          0.0           474.290  
+%                        100.00         45.162          0.0            54.838  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id8">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Baja significativa de consumo durante el niércoles 22 de junio, posible pérdida de datos, se seguirá monitoreando</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-044-piedecuesta">
+<h1>BC 044 - Piedecuesta<a class="headerlink" href="#bc-044-piedecuesta" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_34_0.png" src="_images/notebooks_34_0.png" />
+<img alt="_images/notebooks_34_1.png" src="_images/notebooks_34_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00        85.04         0.000          0.0            85.040  
+2022-06-20 00:00:00       101.27         0.000          0.0           101.270  
+2022-06-21 00:00:00       330.99        60.610          0.0           270.380  
+2022-06-22 00:00:00       329.42        60.610          0.0           268.810  
+2022-06-23 00:00:00       329.42        60.390          0.0           269.030  
+2022-06-24 00:00:00       328.03        59.220          0.0           268.810  
+2022-06-25 00:00:00        92.92         0.000          0.0            92.920  
+2022-06-26 00:00:00        22.88         0.000          0.0            22.880  
+Total                    1619.97       240.830          0.0          1379.140  
+%                         100.00        14.866          0.0            85.134  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id9">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Poca contribución al consumo por parte del circuito de HVAC, menor al 15% del consumo total, se sugiere continuar monitoreando la situación</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-776-lebrija">
+<h1>BC 776 - Lebrija<a class="headerlink" href="#bc-776-lebrija" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_37_0.png" src="_images/notebooks_37_0.png" />
+<img alt="_images/notebooks_37_1.png" src="_images/notebooks_37_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       52.25         11.050          0.0            41.200  
+2022-06-20 00:00:00       89.75         14.240          0.0            75.510  
+2022-06-21 00:00:00      122.45         52.630          0.0            69.820  
+2022-06-22 00:00:00      131.98         52.630          0.0            79.350  
+2022-06-23 00:00:00      130.85         57.970          0.0            72.880  
+2022-06-24 00:00:00      123.87         48.710          0.0            75.160  
+2022-06-25 00:00:00      123.87         58.220          0.0            65.650  
+2022-06-26 00:00:00       22.46          3.810          0.0            18.650  
+Total                    797.48        299.260          0.0           498.220  
+%                        100.00         37.526          0.0            62.474  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id10">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Consumos residuales en el circuito de Aire acondicionado ~ 4 kWh durante las noches</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-792-paseo-del-comercio">
+<h1>BC 792 - Paseo del comercio<a class="headerlink" href="#bc-792-paseo-del-comercio" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_40_0.png" src="_images/notebooks_40_0.png" />
+<img alt="_images/notebooks_40_1.png" src="_images/notebooks_40_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       70.23         30.990          0.0            39.240  
+2022-06-20 00:00:00       88.34         39.630          0.0            48.710  
+2022-06-21 00:00:00      170.85         80.800          0.0            90.050  
+2022-06-22 00:00:00      185.84         80.800          0.0           105.040  
+2022-06-23 00:00:00      185.84        131.790          0.0            54.050  
+2022-06-24 00:00:00      162.09         93.290          0.0            68.800  
+2022-06-25 00:00:00       79.07         34.750          0.0            44.320  
+2022-06-26 00:00:00       23.86          9.290          0.0            14.570  
+Total                    966.12        501.340          0.0           464.780  
+%                        100.00         51.892          0.0            48.108  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id11">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Consumo de energía durante los fines de semana, 19 y 20 de Junio ~ 35 kWh, 25 de junio ~ 35kWh, 26 de junio ~ 10kWh. Se sugiere validar si existe alguna carga parasitiva que explique este comportamiento.</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-824-ventura-plaza">
+<h1>BC 824 - Ventura Plaza<a class="headerlink" href="#bc-824-ventura-plaza" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_43_0.png" src="_images/notebooks_43_0.png" />
+<img alt="_images/notebooks_43_1.png" src="_images/notebooks_43_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00        64.26        25.440          0.0            38.820  
+2022-06-20 00:00:00        81.29        29.680          0.0            51.610  
+2022-06-21 00:00:00       286.67       197.240          0.0            89.430  
+2022-06-22 00:00:00       295.42       202.900          0.0            92.520  
+2022-06-23 00:00:00       295.42       202.900          0.0            92.520  
+2022-06-24 00:00:00       272.91       181.190          0.0            91.720  
+2022-06-25 00:00:00       208.10       132.840          0.0            75.260  
+2022-06-26 00:00:00        19.17         6.870          0.0            12.300  
+Total                    1523.24       979.060          0.0           544.180  
+%                         100.00        64.275          0.0            35.725  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id12">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Sin hallazgos de relevancia, consumos nocturnos durante las noches y fines de semana ~ 25 kWh durante el fin de semana del 19 /   20 de junio, ~ 7 kWh durante el 26 de junio</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-459-campo-alegre">
+<h1>BC 459 - Campo Alegre<a class="headerlink" href="#bc-459-campo-alegre" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_46_0.png" src="_images/notebooks_46_0.png" />
+<img alt="_images/notebooks_46_1.png" src="_images/notebooks_46_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       40.87         13.330          0.0            27.540  
+2022-06-20 00:00:00       58.81         17.010          0.0            41.800  
+2022-06-21 00:00:00      110.05         84.100          0.0            25.950  
+2022-06-22 00:00:00      127.26         88.720          0.0            38.540  
+2022-06-23 00:00:00      127.26        118.430          0.0             8.830  
+2022-06-24 00:00:00      127.20        118.430          0.0             8.770  
+2022-06-25 00:00:00      124.17         88.980          0.0            35.190  
+2022-06-26 00:00:00       15.02          2.130          0.0            12.890  
+Total                    730.64        531.130          0.0           199.510  
+%                        100.00         72.694          0.0            27.306  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id13">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Consumos erraticos del aire acondicionado durante todo el periodo monitoreado a excepción de los fines de semana, se sugiere validar si existe alguna carga adicional al aire acondicionado que explique este comportamiento.</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-306-barrancabermeja">
+<h1>BC 306 - Barrancabermeja<a class="headerlink" href="#bc-306-barrancabermeja" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_49_0.png" src="_images/notebooks_49_0.png" />
+<img alt="_images/notebooks_49_1.png" src="_images/notebooks_49_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       104.03        12.840          0.0            91.190  
+2022-06-20 00:00:00       157.37        16.120          0.0           141.250  
+2022-06-21 00:00:00       210.03        77.460          0.0           132.570  
+2022-06-22 00:00:00       221.71       100.340          0.0           121.370  
+2022-06-23 00:00:00       221.71        89.820          0.0           131.890  
+2022-06-24 00:00:00       209.27        89.820          0.0           119.450  
+2022-06-25 00:00:00       168.74        56.980          0.0           111.760  
+2022-06-26 00:00:00        22.74         3.980          0.0            18.760  
+Total                    1315.60       447.360          0.0           868.240  
+%                         100.00        34.004          0.0            65.996  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id14">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Cargas residuales no monitoreadas ~ 12 kWh durante las noches, se sugiere validar si existe alguna carga adicional al aire acondicionado que explique este comportamiento.</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-311-bello">
+<h1>BC 311 - Bello<a class="headerlink" href="#bc-311-bello" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_52_0.png" src="_images/notebooks_52_0.png" />
+<img alt="_images/notebooks_52_1.png" src="_images/notebooks_52_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00        51.76        14.280          0.0            37.480  
+2022-06-20 00:00:00        62.84         8.920          0.0            53.920  
+2022-06-21 00:00:00       227.00       138.500          0.0            88.500  
+2022-06-22 00:00:00       227.00       138.500          0.0            88.500  
+2022-06-23 00:00:00       258.41       162.720          0.0            95.690  
+2022-06-24 00:00:00       247.48       154.600          0.0            92.880  
+2022-06-25 00:00:00       148.71        69.210          0.0            79.500  
+2022-06-26 00:00:00        17.70         1.730          0.0            15.970  
+Total                    1240.90       688.460          0.0           552.440  
+%                         100.00        55.481          0.0            44.519  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id15">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Sin hallazgos de relevancia</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-185-llano-grande-palmira">
+<h1>BC 185 - Llano Grande Palmira<a class="headerlink" href="#bc-185-llano-grande-palmira" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_55_0.png" src="_images/notebooks_55_0.png" />
+<img alt="_images/notebooks_55_1.png" src="_images/notebooks_55_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       126.09        86.100          0.0            39.990  
+2022-06-20 00:00:00       137.61        96.030          0.0            41.580  
+2022-06-21 00:00:00       196.05       130.960          0.0            65.090  
+2022-06-22 00:00:00       196.05       130.960          0.0            65.090  
+2022-06-23 00:00:00       187.04       113.410          0.0            73.630  
+2022-06-24 00:00:00       190.26       115.880          0.0            74.380  
+2022-06-25 00:00:00       160.83       106.620          0.0            54.210  
+2022-06-26 00:00:00        28.53        14.800          0.0            13.730  
+Total                    1222.46       794.760          0.0           427.700  
+%                         100.00        65.013          0.0            34.987  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id16">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Consumo de Aire acondicionado constante incluso durante fines de semana, especialmente durante el fin de semana del 20 de junio ~ 90 kWh por día.</p></li>
+<li><p>Circuito de Aire se mantiene encendido durante el 24, 25 y 26 de junio hasta las 9:30 PM aproximadamente</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-88-cucuta">
+<h1>BC 88 - Cúcuta<a class="headerlink" href="#bc-88-cucuta" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_58_0.png" src="_images/notebooks_58_0.png" />
+<img alt="_images/notebooks_58_1.png" src="_images/notebooks_58_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00        74.13        75.170          0.0           -1.040   
+2022-06-20 00:00:00        69.82        73.980          0.0           -4.160   
+2022-06-21 00:00:00       221.53       194.720          0.0           26.810   
+2022-06-22 00:00:00       221.53       194.720          0.0           26.810   
+2022-06-23 00:00:00       196.04       202.860          0.0           -6.820   
+2022-06-24 00:00:00       198.28       201.960          0.0           -3.680   
+2022-06-25 00:00:00       182.14       142.100          0.0           40.040   
+2022-06-26 00:00:00        21.56        21.710          0.0           -0.150   
+Total                    1185.03      1107.220          0.0           77.810   
+%                         100.00        93.434          0.0            6.566   
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id17">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Sin hallazgos de relevancia, consumo de Aire acondicionado representa aproximadamente el 93% del consumo total</p></li>
+<li><p>Consumo de aire durante las noches y fines de semana ~ 12 kWh</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-197-guatapuri">
+<h1>BC 197 - Guatapuri<a class="headerlink" href="#bc-197-guatapuri" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_61_0.png" src="_images/notebooks_61_0.png" />
+<img alt="_images/notebooks_61_1.png" src="_images/notebooks_61_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       175.59        131.62          0.0            43.97   
+2022-06-20 00:00:00       237.24        180.45          0.0            56.79   
+2022-06-21 00:00:00       283.25        199.66          0.0            83.59   
+2022-06-22 00:00:00       272.26        195.97          0.0            76.29   
+2022-06-23 00:00:00       277.50        206.26          0.0            71.24   
+2022-06-24 00:00:00       277.50        201.19          0.0            76.31   
+2022-06-25 00:00:00       272.98        201.19          0.0            71.79   
+Total                    1796.32       1316.34          0.0           479.98   
+%                         100.00         73.28          0.0            26.72   
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id18">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Consumo de aire nocturnos y fines de semana ~ 24 kWh que suman más de 100 kWh durante los fines de semana</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-78-el-cacique">
+<h1>BC 78 - El Cacique<a class="headerlink" href="#bc-78-el-cacique" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_64_0.png" src="_images/notebooks_64_0.png" />
+<img alt="_images/notebooks_64_1.png" src="_images/notebooks_64_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00       108.88        10.710          0.0            98.170  
+2022-06-20 00:00:00       137.91        13.620          0.0           124.290  
+2022-06-21 00:00:00       137.91        13.620          0.0           124.290  
+2022-06-22 00:00:00       306.44       164.930          0.0           141.510  
+2022-06-23 00:00:00       316.34       182.740          0.0           133.600  
+2022-06-24 00:00:00       288.13       158.550          0.0           129.580  
+2022-06-25 00:00:00       220.34        88.230          0.0           132.110  
+2022-06-26 00:00:00        35.45         3.380          0.0            32.070  
+Total                    1551.40       635.780          0.0           915.620  
+%                         100.00        40.981          0.0            59.019  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id19">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Sin hallazgos de relevancia</p></li>
+</ul>
+</section>
+</section>
+<section id="bc-659-girardot">
+<h1>BC 659 - Girardot<a class="headerlink" href="#bc-659-girardot" title="Permalink to this headline">#</a></h1>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<img alt="_images/notebooks_67_0.png" src="_images/notebooks_67_0.png" />
+<img alt="_images/notebooks_67_1.png" src="_images/notebooks_67_1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                     Frontera (kWh)  HVAC (kWh)  Iluminación (kWh)  Otros (kWh)
+timestamp                                                                      
+2022-06-19 00:00:00        75.78         0.0           20.060          55.720  
+2022-06-20 00:00:00       102.74         0.0           33.240          69.500  
+2022-06-21 00:00:00       188.00         0.0           68.620         119.380  
+2022-06-22 00:00:00       401.42         0.0          274.090         127.330  
+2022-06-23 00:00:00       401.42         0.0          274.090         127.330  
+2022-06-24 00:00:00       605.04         0.0          466.440         138.600  
+2022-06-25 00:00:00       428.83         0.0          295.470         133.360  
+2022-06-26 00:00:00        22.79         0.0            4.150          18.640  
+Total                    2226.02         0.0         1436.160         789.860  
+%                         100.00         0.0           64.517          35.483  
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id20">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Consumo errático durante toda la semana, lo cual representó un incremento de consumo en más de 60%</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introducción</p>
+        </div>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Juan Carlos González Vélez<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

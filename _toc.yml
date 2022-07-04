@@ -1,0 +1,28 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: Informe_mensual_Acumulado
+- file: Informe_mensual_Barrancabermeja
+- file: Informe_mensual_Bello
+- file: Informe_mensual_Cacique
+- file: Informe_mensual_Campo_Alegre
+- file: Informe_mensual_Cucuta
+- file: Informe_mensual_Floridablanca
+- file: Informe_mensual_Girardot
+- file: Informe_mensual_Guatapuri
+- file: Informe_mensual_Honda
+- file: Informe_mensual_Las_Palmas
+- file: Informe_mensual_Lebrija
+- file: Informe_mensual_Llano_grande_palmira
+- file: Informe_mensual_Los_Patios
+- file: Informe_mensual_Megamall
+- file: Informe_mensual_Palmira
+- file: Informe_mensual_Paseo_del_comercio
+- file: Informe_mensual_Piedecuesta
+- file: Informe_mensual_San_Mateo
+- file: Informe_mensual_Santa_Monica
+- file: Informe_mensual_Ventura_plaza
+- file: Informe_mensual_Villa_Colombia
