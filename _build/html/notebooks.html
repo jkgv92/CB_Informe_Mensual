@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Proyecto monitoreo Bancolombia – Reporte semanal &#8212; Informe bancolombia semanal</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,16 +18,20 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=62ba249389abaaa9ffc34bf36a076bdc1d65ee18" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -37,22 +39,22 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=f31d14ad54b65d19161ba51d4ffff3a77ae00456"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Introducción" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -60,21 +62,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -83,10 +71,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -104,26 +91,126 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Proyecto monitoreo Bancolombia – Reporte semanal
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Acumulado.html">
+   Proyecto Monitoreo Bancolombia - Informe Mensual
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Barrancabermeja.html">
+   BC 306 - Barrancabermeja
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Bello.html">
+   Preprocessing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Cacique.html">
+   BC 78 - El Cacique
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Campo_Alegre.html">
+   BC 459 - Campo Alegre
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Cucuta.html">
+   BC 88 - Cúcuta
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Floridablanca.html">
+   BC 799 - Floridablanca
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Girardot.html">
+   BC 659 - Girardot
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Guatapuri.html">
+   BC 197 - Guatapuri
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Honda.html">
+   BC 424 - Honda
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Las_Palmas.html">
+   BC 291 - Las Palmas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Lebrija.html">
+   BC 776 - Lebrija
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Llano_grande_palmira.html">
+   BC 185 - Llano Grande Palmira
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Los_Patios.html">
+   BC 863 - Los Patios
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Megamall.html">
+   BC 90 - Megamall
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Palmira.html">
+   BC 66 - Palmira
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Paseo_del_comercio.html">
+   BC 792 - Paseo del comercio
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Piedecuesta.html">
+   BC 044 - Piedecuesta
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_San_Mateo.html">
+   BC 834 - San Mateo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Santa_Monica.html">
+   BC 749 - Santa Mónica
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Ventura_plaza.html">
+   BC 824 - Ventura Plaza
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Informe_mensual_Villa_Colombia.html">
+   BC 205 - Villa Colombia
   </a>
  </li>
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
 </div>
 
 
@@ -131,133 +218,59 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/jkgv92/CB_informes_Ubi"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/jkgv92/CB_informes_Ubi/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/jkgv92/CB_informes_Ubi/edit/master/notebooks.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <a class="issues-button"
+            href="https://github.com/jkgv92/CB_Informe_Mensual/issues/new?title=Issue%20on%20page%20%2Fnotebooks.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/jkgv92/CB_Informe_Mensual/edit/master/notebooks.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
    Proyecto monitoreo Bancolombia – Reporte semanal
@@ -585,11 +598,12 @@ title="Edit this page"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Proyecto monitoreo Bancolombia – Reporte semanal</h1>
@@ -933,15 +947,14 @@ title="Edit this page"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section id="proyecto-monitoreo-bancolombia-reporte-semanal">
-<h1>Proyecto monitoreo Bancolombia – Reporte semanal<a class="headerlink" href="#proyecto-monitoreo-bancolombia-reporte-semanal" title="Permalink to this headline">#</a></h1>
-</section>
-<section id="sedes-disponibles">
-<h1>Sedes disponibles<a class="headerlink" href="#sedes-disponibles" title="Permalink to this headline">#</a></h1>
+  <div class="section" id="proyecto-monitoreo-bancolombia-reporte-semanal">
+<h1>Proyecto monitoreo Bancolombia – Reporte semanal<a class="headerlink" href="#proyecto-monitoreo-bancolombia-reporte-semanal" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="sedes-disponibles">
+<h1>Sedes disponibles<a class="headerlink" href="#sedes-disponibles" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>El rango de visualización de este informe es desde:  2022-06-19  hasta:  2022-06-26
@@ -972,9 +985,9 @@ title="Edit this page"
 </div>
 </div>
 </div>
-</section>
-<section id="bc-291-las-palmas">
-<h1>BC 291 - Las Palmas<a class="headerlink" href="#bc-291-las-palmas" title="Permalink to this headline">#</a></h1>
+</div>
+<div class="section" id="bc-291-las-palmas">
+<h1>BC 291 - Las Palmas<a class="headerlink" href="#bc-291-las-palmas" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_6_0.png" src="_images/notebooks_6_0.png" />
@@ -995,17 +1008,17 @@ Total                    2381.81      1230.900        225.360         925.550
 </div>
 </div>
 </div>
-<section id="hallazgos">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#hallazgos" title="Permalink to this headline">#</a></h2>
+<div class="section" id="hallazgos">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#hallazgos" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Manejo adecuado de las luces durante fin de semana</p></li>
 <li><p>Consumo constante de energía en circuito de Aires durante fin de semana ~ 12 kWh con pico durante una hora aproximadamente el lunes 20 de junio</p></li>
 <li><p>Se visualizan consumos anómalos de energía asociados a pérdida de datos en el sistema de monitoreo</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-90-megamall">
-<h1>BC 90 - Megamall<a class="headerlink" href="#bc-90-megamall" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-90-megamall">
+<h1>BC 90 - Megamall<a class="headerlink" href="#bc-90-megamall" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_9_0.png" src="_images/notebooks_9_0.png" />
@@ -1026,17 +1039,17 @@ Total                    1112.13       430.720        682.550         -1.140
 </div>
 </div>
 </div>
-<section id="id1">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id1">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Manejo adecuado de las luces durante fin de semana</p></li>
 <li><p>Consumo nocturno asociado casi en su totalidad al circuito de iluminación</p></li>
 <li><p>Consumo en circuito de Aire acondicionado durante el Domingo 26 de junio ~ 40 kWh</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-799-floridablanca">
-<h1>BC 799 - Floridablanca<a class="headerlink" href="#bc-799-floridablanca" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-799-floridablanca">
+<h1>BC 799 - Floridablanca<a class="headerlink" href="#bc-799-floridablanca" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_12_0.png" src="_images/notebooks_12_0.png" />
@@ -1057,16 +1070,16 @@ Total                    1253.81       811.240        107.470         335.100
 </div>
 </div>
 </div>
-<section id="id2">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id2">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Consumo nocturo del circuito de Aire acondicionado durante el Lunes festivo, 20 de Junio ~ 20 kWh</p></li>
 <li><p>Consumo atípico del circuito de aire acondicionado, se continuará monitoreando</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-749-santa-monica">
-<h1>BC 749 - Santa Monica<a class="headerlink" href="#bc-749-santa-monica" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-749-santa-monica">
+<h1>BC 749 - Santa Monica<a class="headerlink" href="#bc-749-santa-monica" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_16_0.png" src="_images/notebooks_16_0.png" />
@@ -1087,15 +1100,15 @@ Total                    1123.47       501.620        138.780         483.070
 </div>
 </div>
 </div>
-<section id="id3">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id3">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Sin hallazgos de relevancia, consumo adecuado en el circuito de Aire acondicionado e Iluminación con consumos residuales ~ 2 kWh posiblemente causados por la presencia de algún cajero o sistemas de seguridad</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-66-palmira">
-<h1>BC 66 - Palmira<a class="headerlink" href="#bc-66-palmira" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-66-palmira">
+<h1>BC 66 - Palmira<a class="headerlink" href="#bc-66-palmira" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_19_0.png" src="_images/notebooks_19_0.png" />
@@ -1116,15 +1129,15 @@ Total                    1291.18       780.050          0.0           511.130
 </div>
 </div>
 </div>
-<section id="id4">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id4">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Consumo de Aire acondicionado durante fines de semana ~ 12 kWh durante todo el día del Domingo 19 y Lunes 20 de junio</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-205-villa-colombia">
-<h1>BC 205 - Villa Colombia<a class="headerlink" href="#bc-205-villa-colombia" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-205-villa-colombia">
+<h1>BC 205 - Villa Colombia<a class="headerlink" href="#bc-205-villa-colombia" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_22_0.png" src="_images/notebooks_22_0.png" />
@@ -1145,16 +1158,16 @@ Total                    696.36        536.06           0.0           160.30
 </div>
 </div>
 </div>
-<section id="id5">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id5">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Consumo de Aire acondicionado durante periodos nocturnos y fines de semana ~ 4 kWh</p></li>
 <li><p>Se presenta una pérdida de datos durante la madrugada del Miércoles 22 de Junio, se seguirá monitoreando</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-424-honda">
-<h1>BC 424 - Honda<a class="headerlink" href="#bc-424-honda" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-424-honda">
+<h1>BC 424 - Honda<a class="headerlink" href="#bc-424-honda" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_25_0.png" src="_images/notebooks_25_0.png" />
@@ -1175,15 +1188,15 @@ Total                    667.96        509.160          0.0           158.800
 </div>
 </div>
 </div>
-<section id="id6">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id6">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Sin hallazgos de relevancia</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-863-los-patios">
-<h1>BC 863 - Los Patios<a class="headerlink" href="#bc-863-los-patios" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-863-los-patios">
+<h1>BC 863 - Los Patios<a class="headerlink" href="#bc-863-los-patios" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_28_0.png" src="_images/notebooks_28_0.png" />
@@ -1204,15 +1217,15 @@ Total                    615.46        301.64           0.0           313.82
 </div>
 </div>
 </div>
-<section id="id7">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id7">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Consumo residual en circuito de aire acondicionado ~ 4 kWh durante las noches</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-834-san-mateo">
-<h1>BC 834 - San Mateo<a class="headerlink" href="#bc-834-san-mateo" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-834-san-mateo">
+<h1>BC 834 - San Mateo<a class="headerlink" href="#bc-834-san-mateo" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_31_0.png" src="_images/notebooks_31_0.png" />
@@ -1233,15 +1246,15 @@ Total                    864.90        390.610          0.0           474.290
 </div>
 </div>
 </div>
-<section id="id8">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id8">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Baja significativa de consumo durante el niércoles 22 de junio, posible pérdida de datos, se seguirá monitoreando</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-044-piedecuesta">
-<h1>BC 044 - Piedecuesta<a class="headerlink" href="#bc-044-piedecuesta" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-044-piedecuesta">
+<h1>BC 044 - Piedecuesta<a class="headerlink" href="#bc-044-piedecuesta" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_34_0.png" src="_images/notebooks_34_0.png" />
@@ -1262,15 +1275,15 @@ Total                    1619.97       240.830          0.0          1379.140
 </div>
 </div>
 </div>
-<section id="id9">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id9">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Poca contribución al consumo por parte del circuito de HVAC, menor al 15% del consumo total, se sugiere continuar monitoreando la situación</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-776-lebrija">
-<h1>BC 776 - Lebrija<a class="headerlink" href="#bc-776-lebrija" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-776-lebrija">
+<h1>BC 776 - Lebrija<a class="headerlink" href="#bc-776-lebrija" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_37_0.png" src="_images/notebooks_37_0.png" />
@@ -1291,15 +1304,15 @@ Total                    797.48        299.260          0.0           498.220
 </div>
 </div>
 </div>
-<section id="id10">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id10">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Consumos residuales en el circuito de Aire acondicionado ~ 4 kWh durante las noches</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-792-paseo-del-comercio">
-<h1>BC 792 - Paseo del comercio<a class="headerlink" href="#bc-792-paseo-del-comercio" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-792-paseo-del-comercio">
+<h1>BC 792 - Paseo del comercio<a class="headerlink" href="#bc-792-paseo-del-comercio" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_40_0.png" src="_images/notebooks_40_0.png" />
@@ -1320,15 +1333,15 @@ Total                    966.12        501.340          0.0           464.780
 </div>
 </div>
 </div>
-<section id="id11">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id11">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Consumo de energía durante los fines de semana, 19 y 20 de Junio ~ 35 kWh, 25 de junio ~ 35kWh, 26 de junio ~ 10kWh. Se sugiere validar si existe alguna carga parasitiva que explique este comportamiento.</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-824-ventura-plaza">
-<h1>BC 824 - Ventura Plaza<a class="headerlink" href="#bc-824-ventura-plaza" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-824-ventura-plaza">
+<h1>BC 824 - Ventura Plaza<a class="headerlink" href="#bc-824-ventura-plaza" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_43_0.png" src="_images/notebooks_43_0.png" />
@@ -1349,15 +1362,15 @@ Total                    1523.24       979.060          0.0           544.180
 </div>
 </div>
 </div>
-<section id="id12">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id12">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Sin hallazgos de relevancia, consumos nocturnos durante las noches y fines de semana ~ 25 kWh durante el fin de semana del 19 /   20 de junio, ~ 7 kWh durante el 26 de junio</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-459-campo-alegre">
-<h1>BC 459 - Campo Alegre<a class="headerlink" href="#bc-459-campo-alegre" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-459-campo-alegre">
+<h1>BC 459 - Campo Alegre<a class="headerlink" href="#bc-459-campo-alegre" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_46_0.png" src="_images/notebooks_46_0.png" />
@@ -1378,15 +1391,15 @@ Total                    730.64        531.130          0.0           199.510
 </div>
 </div>
 </div>
-<section id="id13">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id13">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Consumos erraticos del aire acondicionado durante todo el periodo monitoreado a excepción de los fines de semana, se sugiere validar si existe alguna carga adicional al aire acondicionado que explique este comportamiento.</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-306-barrancabermeja">
-<h1>BC 306 - Barrancabermeja<a class="headerlink" href="#bc-306-barrancabermeja" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-306-barrancabermeja">
+<h1>BC 306 - Barrancabermeja<a class="headerlink" href="#bc-306-barrancabermeja" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_49_0.png" src="_images/notebooks_49_0.png" />
@@ -1407,15 +1420,15 @@ Total                    1315.60       447.360          0.0           868.240
 </div>
 </div>
 </div>
-<section id="id14">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id14">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Cargas residuales no monitoreadas ~ 12 kWh durante las noches, se sugiere validar si existe alguna carga adicional al aire acondicionado que explique este comportamiento.</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-311-bello">
-<h1>BC 311 - Bello<a class="headerlink" href="#bc-311-bello" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-311-bello">
+<h1>BC 311 - Bello<a class="headerlink" href="#bc-311-bello" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_52_0.png" src="_images/notebooks_52_0.png" />
@@ -1436,15 +1449,15 @@ Total                    1240.90       688.460          0.0           552.440
 </div>
 </div>
 </div>
-<section id="id15">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id15">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Sin hallazgos de relevancia</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-185-llano-grande-palmira">
-<h1>BC 185 - Llano Grande Palmira<a class="headerlink" href="#bc-185-llano-grande-palmira" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-185-llano-grande-palmira">
+<h1>BC 185 - Llano Grande Palmira<a class="headerlink" href="#bc-185-llano-grande-palmira" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_55_0.png" src="_images/notebooks_55_0.png" />
@@ -1465,16 +1478,16 @@ Total                    1222.46       794.760          0.0           427.700
 </div>
 </div>
 </div>
-<section id="id16">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id16">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Consumo de Aire acondicionado constante incluso durante fines de semana, especialmente durante el fin de semana del 20 de junio ~ 90 kWh por día.</p></li>
 <li><p>Circuito de Aire se mantiene encendido durante el 24, 25 y 26 de junio hasta las 9:30 PM aproximadamente</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-88-cucuta">
-<h1>BC 88 - Cúcuta<a class="headerlink" href="#bc-88-cucuta" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-88-cucuta">
+<h1>BC 88 - Cúcuta<a class="headerlink" href="#bc-88-cucuta" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_58_0.png" src="_images/notebooks_58_0.png" />
@@ -1495,16 +1508,16 @@ Total                    1185.03      1107.220          0.0           77.810
 </div>
 </div>
 </div>
-<section id="id17">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id17">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Sin hallazgos de relevancia, consumo de Aire acondicionado representa aproximadamente el 93% del consumo total</p></li>
 <li><p>Consumo de aire durante las noches y fines de semana ~ 12 kWh</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-197-guatapuri">
-<h1>BC 197 - Guatapuri<a class="headerlink" href="#bc-197-guatapuri" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-197-guatapuri">
+<h1>BC 197 - Guatapuri<a class="headerlink" href="#bc-197-guatapuri" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_61_0.png" src="_images/notebooks_61_0.png" />
@@ -1524,15 +1537,15 @@ Total                    1796.32       1316.34          0.0           479.98
 </div>
 </div>
 </div>
-<section id="id18">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id18">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Consumo de aire nocturnos y fines de semana ~ 24 kWh que suman más de 100 kWh durante los fines de semana</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-78-el-cacique">
-<h1>BC 78 - El Cacique<a class="headerlink" href="#bc-78-el-cacique" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-78-el-cacique">
+<h1>BC 78 - El Cacique<a class="headerlink" href="#bc-78-el-cacique" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_64_0.png" src="_images/notebooks_64_0.png" />
@@ -1553,15 +1566,15 @@ Total                    1551.40       635.780          0.0           915.620
 </div>
 </div>
 </div>
-<section id="id19">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id19">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Sin hallazgos de relevancia</p></li>
 </ul>
-</section>
-</section>
-<section id="bc-659-girardot">
-<h1>BC 659 - Girardot<a class="headerlink" href="#bc-659-girardot" title="Permalink to this headline">#</a></h1>
+</div>
+</div>
+<div class="section" id="bc-659-girardot">
+<h1>BC 659 - Girardot<a class="headerlink" href="#bc-659-girardot" title="Permalink to this headline">¶</a></h1>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="_images/notebooks_67_0.png" src="_images/notebooks_67_0.png" />
@@ -1582,13 +1595,13 @@ Total                    2226.02         0.0         1436.160         789.860
 </div>
 </div>
 </div>
-<section id="id20">
-<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id20">
+<h2><strong>Hallazgos</strong>:<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Consumo errático durante toda la semana, lo cual representó un incremento de consumo en más de 60%</p></li>
 </ul>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1612,41 +1625,28 @@ Total                    2226.02         0.0         1436.160         789.860
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Introducción</p>
-        </div>
-    </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Juan Carlos González Vélez<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+    <footer class="footer">
+  <p>
     
-</div>
+      By Juan Carlos González Vélez<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>

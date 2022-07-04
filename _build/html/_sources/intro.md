@@ -2,7 +2,7 @@
 
 ¡Hola!,
 
-En Celsia nos encanta acompañarte en la meta de ser más eficientes, por eso te presentamos tu informe de consumo de energía correspondiente a la semana anterior.
+En Celsia nos encanta acompañarte en la meta de ser más eficientes, por eso te presentamos tu informe de consumo de energía correspondiente al mes anterior.
 
 
 
