@@ -16,10 +16,14 @@ warnings.filterwarnings("ignore")
 import pandas as pd
 import numpy as np
 from datetime import datetime
-
-import os
+from dotenv import load_dotenv
 from dotenv import dotenv_values
-config = dotenv_values(".env")
+
+dotenv_values(".env")
+load_dotenv()
+_TOKEN = os.getenv("_token")
+BASELINE_DATE_INTERVAL = [os.getenv("_BASELINE_DATE_INTERVAL_START"), os.getenv("_BASELINE_DATE_INTERVAL_END")]
+STUDY_DATE_INTERVAL = [os.getenv("_STUDY_DATE_INTERVAL_START"), os.getenv("_STUDY_DATE_INTERVAL_END")]
 
 import requests
 import json
@@ -612,7 +616,6 @@ confidence_interval = 95
 
 # Ubidots API
 API_URL = 'https://industrial.api.ubidots.com/api/v1.6/devices/'
-_TOKEN: str = config["token"]
 LST_VAR_FIELDS = ["value.value", "variable.id", "device.label", "device.name", "timestamp"]
 LST_HEADERS = ['value', 'variable', 'device', 'device_name', 'timestamp']
 
@@ -653,14 +656,15 @@ cop_per_kwh = 692.29
 # Specify the date interval to fetch data from
 # the format must be: 'YYYY-MM-DD'
 BASELINE_DATE_INTERVAL = {
-    'start': '2022-01-01',
-    'end': '2022-05-30'
+    'start': BASELINE_DATE_INTERVAL[0],
+    'end': BASELINE_DATE_INTERVAL[1]
 }
 
 STUDY_DATE_INTERVAL = {
-    'start': '2022-06-01',
-    'end': '2022-07-01'
+    'start': STUDY_DATE_INTERVAL[0],
+    'end': STUDY_DATE_INTERVAL[1]
 }
+
 
 check_intervals(BASELINE_DATE_INTERVAL, STUDY_DATE_INTERVAL, ALLOWED_DATE_OVERLAP)
 
@@ -726,8 +730,8 @@ print(df["variable"].unique())
 # In[6]:
 
 
-df_bl = df.loc['2022-05-01':'2022-05-31']
-df_st = df.loc['2022-06-01':'2022-06-30']
+df_bl = df.loc[BASELINE_DATE_INTERVAL['start']:BASELINE_DATE_INTERVAL['end']]
+df_st = df.loc[STUDY_DATE_INTERVAL['start']:STUDY_DATE_INTERVAL['end']]
 
 
 # In[7]:

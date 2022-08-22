@@ -16,10 +16,14 @@ warnings.filterwarnings("ignore")
 import pandas as pd
 import numpy as np
 from datetime import datetime
-
-import os
+from dotenv import load_dotenv
 from dotenv import dotenv_values
-config = dotenv_values(".env")
+
+dotenv_values(".env")
+load_dotenv()
+_TOKEN = os.getenv("_token")
+BASELINE_DATE_INTERVAL = [os.getenv("_BASELINE_DATE_INTERVAL_START"), os.getenv("_BASELINE_DATE_INTERVAL_END")]
+STUDY_DATE_INTERVAL = [os.getenv("_STUDY_DATE_INTERVAL_START"), os.getenv("_STUDY_DATE_INTERVAL_END")]
 
 import requests
 import json
@@ -616,7 +620,6 @@ confidence_interval = 95
 
 # Ubidots API
 API_URL = 'https://industrial.api.ubidots.com/api/v1.6/devices/'
-_TOKEN: str = config["token"]
 LST_VAR_FIELDS = ["value.value", "variable.id", "device.label", "device.name", "timestamp"]
 LST_HEADERS = ['value', 'variable', 'device', 'device_name', 'timestamp']
 
@@ -657,13 +660,13 @@ cop_per_kwh = 692.29
 # Specify the date interval to fetch data from
 # the format must be: 'YYYY-MM-DD'
 BASELINE_DATE_INTERVAL = {
-    'start': '2022-01-01',
-    'end': '2022-05-30'
+    'start': BASELINE_DATE_INTERVAL[0],
+    'end': BASELINE_DATE_INTERVAL[1]
 }
 
 STUDY_DATE_INTERVAL = {
-    'start': '2022-06-01',
-    'end': '2022-07-01'
+    'start': STUDY_DATE_INTERVAL[0],
+    'end': STUDY_DATE_INTERVAL[1]
 }
 
 check_intervals(BASELINE_DATE_INTERVAL, STUDY_DATE_INTERVAL, ALLOWED_DATE_OVERLAP)
@@ -730,8 +733,8 @@ print(df["variable"].unique())
 # In[6]:
 
 
-# df_bl = df.loc['2022-05-01':'2022-05-31']
-df_st = df.loc['2022-06-01':'2022-06-30']
+df_bl = df.loc[BASELINE_DATE_INTERVAL['start']:BASELINE_DATE_INTERVAL['end']]
+df_st = df.loc[STUDY_DATE_INTERVAL['start']:STUDY_DATE_INTERVAL['end']]
 
 
 # In[7]:
@@ -757,11 +760,11 @@ cargas_nocturne = apply_datetime_transformations(cargas_nocturne)
 
 
 
-# past_months = df_bl[df_bl["variable"] == 'front-consumo-activa'].groupby(by=["variable"]).resample('1M').sum().round(2).reset_index().set_index('datetime')
-# past_months = apply_datetime_transformations(past_months)
+past_months = df_bl[df_bl["variable"] == 'front-consumo-activa'].groupby(by=["variable"]).resample('1M').sum().round(2).reset_index().set_index('datetime')
+past_months = apply_datetime_transformations(past_months)
 
-# past_hour = df_bl[df_bl["variable"] == 'front-consumo-activa'].groupby(by=["variable"]).resample('1h').sum().round(2).reset_index().set_index('datetime')
-# past_hour = apply_datetime_transformations(past_hour)
+past_hour = df_bl[df_bl["variable"] == 'front-consumo-activa'].groupby(by=["variable"]).resample('1h').sum().round(2).reset_index().set_index('datetime')
+past_hour = apply_datetime_transformations(past_hour)
 
 cargas_month = cargas.groupby(by=["variable"]).resample('1M').sum().round(2).reset_index().set_index('datetime')
 cargas_month = apply_datetime_transformations(cargas_month)
@@ -802,7 +805,7 @@ Cargas_Nocturne_day = apply_datetime_transformations(Cargas_Nocturne_day)
 
 
 consumo_sede = front_month.iloc[-1]["value"]
-# dif_mes_anterior =front_month.iloc[-1]["value"] - past_months.iloc[-1]["value"]
+dif_mes_anterior =front_month.iloc[-1]["value"] - past_months.iloc[-1]["value"]
 print(f"El consumo de energía durante el último mes fue: {round(consumo_sede,2)} kWh")
 
 
@@ -852,25 +855,25 @@ plt.title("Consumo diario de energía activa (kWh) en el último mes")
 # In[13]:
 
 
-# df_baseline_datehour = past_hour.groupby('datetime').sum()
+df_baseline_datehour = past_hour.groupby('datetime').sum()
 df_study_datehour = front_hour.groupby('datetime').sum()
-# df_baseline_datehour['hour'] = df_baseline_datehour.index.hour
+df_baseline_datehour['hour'] = df_baseline_datehour.index.hour
 df_study_datehour['hour'] = df_study_datehour.index.hour
 
 device_name = df['device_name'][0]
 title = f"{device_name} - Consumo total horario"
 
 
-# sns.lineplot(
-#     x='hour',
-#     y='value',
-#     hue=None,
-#     data=df_baseline_datehour.reset_index(), 
-#     ci=confidence_interval,
-#     estimator=np.median,
-#     # palette="flare",
-#     label="Consumo meses pasados"
-# )
+sns.lineplot(
+    x='hour',
+    y='value',
+    hue=None,
+    data=df_baseline_datehour.reset_index(), 
+    ci=confidence_interval,
+    estimator=np.median,
+    # palette="flare",
+    label="Consumo meses pasados"
+)
 sns.lineplot(
     x='hour',
     y='value',
@@ -894,22 +897,22 @@ plt.show()
 
 
 for day in dct_dow.values():
-    # df_plot_bl = past_hour[(past_hour['dow']==day)].copy()
+    df_plot_bl = past_hour[(past_hour['dow']==day)].copy()
     df_plot_s = front_hour[(front_hour['dow']==day)].copy()
     device_name = df['device_name'][0]
     title = f"{device_name} - Consumo horario para el día {day}"
     
     
-    # sns.lineplot(
-    #     x='hour',
-    #     y='value',
-    #     hue=None,
-    #     data=df_plot_bl.reset_index(), 
-    #     ci=confidence_interval,
-    #     estimator=np.median,
-    #     # palette="flare",
-    #     label="Consumo meses pasados"
-    # )
+    sns.lineplot(
+        x='hour',
+        y='value',
+        hue=None,
+        data=df_plot_bl.reset_index(), 
+        ci=confidence_interval,
+        estimator=np.median,
+        # palette="flare",
+        label="Consumo meses pasados"
+    )
     sns.lineplot(
         x='hour',
         y='value',
@@ -919,7 +922,7 @@ for day in dct_dow.values():
         ci=None,
         legend=False,
         estimator=np.median,
-        # palette="flare",
+        palette="flare",
         label="Mes actual"
     )
     plt.title(title + f" - Intervalo de confianza: {confidence_interval}%")

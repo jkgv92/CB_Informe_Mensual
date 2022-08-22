@@ -3,15 +3,9 @@
 
 # # Proyecto Monitoreo Bancolombia - Informe Mensual
 # 
-# Junio 2022
+# Julio 2022
 
-# In[363]:
-
-
-
-
-
-# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de junio de 2022. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
+# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de julio de 2022. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
 # 
 # 
 
@@ -32,10 +26,14 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-import os
+from dotenv import load_dotenv
 from dotenv import dotenv_values
-config = dotenv_values(".env")
 
+dotenv_values(".env")
+load_dotenv()
+_TOKEN = os.getenv("_token")
+BASELINE_DATE_INTERVAL = [os.getenv("_BASELINE_DATE_INTERVAL_START"), os.getenv("_BASELINE_DATE_INTERVAL_END")]
+STUDY_DATE_INTERVAL = [os.getenv("_STUDY_DATE_INTERVAL_START"), os.getenv("_STUDY_DATE_INTERVAL_END")]
 import requests
 import json
 
@@ -58,7 +56,7 @@ pio.renderers.default = "notebook"
 
 # ## Functions
 
-# In[2]:
+# In[73]:
 
 
 def calculate_interval_duration_days(interval):
@@ -617,7 +615,7 @@ def subplots_stack(df1, df2, figsize):
 
 # ## Configuration
 
-# In[3]:
+# In[74]:
 
 
 # Cleaning parameters
@@ -638,7 +636,6 @@ confidence_interval = 95
 
 # Ubidots API
 API_URL = 'https://industrial.api.ubidots.com/api/v1.6/devices/'
-_TOKEN: str = config["token"]
 LST_VAR_FIELDS = ["value.value", "variable.id", "device.label", "device.name", "timestamp"]
 LST_HEADERS = ['value', 'variable', 'device', 'device_name', 'timestamp']
 
@@ -679,14 +676,15 @@ cop_per_kwh = 692.29
 # Specify the date interval to fetch data from
 # the format must be: 'YYYY-MM-DD'
 BASELINE_DATE_INTERVAL = {
-    'start': '2022-01-01',
-    'end': '2022-05-30'
+    'start': BASELINE_DATE_INTERVAL[0],
+    'end': BASELINE_DATE_INTERVAL[1]
 }
 
 STUDY_DATE_INTERVAL = {
-    'start': '2022-06-01',
-    'end': '2022-07-01'
+    'start': STUDY_DATE_INTERVAL[0],
+    'end': STUDY_DATE_INTERVAL[1]
 }
+
 
 check_intervals(BASELINE_DATE_INTERVAL, STUDY_DATE_INTERVAL, ALLOWED_DATE_OVERLAP)
 
@@ -722,11 +720,11 @@ PICKLED_DATA_FILENAME = 'parsed_response_Acumulado.pkl'
 
 # ## Data loading
 
-# In[4]:
+# In[75]:
 
 
 df = None
-use_pickled_data = True
+use_pickled_data = False
 
 if (use_pickled_data is True):
     df = pd.read_pickle(PICKLED_DATA_FILENAME)
@@ -740,15 +738,9 @@ else:
 show_response_contents(df)
 
 
-# In[5]:
-
-
-df
-
-
 # ## Preprocessing
 
-# In[6]:
+# In[76]:
 
 
 
@@ -770,14 +762,14 @@ df['day'] = pd.to_datetime(df.index).day
 print(df["device_name"].nunique())
 
 
-# In[7]:
+# In[77]:
 
 
-df_bl = df.loc['2022-05-01':'2022-05-31']
-df_st = df.loc['2022-06-01':'2022-06-30']
+df_bl = df.loc[BASELINE_DATE_INTERVAL['start']:BASELINE_DATE_INTERVAL['end']]
+df_st = df.loc[STUDY_DATE_INTERVAL['start']:STUDY_DATE_INTERVAL['end']]
 
 
-# In[8]:
+# In[78]:
 
 
 cargas = df_st[df_st["variable"].isin(Energy_VAR_LABELS)]
@@ -788,9 +780,7 @@ cargas_pot = df_st[df_st["variable"].isin(Power_VAR_LABELS)]
 cargas_nocturne = cargas[cargas["hour"].isin(NOCTURNE)]
 
 
-
-
-# In[9]:
+# In[79]:
 
 
 
@@ -829,7 +819,7 @@ Cargas_Nocturne_day = apply_datetime_transformations(Cargas_Nocturne_day)
 
 # ## Resultados
 
-# In[10]:
+# In[80]:
 
 
 front_tot = front_month[["value","device_name"]].reset_index(drop=True).set_index('device_name')
@@ -839,7 +829,7 @@ front_tot.reset_index(inplace=True, drop=False)
 sizes = front_tot.sort_values(by='Consumo - MWh', ascending=False)
 
 
-# In[11]:
+# In[81]:
 
 
 
@@ -850,7 +840,7 @@ fig.show()
 
 # En la figura anterior se puede observar un ranking de consumo por cada una de las sedes monitoreadas. Tener presente que el consumo se encuentra en MWh.
 
-# In[12]:
+# In[82]:
 
 
 import plotly.express as px
@@ -864,13 +854,154 @@ fig.show()
 
 # De igual manera, en la figura anterior, se puede observar la contribución de cada una de las sedes al total de consumo.
 
-# In[13]:
+# In[83]:
 
+
+El_Cacique = front_month[front_month["device_name"]=="BC 78 - El Cacique"]["value"]
+El_Cacique_cargas = cargas_month[cargas_month["device_name"]=="BC 78 - El Cacique"]
+El_Cacique_ilu = El_Cacique_cargas[El_Cacique_cargas["variable"]=="ilu-consumo-activa"]["value"]
+El_Cacique_aa = El_Cacique_cargas[El_Cacique_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Girardot = front_month[front_month["device_name"]=="BC 659 - Girardot"]["value"]
+Girardot_cargas = cargas_month[cargas_month["device_name"]=="BC 659 - Girardot"]
+Girardot_ilu = Girardot_cargas[Girardot_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Girardot_aa = Girardot_cargas[Girardot_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Ventura_plaza = front_month[front_month["device_name"]=="BC 824 - Ventura Plaza"]["value"]
+Ventura_plaza_cargas = cargas_month[cargas_month["device_name"]=="BC 824 - Ventura Plaza"]
+Ventura_plaza_ilu = Ventura_plaza_cargas[Ventura_plaza_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Ventura_plaza_aa = Ventura_plaza_cargas[Ventura_plaza_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Banca_Colombia_Cartagena = front_month[front_month["device_name"]=="BC 210 - Banca Colombia Cartagena"]["value"]
+Banca_Colombia_Cartagena_cargas = cargas_month[cargas_month["device_name"]=="BC 210 - Banca Colombia Cartagena"]
+Banca_Colombia_Cartagena_ilu = Banca_Colombia_Cartagena_cargas[Banca_Colombia_Cartagena_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Banca_Colombia_Cartagena_aa = Banca_Colombia_Cartagena_cargas[Banca_Colombia_Cartagena_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Bello = front_month[front_month["device_name"]=="BC 311 - Bello"]["value"]
+Bello_cargas = cargas_month[cargas_month["device_name"]=="BC 311 - Bello"]
+Bello_ilu = Bello_cargas[Bello_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Bello_aa = Bello_cargas[Bello_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Cúcuta = front_month[front_month["device_name"]=="BC 88 - Cúcuta"]["value"]
+Cúcuta_cargas = cargas_month[cargas_month["device_name"]=="BC 88 - Cúcuta"]
+Cúcuta_ilu = Cúcuta_cargas[Cúcuta_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Cúcuta_aa = Cúcuta_cargas[Cúcuta_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Barrancabermeja = front_month[front_month["device_name"]=="BC 306 - Barranquabermeja"]["value"]
+Barrancabermeja_cargas = cargas_month[cargas_month["device_name"]=="BC 306 - Barranquabermeja"]
+Barrancabermeja_ilu = Barrancabermeja_cargas[Barrancabermeja_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Barrancabermeja_aa = Barrancabermeja_cargas[Barrancabermeja_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+LLano_Grande_Palmira = front_month[front_month["device_name"]=="BC 185 - Llano Grande Palmira"]["value"]
+LLano_Grande_Palmira_cargas = cargas_month[cargas_month["device_name"]=="BC 185 - Llano Grande Palmira"]
+LLano_Grande_Palmira_ilu = LLano_Grande_Palmira_cargas[LLano_Grande_Palmira_cargas["variable"]=="ilu-consumo-activa"]["value"]
+LLano_Grande_Palmira_aa = LLano_Grande_Palmira_cargas[LLano_Grande_Palmira_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Palmira = front_month[front_month["device_name"]=="BC 66 - Palmira"]["value"]
+Palmira_cargas = cargas_month[cargas_month["device_name"]=="BC 66 - Palmira"]
+Palmira_ilu = Palmira_cargas[Palmira_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Palmira_aa = Palmira_cargas[Palmira_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Villa_Colombia = front_month[front_month["device_name"]=="BC 205 - Villa Colombia"]["value"]
+Villa_Colombia_cargas = cargas_month[cargas_month["device_name"]=="BC 205 - Villa Colombia"]
+Villa_Colombia_ilu = Villa_Colombia_cargas[Villa_Colombia_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Villa_Colombia_aa = Villa_Colombia_cargas[Villa_Colombia_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Los_Patios = front_month[front_month["device_name"]=="BC 863 - Los Patios"]["value"]
+Los_Patios_cargas = cargas_month[cargas_month["device_name"]=="BC 863 - Los Patios"]
+Los_Patios_ilu = Los_Patios_cargas[Los_Patios_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Los_Patios_aa = Los_Patios_cargas[Los_Patios_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Jamundi = front_month[front_month["device_name"]=="BC 764 - Jamundí"]["value"]
+Jamundi_cargas = cargas_month[cargas_month["device_name"]=="BC 764 - Jamundí"]
+Jamundi_ilu = Jamundi_cargas[Jamundi_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Jamundi_aa = Jamundi_cargas[Jamundi_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Honda = front_month[front_month["device_name"]=="BC 424 - Honda"]["value"]
+Honda_cargas = cargas_month[cargas_month["device_name"]=="BC 424 - Honda"]
+Honda_ilu = Honda_cargas[Honda_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Honda_aa = Honda_cargas[Honda_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+La_America = front_month[front_month["device_name"]=="BC 613 - La America"]["value"]
+La_America_cargas = cargas_month[cargas_month["device_name"]=="BC 613 - La America"]
+La_America_ilu = La_America_cargas[La_America_cargas["variable"]=="ilu-consumo-activa"]["value"]
+La_America_aa = La_America_cargas[La_America_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Guatapuri = front_month[front_month["device_name"]=="BC 197 - Guatapuri"]["value"]
+Guatapuri_cargas = cargas_month[cargas_month["device_name"]=="BC 197 - Guatapuri"]
+Guatapuri_ilu = Guatapuri_cargas[Guatapuri_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Guatapuri_aa = Guatapuri_cargas[Guatapuri_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Lebrija = front_month[front_month["device_name"]=="BC 776 - Lebrija"]["value"]
+Lebrija_cargas = cargas_month[cargas_month["device_name"]=="BC 776 - Lebrija"]
+Lebrija_ilu = Lebrija_cargas[Lebrija_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Lebrija_aa = Lebrija_cargas[Lebrija_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Paseo_del_comercio = front_month[front_month["device_name"]=="BC 792 - Paseo del comercio"]["value"]
+Paseo_del_comercio_cargas = cargas_month[cargas_month["device_name"]=="BC 792 - Paseo del comercio"]
+Paseo_del_comercio_ilu = Paseo_del_comercio_cargas[Paseo_del_comercio_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Paseo_del_comercio_aa = Paseo_del_comercio_cargas[Paseo_del_comercio_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Carrera_primera = front_month[front_month["device_name"]=="BC 061 - Carrera Primera"]["value"]
+Carrera_primera_cargas = cargas_month[cargas_month["device_name"]=="BC 061 - Carrera Primera"]
+Carrera_primera_ilu = Carrera_primera_cargas[Carrera_primera_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Carrera_primera_aa = Carrera_primera_cargas[Carrera_primera_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Iwanna = front_month[front_month["device_name"]=="BC 496 - Iwanna"]["value"]
+Iwanna_cargas = cargas_month[cargas_month["device_name"]=="BC 496 - Iwanna"]
+Iwanna_ilu = Iwanna_cargas[Iwanna_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Iwanna_aa = Iwanna_cargas[Iwanna_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Pitalito = front_month[front_month["device_name"]=="BC 453 - Pitalito"]["value"]
+Pitalito_cargas = cargas_month[cargas_month["device_name"]=="BC 453 - Pitalito"]
+Pitalito_ilu = Pitalito_cargas[Pitalito_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Pitalito_aa = Pitalito_cargas[Pitalito_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Giron = front_month[front_month["device_name"]=="BC 796 - Girón"]["value"]
+Giron_cargas = cargas_month[cargas_month["device_name"]=="BC 796 - Girón"]
+Giron_ilu = Giron_cargas[Giron_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Giron_aa = Giron_cargas[Giron_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Piedecuesta = front_month[front_month["device_name"]=="BC 044 - Piedecuesta"]["value"]
+Piedecuesta_cargas = cargas_month[cargas_month["device_name"]=="BC 044 - Piedecuesta"]
+Piedecuesta_ilu = Piedecuesta_cargas[Piedecuesta_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Piedecuesta_aa = Piedecuesta_cargas[Piedecuesta_cargas["variable"]=="aa-consumo-activa"]["value"]
 
 Floridablanca = front_month[front_month["device_name"]=="BC 799 - Floridablanca"]["value"]
 Floridablanca_cargas = cargas_month[cargas_month["device_name"]=="BC 799 - Floridablanca"]
 Floridablanca_ilu = Floridablanca_cargas[Floridablanca_cargas["variable"]=="ilu-consumo-activa"]["value"]
 Floridablanca_aa = Floridablanca_cargas[Floridablanca_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+San_Mateo = front_month[front_month["device_name"]=="BC 834 - San Mateo"]["value"]
+San_Mateo_cargas = cargas_month[cargas_month["device_name"]=="BC 834 - San Mateo"]
+San_Mateo_ilu = San_Mateo_cargas[San_Mateo_cargas["variable"]=="ilu-consumo-activa"]["value"]
+San_Mateo_aa = San_Mateo_cargas[San_Mateo_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Campo_Alegre = front_month[front_month["device_name"]=="BC 459 - Campo Alegre"]["value"]
+Campo_Alegre_cargas = cargas_month[cargas_month["device_name"]=="BC 459 - Campo Alegre"]
+Campo_Alegre_ilu = Campo_Alegre_cargas[Campo_Alegre_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Campo_Alegre_aa = Campo_Alegre_cargas[Campo_Alegre_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Paseo_de_la_castellana = front_month[front_month["device_name"]=="BC 678 - Paseo de la Castellana"]["value"]
+Paseo_de_la_castellana_cargas = cargas_month[cargas_month["device_name"]=="BC 678 - Paseo de la Castellana"]
+Paseo_de_la_castellana_ilu = Paseo_de_la_castellana_cargas[Paseo_de_la_castellana_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Paseo_de_la_castellana_aa = Paseo_de_la_castellana_cargas[Paseo_de_la_castellana_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Calima = front_month[front_month["device_name"]=="BC 741 - Calima"]["value"]
+Calima_cargas = cargas_month[cargas_month["device_name"]=="BC 741 - Calima"]
+Calima_ilu = Calima_cargas[Calima_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Calima_aa = Calima_cargas[Calima_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+El_Bosque = front_month[front_month["device_name"]=="BC 495 - El Bosque"]["value"]
+El_Bosque_cargas = cargas_month[cargas_month["device_name"]=="BC 495 - El Bosque"]
+El_Bosque_ilu = El_Bosque_cargas[El_Bosque_cargas["variable"]=="ilu-consumo-activa"]["value"]
+El_Bosque_aa = El_Bosque_cargas[El_Bosque_cargas["variable"]=="aa-consumo-activa"]["value"]
+
+Santa_Monica = front_month[front_month["device_name"]=="BC 749 - Santa Monica"]["value"]
+Santa_Monica_cargas = cargas_month[cargas_month["device_name"]=="BC 749 - Santa Monica"]
+Santa_Monica_ilu = Santa_Monica_cargas[Santa_Monica_cargas["variable"]=="ilu-consumo-activa"]["value"]
+Santa_Monica_aa = Santa_Monica_cargas[Santa_Monica_cargas["variable"]=="aa-consumo-activa"]["value"]
+
 
 Las_Palmas = front_month[front_month["device_name"]=="BC 291 - Las Palmas"]["value"]
 Las_Palmas_cargas = cargas_month[cargas_month["device_name"]=="BC 291 - Las Palmas"]
@@ -882,99 +1013,9 @@ Megamall_cargas = cargas_month[cargas_month["device_name"]=="BC 90 - Megamall"]
 Megamall_ilu = Megamall_cargas[Megamall_cargas["variable"]=="ilu-consumo-activa"]["value"]
 Megamall_aa = Megamall_cargas[Megamall_cargas["variable"]=="aa-consumo-activa"]["value"]
 
-Santa_Monica = front_month[front_month["device_name"]=="BC 749 - Santa Monica"]["value"]
-Santa_Monica_cargas = cargas_month[cargas_month["device_name"]=="BC 749 - Santa Monica"]
-Santa_Monica_ilu = Santa_Monica_cargas[Santa_Monica_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Santa_Monica_aa = Santa_Monica_cargas[Santa_Monica_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Girardot = front_month[front_month["device_name"]=="BC 659 - Girardot"]["value"]
-Girardot_cargas = cargas_month[cargas_month["device_name"]=="BC 659 - Girardot"]
-Girardot_ilu = Girardot_cargas[Girardot_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Girardot_aa = Girardot_cargas[Girardot_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Cúcuta = front_month[front_month["device_name"]=="BC 88 - Cúcuta"]["value"]
-Cúcuta_cargas = cargas_month[cargas_month["device_name"]=="BC 88 - Cúcuta"]
-Cúcuta_ilu = Cúcuta_cargas[Cúcuta_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Cúcuta_aa = Cúcuta_cargas[Cúcuta_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-LLano_Grande_Palmira = front_month[front_month["device_name"]=="BC 185 - Llano Grande Palmira"]["value"]
-LLano_Grande_Palmira_cargas = cargas_month[cargas_month["device_name"]=="BC 185 - Llano Grande Palmira"]
-LLano_Grande_Palmira_ilu = LLano_Grande_Palmira_cargas[LLano_Grande_Palmira_cargas["variable"]=="ilu-consumo-activa"]["value"]
-LLano_Grande_Palmira_aa = LLano_Grande_Palmira_cargas[LLano_Grande_Palmira_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Bello = front_month[front_month["device_name"]=="BC 311 - Bello"]["value"]
-Bello_cargas = cargas_month[cargas_month["device_name"]=="BC 311 - Bello"]
-Bello_ilu = Bello_cargas[Bello_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Bello_aa = Bello_cargas[Bello_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Barrancabermeja = front_month[front_month["device_name"]=="BC 306 - Barranquabermeja"]["value"]
-Barrancabermeja_cargas = cargas_month[cargas_month["device_name"]=="BC 306 - Barranquabermeja"]
-Barrancabermeja_ilu = Barrancabermeja_cargas[Barrancabermeja_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Barrancabermeja_aa = Barrancabermeja_cargas[Barrancabermeja_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Campo_Alegre = front_month[front_month["device_name"]=="BC 459 - Campo Alegre"]["value"]
-Campo_Alegre_cargas = cargas_month[cargas_month["device_name"]=="BC 459 - Campo Alegre"]
-Campo_Alegre_ilu = Campo_Alegre_cargas[Campo_Alegre_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Campo_Alegre_aa = Campo_Alegre_cargas[Campo_Alegre_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Ventura_plaza = front_month[front_month["device_name"]=="BC 824 - Ventura Plaza"]["value"]
-Ventura_plaza_cargas = cargas_month[cargas_month["device_name"]=="BC 824 - Ventura Plaza"]
-Ventura_plaza_ilu = Ventura_plaza_cargas[Ventura_plaza_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Ventura_plaza_aa = Ventura_plaza_cargas[Ventura_plaza_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Paseo_del_comercio = front_month[front_month["device_name"]=="BC 792 - Paseo del comercio"]["value"]
-Paseo_del_comercio_cargas = cargas_month[cargas_month["device_name"]=="BC 792 - Paseo del comercio"]
-Paseo_del_comercio_ilu = Paseo_del_comercio_cargas[Paseo_del_comercio_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Paseo_del_comercio_aa = Paseo_del_comercio_cargas[Paseo_del_comercio_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Lebrija = front_month[front_month["device_name"]=="BC 776 - Lebrija"]["value"]
-Lebrija_cargas = cargas_month[cargas_month["device_name"]=="BC 776 - Lebrija"]
-Lebrija_ilu = Lebrija_cargas[Lebrija_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Lebrija_aa = Lebrija_cargas[Lebrija_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Piedecuesta = front_month[front_month["device_name"]=="BC 044 - Piedecuesta"]["value"]
-Piedecuesta_cargas = cargas_month[cargas_month["device_name"]=="BC 044 - Piedecuesta"]
-Piedecuesta_ilu = Piedecuesta_cargas[Piedecuesta_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Piedecuesta_aa = Piedecuesta_cargas[Piedecuesta_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-El_Cacique = front_month[front_month["device_name"]=="BC 78 - El Cacique"]["value"]
-El_Cacique_cargas = cargas_month[cargas_month["device_name"]=="BC 78 - El Cacique"]
-El_Cacique_ilu = El_Cacique_cargas[El_Cacique_cargas["variable"]=="ilu-consumo-activa"]["value"]
-El_Cacique_aa = El_Cacique_cargas[El_Cacique_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-San_Mateo = front_month[front_month["device_name"]=="BC 834 - San Mateo"]["value"]
-San_Mateo_cargas = cargas_month[cargas_month["device_name"]=="BC 834 - San Mateo"]
-San_Mateo_ilu = San_Mateo_cargas[San_Mateo_cargas["variable"]=="ilu-consumo-activa"]["value"]
-San_Mateo_aa = San_Mateo_cargas[San_Mateo_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Los_Patios = front_month[front_month["device_name"]=="BC 863 - Los Patios"]["value"]
-Los_Patios_cargas = cargas_month[cargas_month["device_name"]=="BC 863 - Los Patios"]
-Los_Patios_ilu = Los_Patios_cargas[Los_Patios_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Los_Patios_aa = Los_Patios_cargas[Los_Patios_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Honda = front_month[front_month["device_name"]=="BC 424 - Honda"]["value"]
-Honda_cargas = cargas_month[cargas_month["device_name"]=="BC 424 - Honda"]
-Honda_ilu = Honda_cargas[Honda_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Honda_aa = Honda_cargas[Honda_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Villa_Colombia = front_month[front_month["device_name"]=="BC 205 - Villa Colombia"]["value"]
-Villa_Colombia_cargas = cargas_month[cargas_month["device_name"]=="BC 205 - Villa Colombia"]
-Villa_Colombia_ilu = Villa_Colombia_cargas[Villa_Colombia_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Villa_Colombia_aa = Villa_Colombia_cargas[Villa_Colombia_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-Guatapuri = front_month[front_month["device_name"]=="BC 197 - Guatapuri"]["value"]
-Guatapuri_cargas = cargas_month[cargas_month["device_name"]=="BC 197 - Guatapuri"]
-Guatapuri_ilu = Guatapuri_cargas[Guatapuri_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Guatapuri_aa = Guatapuri_cargas[Guatapuri_cargas["variable"]=="aa-consumo-activa"]["value"]
 
 
-Palmira = front_month[front_month["device_name"]=="BC 66 - Palmira"]["value"]
-Palmira_cargas = cargas_month[cargas_month["device_name"]=="BC 66 - Palmira"]
-Palmira_ilu = Palmira_cargas[Palmira_cargas["variable"]=="ilu-consumo-activa"]["value"]
-Palmira_aa = Palmira_cargas[Palmira_cargas["variable"]=="aa-consumo-activa"]["value"]
-
-
-# In[14]:
+# In[87]:
 
 
 
@@ -985,101 +1026,142 @@ fig = go.Figure(data=[go.Sankey(
             'thickness': 15,
             'line': {'color': 'black', 'width': 0.5},
             'label': ['Consumo total (kWh)',
-                      'BC 799 - Floridablanca',
-                      'BC 291 - Las Palmas',
+                      'BC 78 - El Cacique',               
+                      'BC 659 - Girardot',                
+                      'BC 824 - Ventura Plaza',           
+                      'BC 210 - Banca Colombia Cartagena',
+                      'BC 311 - Bello',                   
+                      'BC 88 - Cúcuta',                   
+                      'BC 306 - Barrancabermeja',         
+                      'BC 185 - Llano Grande Palmira',    
+                      'BC 66 - Palmira',                  
+                      'BC 205 - Villa Colombia',          
+                      'BC 863 - Los Patios',              
+                      'BC 764 - Jamundí',                 
+                      'BC 424 - Honda',                   
+                      'BC 613 - La America',              
+                      'BC 197 - Guatapuri',               
+                      'BC 776 - Lebrija',                 
+                      'BC 792 - Paseo del comercio',      
+                      'BC 061 - Carrera Primera',         
+                      'BC 496 - Iwanna',                  
+                      'BC 453 - Pitalito',                
+                      'BC 796 - Girón',                   
+                      'BC 044 - Piedecuesta',             
+                      'BC 799 - Floridablanca',           
+                      'BC 834 - San Mateo',               
+                      'BC 459 - Campo Alegre',            
+                      'BC 678 - Paseo de la Castellana',  
+                      'BC 741 - Calima',                  
+                      'BC 495 - El Bosque',               
+                      'BC 749 - Santa Monica',            
+                      'BC 291 - Las Palmas',              
                       'BC 90 - Megamall',
-                      'BC 749 - Santa Monica',
-                      'BC 659 - Girardot',
-                      'BC 88 - Cúcuta',
-                      'BC 185 - Llano Grande Palmira',
-                      'BC 311 - Bello',
-                      'BC 306 - Barrancabermeja',
-                      'BC 459 - Campo Alegre',
-                      'BC 824 - Ventura Plaza',
-                      'BC 792 - Paseo del comercio',
-                      'BC 776 - Lebrija',
-                      'BC 044 - Piedecuesta',
-                      'BC 78 - El Cacique',
-                      'BC 834 - San Mateo',
-                      'BC 863 - Los Patios',
-                      'BC 424 - Honda',
-                      'BC 205 - Villa Colombia',
-                      'BC 197 - Guatapuri',
-                      'BC 66 - Palmira',
                       'AA',
                       'ILU']},
 
       link = {
-            'source': [0,0,0,0,0,0,0,0,0,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,
-                        1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13,14,14,15,15,16,16,17,17,18,18,19,19,20,20,21,21],
+            'source':  [0,0,0,0,0,0,0,0,0,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0,
+                        1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,13,13,14,14,15,15,16,16,17,17,18,18,19,19,20,20,21,21,22,22,23,23,24,24,25,25,26,26,27,27,28,28,29,29,30,30,31,31], 
 
-            'target': [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,
-                        23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22,23,22],
 
-            'value':   [Floridablanca,
+            'target':  [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,
+                        32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33,32,33],
+
+            'value':   [El_Cacique,
+                        Girardot,
+                        Ventura_plaza,
+                        Banca_Colombia_Cartagena,
+                        Bello,
+                        Cúcuta,
+                        Barrancabermeja,
+                        LLano_Grande_Palmira,
+                        Palmira,
+                        Villa_Colombia,
+                        Los_Patios,
+                        Jamundi,
+                        Honda,
+                        La_America,
+                        Guatapuri,
+                        Lebrija,
+                        Paseo_del_comercio,
+                        Carrera_primera,
+                        Iwanna,
+                        Pitalito,
+                        Giron,
+                        Piedecuesta,
+                        Floridablanca,
+                        San_Mateo,
+                        Campo_Alegre,
+                        Paseo_de_la_castellana,
+                        Calima,
+                        El_Bosque,
+                        Santa_Monica,
                         Las_Palmas,
                         Megamall,
-                        Santa_Monica,
-                        Girardot,
-                        Cúcuta,
-                        LLano_Grande_Palmira,
-                        Bello,
-                        Barrancabermeja,
-                        Campo_Alegre,
-                        Ventura_plaza,
-                        Paseo_del_comercio,
-                        Lebrija,
-                        Piedecuesta,
-                        El_Cacique,
-                        San_Mateo,
-                        Los_Patios,
-                        Honda,
-                        Villa_Colombia,
-                        Guatapuri,
-                        Palmira,
 
-                        Floridablanca_ilu,
-                        Floridablanca_aa,
-                        Las_Palmas_ilu,
-                        Las_Palmas_aa,
-                        Megamall_ilu,
-                        Megamall_aa,
-                        Santa_Monica_ilu,
-                        Santa_Monica_aa,
-                        Girardot_ilu,
+                        El_Cacique_aa,
+                        El_Cacique_ilu,
                         Girardot_aa,
-                        Cúcuta_ilu,
-                        Cúcuta_aa,
-                        LLano_Grande_Palmira_ilu,
-                        LLano_Grande_Palmira_aa,
+                        Girardot_ilu,
+                        Ventura_plaza_aa,
+                        Ventura_plaza_ilu,
+                        Banca_Colombia_Cartagena_aa,
+                        Banca_Colombia_Cartagena_ilu,
                         Bello_ilu,
                         Bello_aa,
-                        Barrancabermeja_ilu,
+                        Cúcuta_aa,
+                        Cúcuta_ilu,
                         Barrancabermeja_aa,
-                        Campo_Alegre_ilu,
-                        Campo_Alegre_aa,
-                        Ventura_plaza_ilu,
-                        Ventura_plaza_aa,
-                        Paseo_del_comercio_ilu,
-                        Paseo_del_comercio_aa,
-                        Lebrija_ilu,
-                        Lebrija_aa,
-                        Piedecuesta_ilu,
-                        Piedecuesta_aa,
-                        El_Cacique_ilu,
-                        El_Cacique_aa,
-                        San_Mateo_ilu,
-                        San_Mateo_aa,
-                        Los_Patios_ilu,
-                        Los_Patios_aa,
-                        Honda_ilu,
-                        Honda_aa,
-                        Villa_Colombia_ilu,
-                        Villa_Colombia_aa,
-                        Guatapuri_ilu,
-                        Guatapuri_aa,
-                        Palmira_ilu,
+                        Barrancabermeja_ilu,
+                        LLano_Grande_Palmira_aa,
+                        LLano_Grande_Palmira_ilu,
                         Palmira_aa,
+                        Palmira_ilu,
+                        Villa_Colombia_aa,
+                        Villa_Colombia_ilu,
+                        Los_Patios_aa,
+                        Los_Patios_ilu,
+                        Jamundi_aa,
+                        Jamundi_ilu,
+                        Honda_aa,
+                        Honda_ilu,
+                        La_America_aa,
+                        La_America_ilu,
+                        Guatapuri_aa,
+                        Guatapuri_ilu,
+                        Lebrija_aa,
+                        Lebrija_ilu,
+                        Paseo_del_comercio_aa,
+                        Paseo_del_comercio_ilu,
+                        Carrera_primera_aa,
+                        Carrera_primera_ilu,
+                        Iwanna_aa,
+                        Iwanna_ilu,
+                        Pitalito_aa,
+                        Pitalito_ilu,
+                        Giron_aa,
+                        Giron_ilu,
+                        Piedecuesta_aa,
+                        Piedecuesta_ilu,
+                        Floridablanca_aa,
+                        Floridablanca_ilu,
+                        San_Mateo_aa,
+                        San_Mateo_ilu,
+                        Campo_Alegre_aa,
+                        Campo_Alegre_ilu,
+                        Paseo_de_la_castellana_aa,
+                        Paseo_de_la_castellana_ilu,
+                        Calima_aa,
+                        Calima_ilu,
+                        El_Bosque_aa,
+                        El_Bosque_ilu,
+                        Santa_Monica_aa,
+                        Santa_Monica_ilu,
+                        Las_Palmas_aa,
+                        Las_Palmas_ilu,
+                        Megamall_aa,
+                        Megamall_ilu
                        ]},
 )])
 
@@ -1089,9 +1171,9 @@ fig.update_layout(title_text="Diagrama Sankey consumo de energía kWh", font_siz
 
 
 
-# En la figura anterior se puede observar el consumo de cada sede en el mes de junio de 2022. Así como su distribución de consumo por carga.
+# En la figura anterior se puede observar el consumo de cada sede en el mes de julio de 2022. Así como su distribución de consumo por carga.
 
-# In[15]:
+# In[88]:
 
 
 import requests
@@ -1163,7 +1245,7 @@ fig.show()
 
 # Así mismo, en la figura anterior, se puede observar la distribución de consumo en el espacio, siendo cada punto una sede monitoreada, y su tamaño equivalente al consumo realizado.
 
-# In[16]:
+# In[98]:
 
 
 sns.lineplot(
@@ -1177,6 +1259,9 @@ sns.lineplot(
     estimator=np.mean,
     # palette="flare",
 )
+
+
+
 plt.title( f" Curva típica de consumo por sede (kWh)")
 plt.xlabel('Hora del día')
 plt.ylabel('Consumo horario [kWh]')
@@ -1184,4 +1269,4 @@ plt.legend()
 plt.show()
 
 
-# Finalmente, en la figura anterior se puede observar el consumo de cada sede en el mes de junio de 2022. Te invitamos a validar el comportamiento de cada sede a detalle en las siguientes páginas.
+# Finalmente, en la figura anterior se puede observar el consumo de cada sede en el mes de julio de 2022. Te invitamos a validar el comportamiento de cada sede a detalle en las siguientes páginas.

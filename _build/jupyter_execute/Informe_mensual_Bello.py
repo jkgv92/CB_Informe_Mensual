@@ -3,7 +3,7 @@
 
 # # BC 311 - Bello
 
-# In[1]:
+# In[20]:
 
 
 get_ipython().run_line_magic('load_ext', 'autoreload')
@@ -17,9 +17,15 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
-import os
+
+from dotenv import load_dotenv
 from dotenv import dotenv_values
-config = dotenv_values(".env")
+
+dotenv_values(".env")
+load_dotenv()
+_TOKEN = os.getenv("_token")
+BASELINE_DATE_INTERVAL = [os.getenv("_BASELINE_DATE_INTERVAL_START"), os.getenv("_BASELINE_DATE_INTERVAL_END")]
+STUDY_DATE_INTERVAL = [os.getenv("_STUDY_DATE_INTERVAL_START"), os.getenv("_STUDY_DATE_INTERVAL_END")]
 
 import requests
 import json
@@ -36,7 +42,7 @@ import os
 
 # ## Functions
 
-# In[2]:
+# In[21]:
 
 
 def calculate_interval_duration_days(interval):
@@ -595,7 +601,7 @@ def subplots_stack(df1, df2, figsize):
 
 # ## Configuration
 
-# In[3]:
+# In[22]:
 
 
 # Cleaning parameters
@@ -616,7 +622,6 @@ confidence_interval = 95
 
 # Ubidots API
 API_URL = 'https://industrial.api.ubidots.com/api/v1.6/devices/'
-_TOKEN: str = config["token"]
 LST_VAR_FIELDS = ["value.value", "variable.id", "device.label", "device.name", "timestamp"]
 LST_HEADERS = ['value', 'variable', 'device', 'device_name', 'timestamp']
 
@@ -657,14 +662,15 @@ cop_per_kwh = 692.29
 # Specify the date interval to fetch data from
 # the format must be: 'YYYY-MM-DD'
 BASELINE_DATE_INTERVAL = {
-    'start': '2022-01-01',
-    'end': '2022-05-30'
+    'start': BASELINE_DATE_INTERVAL[0],
+    'end': BASELINE_DATE_INTERVAL[1]
 }
 
 STUDY_DATE_INTERVAL = {
-    'start': '2022-06-01',
-    'end': '2022-07-01'
+    'start': STUDY_DATE_INTERVAL[0],
+    'end': STUDY_DATE_INTERVAL[1]
 }
+
 
 check_intervals(BASELINE_DATE_INTERVAL, STUDY_DATE_INTERVAL, ALLOWED_DATE_OVERLAP)
 
@@ -700,7 +706,7 @@ PICKLED_DATA_FILENAME = 'parsed_response_Bello.pkl'
 
 # ## Data loading
 
-# In[4]:
+# In[23]:
 
 
 df = None
@@ -720,21 +726,21 @@ show_response_contents(df)
 
 # ## Preprocessing
 
-# In[5]:
+# In[24]:
 
 
 df = post_process_data(df)
 print(df["variable"].unique())
 
 
-# In[6]:
+# In[25]:
 
 
-df_bl = df.loc['2022-05-01':'2022-05-31']
-df_st = df.loc['2022-06-01':'2022-06-30']
+df_bl = df.loc[BASELINE_DATE_INTERVAL['start']:BASELINE_DATE_INTERVAL['end']]
+df_st = df.loc[STUDY_DATE_INTERVAL['start']:STUDY_DATE_INTERVAL['end']]
 
 
-# In[7]:
+# In[26]:
 
 
 cargas = df_st[df_st["variable"].isin(Energy_VAR_LABELS)]
@@ -798,7 +804,7 @@ Cargas_Nocturne_day = apply_datetime_transformations(Cargas_Nocturne_day)
 
 # ## Resultados
 
-# In[8]:
+# In[27]:
 
 
 consumo_sede = front_month.iloc[-1]["value"]
@@ -806,13 +812,13 @@ dif_mes_anterior =front_month.iloc[-1]["value"] - past_months.iloc[-1]["value"]
 print(f"El consumo de energía durante el último mes fue: {round(consumo_sede,2)} kWh")
 
 
-# In[9]:
+# In[28]:
 
 
 cargas_month
 
 
-# In[10]:
+# In[29]:
 
 
 cargas_grouped = cargas_month['value'].sum()
@@ -835,21 +841,21 @@ plt.show()
 piechart_df
 
 
-# In[11]:
+# In[30]:
 
 
 sns.barplot(x="day", y="value", data=front_day, color="#D5752D")
 plt.title("Consumo diario de energía activa (kWh) en el último mes")
 
 
-# In[12]:
+# In[31]:
 
 
 sns.barplot(x="day", y="value", hue="variable", data=pd.concat([cargas_day, front_day]))
 plt.title("Consumo diario de energía activa (kWh) en el último mes")
 
 
-# In[13]:
+# In[32]:
 
 
 df_baseline_datehour = past_hour.groupby('datetime').sum()
@@ -890,7 +896,7 @@ plt.legend()
 plt.show()
 
 
-# In[14]:
+# In[33]:
 
 
 for day in dct_dow.values():
@@ -929,7 +935,7 @@ for day in dct_dow.values():
     plt.show()
 
 
-# In[15]:
+# In[34]:
 
 
 b = front_hour[["day","hour", "value"]]
@@ -938,7 +944,7 @@ sns.heatmap(matrix, annot=True, cmap="YlOrRd", linewidths=.5)
 plt.title("Matriz de consumo horario (frontera) [kWh] en el último mes")
 
 
-# In[16]:
+# In[35]:
 
 
 c = cargas_hour[["day","hour", "value"]].groupby(by=["day","hour"]).sum().reset_index()
@@ -947,7 +953,7 @@ sns.heatmap(matrix_c, annot=True, cmap="YlOrRd", linewidths=.5)
 plt.title("Matriz de consumo horario (Cargas) [kWh] en el último mes")
 
 
-# In[17]:
+# In[36]:
 
 
 r = front_reactiva_hour[["day","hour", "value"]].groupby(by=["day","hour"]).sum().reset_index()
@@ -956,7 +962,7 @@ sns.heatmap(matrix_r, annot=True, cmap="YlOrRd", linewidths=.5)
 plt.title("Matriz de consumo reactiva horario (Front) [kVArh] en el último mes")
 
 
-# In[18]:
+# In[37]:
 
 
 sns.lineplot(
@@ -1000,7 +1006,7 @@ plt.ylabel('Consumo horario')
 plt.legend()
 
 
-# In[19]:
+# In[38]:
 
 
 
