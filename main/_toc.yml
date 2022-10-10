@@ -1,0 +1,50 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+  - file: notebooks/summary/Notebook BC Resumen.ipynb
+  - file: notebooks/Hallazgos
+
+  - file: notebooks/individual/Notebook BC 185 - Llano Grande Palmira
+  - file: notebooks/individual/Notebook BC 656 - Mayales
+  - file: notebooks/individual/Notebook BC 863 - Los Patios
+  - file: notebooks/individual/Notebook BC 789 - Manga
+  - file: notebooks/individual/Notebook BC 302 - Quebrada Seca
+  - file: notebooks/individual/Notebook BC 496 - Iwanna
+  - file: notebooks/individual/Notebook BC 398 - Sucursal Mariquita
+  - file: notebooks/individual/Notebook BC 799 - Floridablanca
+  - file: notebooks/individual/Notebook BC 776 - Lebrija
+  - file: notebooks/individual/Notebook BC 424 - Honda
+  - file: notebooks/individual/Notebook BC 197 - Guatapuri
+  - file: notebooks/individual/Notebook BC 78 - El Cacique
+  - file: notebooks/individual/Notebook BC 514 - Centro Comercial Único
+  - file: notebooks/individual/Notebook BC 311 - Bello
+  - file: notebooks/individual/Notebook BC 061 - Carrera Primera
+  - file: notebooks/individual/Notebook BC 824 - Ventura Plaza
+  - file: notebooks/individual/Notebook BC 66 - Palmira
+  - file: notebooks/individual/Notebook BC 793 - Profesionales
+  - file: notebooks/individual/Notebook BC 750 - Roosevelt
+  - file: notebooks/individual/Notebook BC 741 - Calima
+  - file: notebooks/individual/Notebook BC 459 - Campo Alegre
+  - file: notebooks/individual/Notebook BC 678 - Paseo de la Castellana
+  - file: notebooks/individual/Notebook BC 90 - Megamall
+  - file: notebooks/individual/Notebook BC 613 - La America
+  - file: notebooks/individual/Notebook BC 291 - Las Palmas
+  - file: notebooks/individual/Notebook BC 787 - Bocagrande Carrera Tercera
+  - file: notebooks/individual/Notebook BC 764 - Jamundí
+  - file: notebooks/individual/Notebook BC 659 - Girardot
+  - file: notebooks/individual/Notebook BC 749 - Santa Monica
+  - file: notebooks/individual/Notebook BC 796 - Girón
+  - file: notebooks/individual/Notebook BC 044 - Piedecuesta
+  - file: notebooks/individual/Notebook BC 495 - El Bosque
+  - file: notebooks/individual/Notebook BC 792 - Paseo del comercio
+  - file: notebooks/individual/Notebook BC 210 - Banca Colombia Cartagena
+  - file: notebooks/individual/Notebook BC 371 - Caucasia
+  - file: notebooks/individual/Notebook BC 453 - Pitalito
+  - file: notebooks/individual/Notebook BC 205 - Villa Colombia
+  - file: notebooks/individual/Notebook BC 834 - San Mateo
+  - file: notebooks/individual/Notebook BC 253 - Puerta del Norte
+  - file: notebooks/individual/Notebook BC 306 - Barrancabermeja
+  - file: notebooks/individual/Notebook BC 88 - Cúcuta
