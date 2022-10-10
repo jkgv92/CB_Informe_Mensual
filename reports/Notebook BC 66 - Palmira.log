@@ -1,0 +1,61 @@
+Traceback (most recent call last):
+  File "C:\Users\jkgv1\.conda\envs\Ubidots\lib\site-packages\jupyter_cache\executors\utils.py", line 51, in single_nb_execution
+    executenb(
+  File "C:\Users\jkgv1\.conda\envs\Ubidots\lib\site-packages\nbclient\client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\jkgv1\.conda\envs\Ubidots\lib\site-packages\nbclient\util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "C:\Users\jkgv1\.conda\envs\Ubidots\lib\site-packages\nbclient\util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "C:\Users\jkgv1\.conda\envs\Ubidots\lib\asyncio\base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "C:\Users\jkgv1\.conda\envs\Ubidots\lib\site-packages\nbclient\client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\jkgv1\.conda\envs\Ubidots\lib\site-packages\nbclient\client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\jkgv1\.conda\envs\Ubidots\lib\site-packages\nbclient\client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+import numpy as np
+from datetime import datetime
+import requests
+import json
+
+from matplotlib import pyplot as plt
+from matplotlib.ticker import PercentFormatter
+import seaborn as sns
+
+from dotenv import load_dotenv
+from dotenv import dotenv_values
+
+from sys import exit
+import os
+
+import sys
+from pathlib import Path
+
+project_path = Path(project_path)
+sys.path.append(str(project_path))
+
+import config as cfg
+from library_ubidots import Ubidots
+
+
+_TOKEN = os.getenv("_token")
+PICKLED_DATA_FILEPATH = project_path / 'data' / PICKLED_DATA_FILENAME
+------------------
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Input [1;32mIn [2][0m, in [0;36m<cell line: 23>[1;34m()[0m
+[0;32m     20[0m project_path [38;5;241m=[39m Path(project_path)
+[0;32m     21[0m sys[38;5;241m.[39mpath[38;5;241m.[39mappend([38;5;28mstr[39m(project_path))
+[1;32m---> 23[0m [38;5;28;01mimport[39;00m [38;5;21;01mconfig[39;00m [38;5;28;01mas[39;00m [38;5;21;01mcfg[39;00m
+[0;32m     24[0m [38;5;28;01mfrom[39;00m [38;5;21;01mlibrary_ubidots[39;00m [38;5;28;01mimport[39;00m Ubidots
+[0;32m     27[0m _TOKEN [38;5;241m=[39m os[38;5;241m.[39mgetenv([38;5;124m"[39m[38;5;124m_token[39m[38;5;124m"[39m)
+
+[1;31mModuleNotFoundError[0m: No module named 'config'
+ModuleNotFoundError: No module named 'config'
+
