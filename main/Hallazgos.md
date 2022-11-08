@@ -1,31 +1,37 @@
-# Hallazgos para septiembre de 2022
+# Hallazgos octubre de 2022
 
 ## Observaciones Generales
 
-- La semana del 3 de octubre se van a actualizar los dispositivos de Santander y Cali
+- La línea base son los tres meses anteriores al mes de estudio (o hasta donde haya datos).
+- Las figuras de los reportes mensuales ahora son interactivas
+- Las figuras de los reportes mensuales ahora contienen umbrales
 
-- Se comenzó a recibir datos de las sedes:
-  - Puerta del Norte
-  - Roosevelt
-  - Profesionales
+### Tener presente:
 
-## Falla el 28 de septiembre:
+1. Las pérdidas de datos en el totalizador pueden hacer parecer como que el consumo de AA o Iluminación superan al totalizador.
+2. Cuando se registran potencias iguales a cero usualmente es por un mantenimiento, o alguna manipulación del equipo.
+3. Las sedes con consumos nocturnos de AA son la mejor oportunidad de ahorro. Es importante identificar cuáles exhiben este patrón porque realmente se encienden los aires, y cuáles simplemente tienen otros equipos conectados al circuito de AA.
+4. Es normal que los consumos de AA fluctuen entre días y semanas, producto del clima.
+5. Las siguientes sedes siguen caídas por la falla de actualización remota:
 
-- Hubo una falla en la actualización más reciente. Los dispositivos afectados fueron:
+## Consumo de fin de semana:
 
-  - Barrancabermeja (recuperados antes del lunes 3)
-  - Megamall (recuperados antes del lunes 3)
-  - Guatapuri
-  - Puerta del Norte
-  - Centro Comercial Único
-  - Paseo de la Castellana
-  - Calima
-  - Santa Monica
-  - Cúcuta
+Las siguientes sedes parecen tener problemas con la automatización de los equipos de climatización en los días festivos y/o fines de semana:
+
+- Olímpica
+- Buganviles
+- Girón
+- Campo Alegre
+- Bello
+- Las Palmas
+- Llano Grande Palmira
+- Girardot
 
 ## BC 044 - Piedecuesta
 
-- Reducción en el consumo basal.
+- Incremento en el consumo de sábados con respecto a la línea base.
+- Reducción en el consumo promedio del totalizador.
+- Sin consumo nocturno de AA.
 
 ## BC 061 - Carrera Primera
 
