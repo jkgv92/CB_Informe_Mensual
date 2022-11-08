@@ -1,15 +1,10 @@
-# Hallazgos para septiembre de 2022
+# Hallazgos octubre de 2022
 
 ## Observaciones Generales
 
 - La semana del 3 de octubre se van a actualizar los dispositivos de Santander y Cali
 
-- Se comenzó a recibir datos de las sedes:
-  - Puerta del Norte
-  - Roosevelt
-  - Profesionales
-
-## Falla el 28 de septiembre:
+<!-- ## Falla el 28 de septiembre:
 
 - Hubo una falla en la actualización más reciente. Los dispositivos afectados fueron:
 
@@ -206,4 +201,4 @@
 ## BC 90 - Megamall
 
 - Falla de actualización remota el miércoles 28.
-- Pérdida de datos intermitente en la semana del 12 de septiembre.
+- Pérdida de datos intermitente en la semana del 12 de septiembre. -->
