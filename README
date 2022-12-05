@@ -1,11 +1,12 @@
 Procedimiento para generar informes:
 
+0. Verificar que el archivo .env existe y que la ruta es la correcta (reemplazar \ por \\)
 1. Configurar el rango de fechas deseado en config_v2.py
 2. Correr tools/request.ipynb para hacer el request a Ubidots.
 3. Hacer cualquier cambio deseado en el notebook tools/modelo.ipynb (o tools/blueprint.ipynb en su defecto) (modelo es el notebook prototipo para replicar entre sedes)
 4. Borrar los notebooks individuales por sede (main/notebooks/individual)
 5. Replicar el modelo para cada sede usando tools/builder.ipynb
-6. Actualizar la tabla de contenidos main/\_toc.yml con las sedes que tienen datos en las fechas del reporte
+6. Actualizar la tabla de contenidos main/\_toc.yml con las sedes que tienen datos en las fechas del reporte (usar el printout de tools/builder.ipynb)
 7. Borrar la carpeta main/\_build (o manipular la configuración de ejecución entre cache y force. Borrar funciona como hacer force)
 8. Abrir una consola cmd y verificar que se esté en el entorno virtual con las dependencias necesarias
 9. Asegurarse de estar en el directorio un nivel por encima de la carpeta ../main

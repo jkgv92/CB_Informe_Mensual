@@ -5,9 +5,9 @@
 # 
 # # Resumen
 # 
-# Octubre de 2022
+# Noviembre de 2022
 
-# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de octubre de 2022. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
+# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de noviembre de 2022. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
 
 # ## Definitions
 # 
@@ -15,18 +15,11 @@
 # In[1]:
 
 
-PICKLED_DATA_FILENAME = 'data_monthly.pkl'
-project_path = 'D:\OneDrive - CELSIA S.A E.S.P\Proyectos\Eficiencia_Energetica\Bancolombia\Experimental'
-import warnings
-warnings.filterwarnings("ignore")
-
-
 import pandas as pd
 import numpy as np
 import datetime as dt
+import json
 
-import seaborn as sns
-from matplotlib import pyplot as plt
 import plotly.io as pio
 import plotly.graph_objects as go
 import plotly.express as px
@@ -34,24 +27,32 @@ import plotly.express as px
 pio.renderers.default = "notebook"
 pio.templates.default = "plotly_white"
 
-# Import bespoke modules
+
+# this enables relative path imports
+import os
+from dotenv import load_dotenv
+load_dotenv()
+_PROJECT_PATH: str = os.environ["_project_path"]
+_PICKLED_DATA_FILENAME: str = os.environ["_pickled_data_filename"]
+
 import sys
 from pathlib import Path
-
-project_path = Path(project_path)
+project_path = Path(_PROJECT_PATH)
 sys.path.append(str(project_path))
 
-import config as cfg
-from library_ubidots_v2 import Ubidots
+import config_v2 as cfg
+
+from library_ubidots_v2 import Ubidots as ubi
+
+from library_report_v2 import Cleaning as cln
+from library_report_v2 import Graphing as grp
 from library_report_v2 import Processing as pro
+from library_report_v2 import Configuration as repcfg
 
-
-wide_figure_size = (21,7)
-
-plt.figure()
-plt.show()
-sns.set(rc={'figure.figsize': wide_figure_size})
-plt.close()
+# import warnings
+# warnings.filterwarnings("ignore")
+get_ipython().run_line_magic('load_ext', 'autoreload')
+get_ipython().run_line_magic('autoreload', '2')
 
 
 # ## Preprocessing
@@ -59,16 +60,43 @@ plt.close()
 # In[2]:
 
 
-data_path = project_path / 'data'
-df = pd.read_pickle(data_path / PICKLED_DATA_FILENAME)
+df_info = pd.read_excel(project_path / 'tools' / "AMH Sedes BC.xlsx")
+
+info_rename = {
+    'Nombre en Ubidots':'device_name',
+    'ÁREA [m2]':'area',
+    'TARIFA [$/kWh]':'electricity_price',
+    '¿SUCURSAL AUTOMATIZADA?':'automated',
+    'CAPACIDAD AA [TR]':'hvac_capacity_kw',
+}
+df_info = df_info.rename(columns=info_rename)
+df_info = df_info.loc[:, list(info_rename.values())]
+df_info['automated'] = df_info['automated'].map({'Sí':True,'NO':False})
+
+df_info['hvac_capacity_kw'] = df_info['hvac_capacity_kw'] * repcfg.KW_PER_TR
+
+
+# In[3]:
+
+
+df = pd.read_pickle(project_path / 'data' / _PICKLED_DATA_FILENAME)
+
+# Legacy code (including the library) expects these column names
+# but the new Ubidots library returns more specific column names
+# so renaming is necessary. TODO: rework the Report library
+# so that it uses these more descriptive column names.
+df = df.rename(columns={'variable_label':'variable','device_label':'device',})
 
 df = df.sort_values(by=['variable','datetime'])
 df = pro.datetime_attributes(df)
 
-df_bl, df_st = pro.split_into_baseline_and_study(df, baseline=cfg.BASELINE, study=cfg.STUDY, inclusive='both')
+df_bl, df_st = pro.split_into_baseline_and_study(df, baseline=cfg.BASELINE, study=cfg.STUDY, inclusive='left')
+
+study_daterange = pd.Series(pd.date_range(start=cfg.STUDY[0], end=cfg.STUDY[1], freq='D'))
+month_name = study_daterange.dt.month_name(locale='spanish').mode()[0].lower()
 
 
-# In[3]:
+# In[4]:
 
 
 cargas = df_st[df_st["variable"].isin(cfg.ENERGY_VAR_LABELS)]
@@ -79,7 +107,7 @@ cargas_pot = df_st[df_st["variable"].isin(cfg.POWER_VAR_LABELS)]
 cargas_nocturne = cargas[cargas["hour"].isin(cfg.NIGHT_HOURS)]
 
 
-# In[4]:
+# In[5]:
 
 
 past_months = df_bl[df_bl["variable"] == 'front-consumo-activa'].groupby(by=["variable", "device", "device_name"]).resample('1M').sum().round(2).reset_index().set_index('datetime')
@@ -115,26 +143,118 @@ Cargas_Nocturne_day = pro.datetime_attributes(Cargas_Nocturne_day)
 
 # ## Resultados
 
-# In[5]:
+# In[6]:
 
 
 front_tot = front_month[["value","device_name"]].reset_index(drop=True).set_index('device_name')
-front_tot["Consumo - MWh"] = round(front_tot["value"]/1000,2)
+front_tot["Consumo - MWh"] = front_tot["value"]/1000
 front_tot.drop(["value"], axis=1, inplace=True)
 front_tot.reset_index(inplace=True, drop=False)
 sizes = front_tot.sort_values(by='Consumo - MWh', ascending=False)
 
 
-# In[6]:
+# In[7]:
 
 
-fig = px.bar(sizes, x="device_name", y="Consumo - MWh", title="Ranking de consumo por sede (MWh)")
+df_info_vs_cons = pd.merge(
+    front_tot,
+    df_info,
+    how='inner'
+)
+
+df_info_vs_cons['yearly_kwh_per_m2'] = 12* 1000 * df_info_vs_cons['Consumo - MWh'] / df_info_vs_cons['area']
+intensity = df_info_vs_cons[['device_name', 'yearly_kwh_per_m2']].sort_values(by='yearly_kwh_per_m2', ascending=False)
+
+
+# In[8]:
+
+
+fig = px.bar(
+    sizes.round(2), 
+    x="device_name", 
+    y="Consumo - MWh", 
+    labels={'Consumo - MWh':'Consumo [MWh]', 'device_name':'Sede'}, 
+    title="Consumo de energía activa por sede [MWh]"
+    )
 fig.show()
 
 
-# En la figura anterior se puede observar un ranking de consumo por cada una de las sedes monitoreadas. Tener presente que el consumo se encuentra en MWh.
+# Podemos ver que Paseo de la Castellana y Centro Colón tienen un consumo especialmente alto comparado con las demás sedes.
 
-# In[7]:
+# In[9]:
+
+
+fig = px.bar(
+    intensity.round(2), 
+    x="device_name", 
+    y="yearly_kwh_per_m2", 
+    labels={'yearly_kwh_per_m2':'Intensidad', 'device_name':'Sede'}, 
+    title="Intensidad del consumo por sede [kWh/m^2-año]"
+)
+fig.show()
+
+
+# Un indicador ampliamente utilizado es el consumo anual por unidad de área. Al comparar las sedes de Paseo de la Castellana y Centro Colón es evidente que el consumo elevado no es simplemente debido a un mayor área. Estos valores para el indicador se deben interpretar dentro del contexto de un periodo "Niña".
+# 
+# A continuación mostramos la distribución geográfica de las intensidades de consumo para las diferentes sedes.
+
+# In[10]:
+
+
+df_devices = ubi.get_available_devices_v2('bancolombia', 'group', page_size=100)
+device_labels_with_data = list(set(df['device']))
+has_data = df_devices['device_label'].isin(device_labels_with_data)
+ids_with_data = list(df_devices.loc[has_data, 'device_id'])
+df_map = ubi.get_gps_for_multiple_device_id(ids_with_data)
+
+df_intensity = intensity.copy()
+df_intensity = df_intensity.rename(columns={'yearly_kwh_per_m2':'value'})
+
+df_map = pd.merge(
+    df_map,
+    # front_month[['device_name','value']],
+    df_intensity,
+    how='inner'
+)
+
+df_map = df_map.dropna(how='any')
+
+
+fig = go.Figure()
+fig.add_trace(go.Scattergeo(
+    lon = df_map["longitude"],
+    lat = df_map["latitude"],
+    text = df_map["device_name"],
+    marker = dict(
+        size = df_map["value"],
+        line_width=0.5,
+        sizemode = 'area'
+    )))
+
+
+fig.update_layout(
+    margin={"r":50,"t":50,"l":50,"b":50},
+    geo = go.layout.Geo(
+        resolution = 50,
+        scope = 'south america',
+        showframe = True,
+        showcoastlines = True,
+        landcolor = "rgb(229, 229, 229)",
+        countrycolor = "white" ,
+        coastlinecolor = "white",
+        projection_type = 'mercator',
+        lonaxis_range= [ -65.0, -85.0 ],
+        lataxis_range= [ -5.0, 13.0 ],
+        projection_scale=20))
+
+
+fig.update_layout(title_text="Mapa de intensidad de consumo [kWh/m^2-año]", font_size=12,width=750,height=500)
+fig.show()
+
+
+# De las cinco sedes monitoreadas en Cartagena, únicamente Paseo de la Castellana y Centro Colón tienen problemas con la intensidad de consumo. También podemos notar que en general entre sedes cercanas hay intensidades de consumo similares.
+
+# In[11]:
 
 
 fig = px.pie(sizes, values="Consumo - MWh", names='device_name', hover_data=['Consumo - MWh'], labels={'Consumo - MWh'})
@@ -145,9 +265,9 @@ fig.update_layout(title_text="Diagrama de torta consumo de energía kWh", font_s
 fig.show()
 
 
-# De igual manera, en la figura anterior, se puede observar la contribución de cada una de las sedes al total de consumo.
+# La figura anterior es simplemente otra manera de visualizar la distribución del consumo. A continuación vemos la contribución de los equipos de climatización e iluminación al consumo en cada sede y al consumo agregado entre sedes.
 
-# In[8]:
+# In[12]:
 
 
 El_Cacique = front_month[front_month["device_name"]=="BC 78 - El Cacique"]["value"]
@@ -307,7 +427,7 @@ Megamall_ilu = Megamall_cargas[Megamall_cargas["variable"]=="ilu-consumo-activa"
 Megamall_aa = Megamall_cargas[Megamall_cargas["variable"]=="aa-consumo-activa"]["value"]
 
 
-# In[9]:
+# In[13]:
 
 
 fig = go.Figure(data=[go.Sankey(
@@ -456,59 +576,5 @@ fig = go.Figure(data=[go.Sankey(
 
 fig.update_layout(title_text="Diagrama Sankey consumo de energía kWh", font_size=12,width=750,height=500)
 
-
-# En la figura anterior se puede observar el consumo de cada sede en el mes de julio de 2022. Así como su distribución de consumo por carga.
-
-# In[10]:
-
-
-df_devices = Ubidots.get_available_devices_v2('bancolombia', 'group', page_size=100)
-device_labels_with_data = list(set(df['device']))
-has_data = df_devices['device_label'].isin(device_labels_with_data)
-ids_with_data = list(df_devices.loc[has_data, 'device_id'])
-df_map = Ubidots.get_gps_for_multiple_device_id(ids_with_data)
-
-df_map = pd.merge(
-    df_map,
-    front_month[['device_name','value']],
-    how='left'
-)
-
-df_map = df_map.dropna(how='any')
-
-
-fig = go.Figure()
-fig.add_trace(go.Scattergeo(
-    lon = df_map["longitude"],
-    lat = df_map["latitude"],
-    text = df_map["device_name"],
-    marker = dict(
-        size = df_map["value"]/10,
-        line_width=0.5,
-        sizemode = 'area'
-    )))
-
-
-fig.update_layout(
-    margin={"r":50,"t":50,"l":50,"b":50},
-    geo = go.layout.Geo(
-        resolution = 50,
-        scope = 'south america',
-        showframe = True,
-        showcoastlines = True,
-        landcolor = "rgb(229, 229, 229)",
-        countrycolor = "white" ,
-        coastlinecolor = "white",
-        projection_type = 'mercator',
-        lonaxis_range= [ -65.0, -85.0 ],
-        lataxis_range= [ -5.0, 13.0 ],
-        projection_scale=20))
-
-
-fig.update_layout(title_text="Mapa consumo de energía eléctrica (kWh)", font_size=12,width=750,height=500)
-fig.show()
-
-
-# Así mismo, en la figura anterior, se puede observar la distribución de consumo en el espacio, siendo cada punto una sede monitoreada, y su tamaño equivalente al consumo realizado.
 
 # Te invitamos a validar el comportamiento de cada sede a detalle en las siguientes páginas.

@@ -7,8 +7,6 @@
 
 
 DEVICE_NAME = 'BC 185 - Llano Grande Palmira'
-PICKLED_DATA_FILENAME = 'data_monthly.pkl'
-project_path = 'D:\OneDrive - CELSIA S.A E.S.P\Proyectos\Eficiencia_Energetica\Bancolombia\Experimental'
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -29,15 +27,19 @@ pio.renderers.default = "notebook"
 pio.templates.default = "plotly_white"
 
 
-# Import bespoke modules
+# this enables relative path imports
+import os
+from dotenv import load_dotenv
+load_dotenv()
+_PROJECT_PATH: str = os.environ["_project_path"]
+_PICKLED_DATA_FILENAME: str = os.environ["_pickled_data_filename"]
+
 import sys
 from pathlib import Path
-
-project_path = Path(project_path)
+project_path = Path(_PROJECT_PATH)
 sys.path.append(str(project_path))
 
-import config as cfg
-from library_ubidots import Ubidots
+import config_v2 as cfg
 
 from library_report_v2 import Cleaning as cln
 from library_report_v2 import Graphing as grp
@@ -61,9 +63,17 @@ def show_response_contents(df):
 # In[4]:
 
 
-data_path = project_path / 'data'
-df = pd.read_pickle(data_path / PICKLED_DATA_FILENAME)
+df_info = pd.read_excel(project_path / 'tools' / "AMH Sedes BC.xlsx")
+
+df = pd.read_pickle(project_path / 'data' / _PICKLED_DATA_FILENAME)
 df = df.query("device_name == @DEVICE_NAME")
+
+# Legacy code (including the library) expects these column names
+# but the new Ubidots library returns more specific column names
+# so renaming is necessary. TODO: rework the Report library
+# so that it uses these more descriptive column names.
+df = df.rename(columns={'variable_label':'variable','device_label':'device',})
+
 show_response_contents(df)
 
 
@@ -73,7 +83,11 @@ show_response_contents(df)
 df = df.sort_values(by=['variable','datetime'])
 df = pro.datetime_attributes(df)
 
-df_bl, df_st = pro.split_into_baseline_and_study(df, baseline=cfg.BASELINE, study=cfg.STUDY, inclusive='both')
+df_bl, df_st = pro.split_into_baseline_and_study(df, baseline=cfg.BASELINE, study=cfg.STUDY, inclusive='left')
+
+study_daterange = pd.Series(pd.date_range(start=cfg.STUDY[0], end=cfg.STUDY[1], freq='D'))
+month_name = study_daterange.dt.month_name(locale='spanish').mode()[0].lower()
+
 
 # df_cons = df.query("variable == 'front-consumo-activa'")
 # df_ea = cln.recover_energy_from_consumption(df_cons, new_varname='front-energia-activa-acumulada')
@@ -120,17 +134,103 @@ front_reactiva_hour = front_reactiva.groupby(by=["variable"]).resample('1h').sum
 front_reactiva_hour = pro.datetime_attributes(front_reactiva_hour)
 
 
-# ## Resultados
+# ## Plots
 
 # In[8]:
 
 
-front_cons_total = front_month.iloc[-1]["value"]
-# dif_mes_anterior =front_month.iloc[-1]["value"] - past_months.iloc[-1]["value"]
-print(f"El consumo de energía durante el último mes fue {front_cons_total:.1f}kWh")
+fig = px.bar(
+    pd.concat([cargas_day, front_day]),
+    x="day",
+    y="value",
+    barmode='group',
+    color='variable',
+    color_discrete_sequence=repcfg.FULL_PALETTE,
+    labels={'day':'Día', 'value':'Consumo [kWh]'},
+    title=f"{DEVICE_NAME}: Consumo diario de energía activa [kWh] en {month_name}",
+)
+
+fig.update_layout(
+    font_family=repcfg.CELSIA_FONT,
+    font_size=repcfg.PLOTLY_TITLE_FONT_SIZE,
+    font_color=repcfg.FULL_PALETTE[1],
+    title_x=repcfg.PLOTLY_TITLE_X,
+    width=repcfg.JBOOK_PLOTLY_WIDTH,
+    height=repcfg.JBOOK_PLOTLY_HEIGHT
+)
+
+fig.show()
 
 
 # In[9]:
+
+
+front_cons_total = front_month.iloc[-1]["value"]
+# dif_mes_anterior =front_month.iloc[-1]["value"] - past_months.iloc[-1]["value"]
+print(f"El consumo de energía de la semana pasada fue {front_cons_total:.0f}kWh")
+
+
+# In[10]:
+
+
+df_front_cargas = pd.concat([front, cargas])
+
+cargas_nighttime_cons = df_front_cargas[df_front_cargas["hour"].isin(cfg.NIGHT_HOURS)].copy()
+cargas_nighttime_cons = pro.datetime_attributes(cargas_nighttime_cons)
+
+cargas_daily_nighttime_cons = (
+    cargas_nighttime_cons
+    .groupby(['variable','day'])['value']
+    .sum()
+    .to_frame()
+)
+
+if (cargas_daily_nighttime_cons.shape[0] > 0):
+    fig = px.bar(
+        cargas_daily_nighttime_cons.reset_index(),
+        x="day",
+        y="value",
+        barmode='group',
+        color='variable',
+        color_discrete_sequence=repcfg.FULL_PALETTE,
+        labels={'day':'Día', 'variable':'Medición', 'value':'Consumo [kWh]'},
+        title=f"{DEVICE_NAME}: Consumo nocturno de energía activa [kWh] en {month_name}",
+    )
+
+    fig.update_layout(
+        font_family=repcfg.CELSIA_FONT,
+        font_size=repcfg.PLOTLY_TITLE_FONT_SIZE,
+        font_color=repcfg.FULL_PALETTE[1],
+        title_x=repcfg.PLOTLY_TITLE_X,
+        width=repcfg.JBOOK_PLOTLY_WIDTH,
+        height=repcfg.JBOOK_PLOTLY_HEIGHT
+    )
+
+    # fig.update_traces(marker_color=grp.hex_to_rgb(repcfg.FULL_PALETTE[0]))
+    fig.show()
+
+
+# In[11]:
+
+
+total_night_cons = cargas_daily_nighttime_cons.query("variable == 'front-consumo-activa'")
+consumo_nocturno = total_night_cons["value"].sum()
+
+print(f"Durante la semana pasada se consumió un total de {consumo_nocturno:.0f}kWh fuera del horario establecido.")
+
+
+# In[12]:
+
+
+total_night_cons = cargas_daily_nighttime_cons.query("variable == 'front-consumo-activa'")
+consumo_nocturno = total_night_cons["value"].sum()
+
+night_cons_percent = 100 * consumo_nocturno / front_cons_total
+
+print(f"El consumo nocturno representó el {night_cons_percent:.1f}% del consumo total")
+
+
+# In[13]:
 
 
 cargas_cons_total = cargas_month['value'].sum()
@@ -153,7 +253,7 @@ if (df_pie.value >= 0).all():
         names='variable', 
         hover_data=['value'], 
         labels={'variable':'Carga', 'value':'Consumo [kWh]'},
-        title="Consumo total de energía activa por carga [kWh]",
+        title=f"{DEVICE_NAME}: Consumo total de energía activa por carga [kWh]",
         color_discrete_sequence=repcfg.FULL_PALETTE, 
     )
 
@@ -179,166 +279,7 @@ if (df_pie.value >= 0).all():
     fig.show()
 
 
-# In[10]:
-
-
-fig = px.bar(
-    front_day.reset_index(),
-    x="day",
-    y="value",
-    labels={'day':'Día', 'value':'Consumo [kWh]'},
-    title="Frontera: Consumo diario de energía activa [kWh] en el último mes",
-)
-
-fig.update_layout(
-    font_family=repcfg.CELSIA_FONT,
-    font_size=repcfg.PLOTLY_TITLE_FONT_SIZE,
-    font_color=repcfg.FULL_PALETTE[1],
-    title_x=repcfg.PLOTLY_TITLE_X,
-    width=repcfg.JBOOK_PLOTLY_WIDTH,
-    height=repcfg.JBOOK_PLOTLY_HEIGHT
-)
-
-fig.update_traces(marker_color=grp.hex_to_rgb(repcfg.FULL_PALETTE[0]))
-fig.show()
-
-
-# In[11]:
-
-
-fig = px.bar(
-    pd.concat([cargas_day, front_day]),
-    x="day",
-    y="value",
-    barmode='group',
-    color='variable',
-    color_discrete_sequence=repcfg.FULL_PALETTE,
-    labels={'day':'Día', 'value':'Consumo [kWh]'},
-    title="Consumo diario de energía activa [kWh] en el último mes",
-)
-
-fig.update_layout(
-    font_family=repcfg.CELSIA_FONT,
-    font_size=repcfg.PLOTLY_TITLE_FONT_SIZE,
-    font_color=repcfg.FULL_PALETTE[1],
-    title_x=repcfg.PLOTLY_TITLE_X,
-    width=repcfg.JBOOK_PLOTLY_WIDTH,
-    height=repcfg.JBOOK_PLOTLY_HEIGHT
-)
-
-fig.show()
-
-
-# In[12]:
-
-
-df_pa_bl, df_pa_st = pro.split_into_baseline_and_study(df_pa, baseline=cfg.BASELINE, study=cfg.STUDY, inclusive='both')
-
-if (len(df_pa_bl) > 0) & (len(df_pa_st) > 0):
-    df_pa_bl_day = (
-        df_pa_bl
-        .reset_index()
-        .groupby(['device_name','variable','hour'])['value']
-        .agg(['median','mean','std','min',pro.q_low,pro.q_high,'max','count'])
-        .reset_index()
-    )
-
-    df_pa_st_day = (
-        df_pa_st
-        .reset_index()
-        .groupby(['device_name','variable','hour'])['value']
-        .agg(['median','mean','std','min',pro.q_low,pro.q_high,'max','count'])
-        .reset_index()
-    )
-
-    grp.compare_baseline_day_by_hour(
-        df_pa_bl_day,
-        df_pa_st_day,
-        title=f"Día típico para la sede de {DEVICE_NAME}",
-        bl_label="Promedio línea base",
-        st_label="Promedio octubre",
-        bl_ci_label="Intervalo línea base",
-        include_ci=True,
-        fill_ci=True
-    )
-
-
-    df_pa_bl_week = (
-        df_pa_bl
-        .reset_index()
-        .groupby(['device_name','variable','cont_dow'])['value']
-        .agg(['median','mean','std','min',pro.q_low,pro.q_high,'max','count'])
-        .reset_index()
-    )
-
-    df_pa_st_week = (
-        df_pa_st
-        .reset_index()
-        .groupby(['device_name','variable','cont_dow'])['value']
-        .agg(['median','mean','std','min',pro.q_low,pro.q_high,'max','count'])
-        .reset_index()
-    )
-
-    grp.compare_baseline_week_by_day(
-        df_pa_bl_week,
-        df_pa_st_week,
-        title=f"Semana típica para la sede de {DEVICE_NAME}",
-        bl_label="Promedio línea base",
-        st_label="Promedio octubre",
-        bl_ci_label="Intervalo línea base",
-        include_ci=True,
-        fill_ci=True
-    )
-
-
-# In[13]:
-
-
-matrix = front_hour.pivot(index='day', columns='hour', values='value')
-
-if (matrix.shape[0] > 0) & (matrix.shape[1] > 0):
-    data = grp.pivoted_dataframe_to_plotly_heatmap(matrix)
-    grp.hourly_heatmap(
-        data,
-        title="Frontera: Consumo total de energía activa [kWh] en el último mes"
-    )
-
-
 # In[14]:
-
-
-matrix = (
-    cargas_hour
-    .groupby(by=["day","hour"]).sum().reset_index()
-    .pivot(index='day', columns='hour', values='value')
-)
-
-if (matrix.shape[0] > 0) & (matrix.shape[1] > 0):
-    data = grp.pivoted_dataframe_to_plotly_heatmap(matrix)
-    grp.hourly_heatmap(
-        data,
-        title="Cargas: Consumo total de energía activa [kWh] en el último mes"
-    )
-
-
-# In[15]:
-
-
-matrix = (
-    front_reactiva_hour
-    .groupby(by=["day","hour"]).sum().reset_index()
-    .pivot(index='day', columns='hour', values='value')
-)
-
-if (matrix.shape[0] > 0) & (matrix.shape[1] > 0):
-    data = grp.pivoted_dataframe_to_plotly_heatmap(matrix)
-    grp.hourly_heatmap(
-        data,
-        title="Cargas: Consumo total de energía reactiva [kVArh] en el último mes"
-    )
-
-
-# In[16]:
 
 
 df_plot = pd.concat([front_hour, cargas_hour])
@@ -373,7 +314,7 @@ for variable in list_vars:
 
 
 fig.update_layout(
-    title="Consumo de energía activa [kWh]",
+    title=f"{DEVICE_NAME}: Consumo de energía activa [kWh]",
     font_family=repcfg.CELSIA_FONT,
     font_size=repcfg.PLOTLY_TITLE_FONT_SIZE,
     font_color=repcfg.FULL_PALETTE[1],
@@ -389,41 +330,111 @@ fig.update_yaxes(rangemode="tozero")
 fig.show()
 
 
+# In[15]:
+
+
+df_pa_bl, df_pa_st = pro.split_into_baseline_and_study(df_pa, baseline=cfg.BASELINE, study=cfg.STUDY, inclusive='both')
+
+if (len(df_pa_bl) > 0) & (len(df_pa_st) > 0):
+    df_pa_bl_day = (
+        df_pa_bl
+        .reset_index()
+        .groupby(['device_name','variable','hour'])['value']
+        .agg(['median','mean','std','min',pro.q_low,pro.q_high,'max','count'])
+        .reset_index()
+    )
+
+    df_pa_st_day = (
+        df_pa_st
+        .reset_index()
+        .groupby(['device_name','variable','hour'])['value']
+        .agg(['median','mean','std','min',pro.q_low,pro.q_high,'max','count'])
+        .reset_index()
+    )
+
+    grp.compare_baseline_day_by_hour(
+        df_pa_bl_day,
+        df_pa_st_day,
+        title=f"{DEVICE_NAME}: Día típico",
+        bl_label="Promedio línea base",
+        st_label=f"Promedio {month_name}",
+        bl_ci_label="Intervalo línea base",
+        include_ci=True,
+        fill_ci=True
+    )
+
+
+    df_pa_bl_week = (
+        df_pa_bl
+        .reset_index()
+        .groupby(['device_name','variable','cont_dow'])['value']
+        .agg(['median','mean','std','min',pro.q_low,pro.q_high,'max','count'])
+        .reset_index()
+    )
+
+    df_pa_st_week = (
+        df_pa_st
+        .reset_index()
+        .groupby(['device_name','variable','cont_dow'])['value']
+        .agg(['median','mean','std','min',pro.q_low,pro.q_high,'max','count'])
+        .reset_index()
+    )
+
+    grp.compare_baseline_week_by_day(
+        df_pa_bl_week,
+        df_pa_st_week,
+        title=f"{DEVICE_NAME}: Semana típica",
+        bl_label="Promedio línea base",
+        st_label=f"Promedio {month_name}",
+        bl_ci_label="Intervalo línea base",
+        include_ci=True,
+        fill_ci=True
+    )
+
+
+# In[16]:
+
+
+matrix = front_hour.pivot(index='day', columns='hour', values='value')
+
+if (matrix.shape[0] > 0) & (matrix.shape[1] > 0):
+    data = grp.pivoted_dataframe_to_plotly_heatmap(matrix)
+    grp.hourly_heatmap(
+        data,
+        title=f"Frontera: Consumo total de energía activa [kWh] en {month_name}"
+    )
+
+
 # In[17]:
 
 
-cargas_nighttime_cons = cargas[cargas["hour"].isin(cfg.NIGHT_HOURS)].copy()
-cargas_nighttime_cons = pro.datetime_attributes(cargas_nighttime_cons)
-
-cargas_daily_nighttime_cons = (
-    cargas_nighttime_cons
-    .groupby('day')['value']
-    .sum()
-    .to_frame()
+matrix = (
+    cargas_hour
+    .groupby(by=["day","hour"]).sum().reset_index()
+    .pivot(index='day', columns='hour', values='value')
 )
 
-if (cargas_daily_nighttime_cons.shape[0] > 0):
-    fig = px.bar(
-        cargas_daily_nighttime_cons.reset_index(),
-        x="day",
-        y="value",
-        labels={'day':'Día', 'value':'Consumo [kWh]'},
-        title="Cargas: Consumo nocturno de energía activa [kWh] en el último mes",
+if (matrix.shape[0] > 0) & (matrix.shape[1] > 0):
+    data = grp.pivoted_dataframe_to_plotly_heatmap(matrix)
+    grp.hourly_heatmap(
+        data,
+        title=f"Cargas: Consumo total de energía activa [kWh] en {month_name}"
     )
 
-    fig.update_layout(
-        font_family=repcfg.CELSIA_FONT,
-        font_size=repcfg.PLOTLY_TITLE_FONT_SIZE,
-        font_color=repcfg.FULL_PALETTE[1],
-        title_x=repcfg.PLOTLY_TITLE_X,
-        width=repcfg.JBOOK_PLOTLY_WIDTH,
-        height=repcfg.JBOOK_PLOTLY_HEIGHT
+
+# In[18]:
+
+
+matrix = (
+    front_reactiva_hour
+    .groupby(by=["day","hour"]).sum().reset_index()
+    .pivot(index='day', columns='hour', values='value')
+)
+
+if (matrix.shape[0] > 0) & (matrix.shape[1] > 0):
+    data = grp.pivoted_dataframe_to_plotly_heatmap(matrix)
+    grp.hourly_heatmap(
+        data,
+        title=f"Cargas: Consumo total de energía reactiva [kVArh] en {month_name}"
     )
-
-    fig.update_traces(marker_color=grp.hex_to_rgb(repcfg.FULL_PALETTE[0]))
-    fig.show()
-
-    consumo_nocturno = round(cargas_daily_nighttime_cons["value"].sum(),2)
-
-    print(f"Durante el mes pasado se consumió un total de: {consumo_nocturno}kWh fuera del horario establecido")
 
