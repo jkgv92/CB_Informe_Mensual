@@ -1,155 +1,154 @@
-# Hallazgos octubre de 2022
+# Observaciones
+Noviembre de 2022
+## Tener presente:
 
-## Observaciones Generales
-
-- La línea base son los tres meses anteriores al mes de estudio (o hasta donde haya datos).
-- Las figuras de los reportes mensuales ahora son interactivas
-- Las figuras de los reportes mensuales ahora contienen umbrales
-
-### Tener presente:
-
-1. Las pérdidas de datos en el totalizador pueden hacer parecer como que el consumo de AA o Iluminación superan al totalizador.
+1. Las pérdidas de datos en el totalizador pueden hacer parecer como que los consumos de AA o Iluminación superan al totalizador.
 2. Cuando se registran potencias iguales a cero usualmente es por un mantenimiento, o alguna manipulación del equipo.
 3. Las sedes con consumos nocturnos de AA son la mejor oportunidad de ahorro. Es importante identificar cuáles exhiben este patrón porque realmente se encienden los aires, y cuáles simplemente tienen otros equipos conectados al circuito de AA.
 4. Es normal que los consumos de AA fluctuen entre días y semanas, producto del clima.
-5. Las siguientes sedes siguen caídas por la falla de actualización remota:
 
-## Consumo de fin de semana:
+## Observaciones generales:
+La gran mayoría de la sedes tuvo un comportamiento normal. Ninguna de las sedes que mostró cambios significantes en el consumo o el perfil de carga lo hizo de manera atípicamente alta o baja. Aunque los intervalos de confianza para Sabana de Torres dan la impresión de una reducción atípica, aún se encuentra en etapa de levantamiento de línea base y tiene datos insuficientes para hablar de cambios significantes. Las sedes de Cartagena mostraron una tendencia a la reducción.
 
-Las siguientes sedes parecen tener problemas con la automatización de los equipos de climatización en los días festivos y/o fines de semana:
-
-- Olímpica
+### Sedes que vieron una reducción en el consumo.
+- Piedecuesta
+- Mariquita
+- El Bosque
 - Buganviles
-- Girón
-- Campo Alegre
-- Bello
-- Las Palmas
-- Llano Grande Palmira
-- Girardot
+- Paseo de la Castellana
+- Jamundí
+- Centro Colon
+- Manga
+- Floridablanca
 
-## BC 044 - Piedecuesta
+### Sedes que vieron un incremento en el consumo.
+- Carrera Primera
+- Banca Colombia Cartagena
+- Caucasia
+<!-- - Centro Comercial Único -->
 
-- Incremento en el consumo de sábados con respecto a la línea base.
-- Reducción en el consumo promedio del totalizador.
-- Sin consumo nocturno de AA.
+## Observaciones específicas:
 
-## BC 061 - Carrera Primera
+<!-- ### BC 044 - Piedecuesta -->
 
-- Pérdida de datos del 12 al 28 de octubre.
-- Reducción en el consumo promedio del totalizador.
-- Consumo nocturno atípico el 11 de octubre.
+### BC 061 - Carrera Primera
 
-## BC 185 - Llano Grande Palmira
+- Incremento atípico en el consumo de fin de semana.
 
-- Reducción en el consumo total los domingos.
+<!-- ### BC 66 - Palmira -->
 
-## BC 205 - Villa Colombia
+<!-- ### BC 78 - El Cacique -->
 
-- Reducción en el consumo promedio del totalizador.
-- Consumo nocturno atípico el 5, 14 y 28 de octubre.
+### BC 88 - Cúcuta
 
-## BC 210 - Banca Colombia Cartagena
+- Incremento atípico en el consumo de los días domingo.
 
-- Reducción en el consumo promedio del totalizador.
-- Consumo atípico el 28 de octubre.
-- Consumo nocturno atípico el 16, 20 y 22 de octubre.
+<!-- ### BC 90 - Megamall -->
 
-## BC 291 - Las Palmas
+<!-- ### BC 185 - Llano Grande Palmira -->
 
-- Reducción en el consumo promedio del totalizador.
-- Consumos nocturnos atípicos entre el 18 y 22 de octubre.
+### BC 205 - Villa Colombia
 
-## BC 302 - Quebrada Seca
+- Ruido en el consumo.
 
-- Reducción en el consumo promedio del totalizador.
-- Consumo atípico de fin de semana el 8 y 9 de octubre.
-- Consumo nocturno atípico el fin de semana del 8 y 9 de octubre.
+### BC 210 - Banca Colombia Cartagena
+- Incremento en el consumo de las mañanas.
 
-## BC 311 - Bello
+### BC 216 - Sabana de Torres
 
-- Incremento en el consumo nocturno desde el 14 de octubre.
-
-## BC 371 - Caucasia
-
-- Incremento en el consumo nocturno desde el 18 de octubre.
-- No se apagó el AA en la segunda mitad del mes.
-
-## BC 398 - Sucursal Mariquita
-
+- Consumo nocturno significativo de AA.
 - En etapa de levantamiento de línea base.
-- Consumo errático. Octubre parece haber iniciado mejor.
 
-## BC 424 - Honda
+<!-- ### BC 253 - Puerta del Norte -->
 
-- Consumo nocturno atípico el 11, 12, 18 y 29 de octubre.
+### BC 291 - Las Palmas
 
-## BC 453 - Pitalito
+- Consumo nocturno significativo de AA.
+- El consumo nocturno suma 34.2%.
 
-- Reducción del consumo de fin de semana.
-- Mayor consumo diurno con respecto a la línea base.
-- Consumo nocturno esporádico.
+<!-- ### BC 302 - Quebrada Seca -->
 
-## BC 459 - Campo Alegre
+### BC 306 - Barrancabermeja
 
-- Consumo nocturno esporádico.
+- Consumo anómalo a partir del 28 de noviembre.
 
-## BC 496 - Iwanna
+### BC 311 - Bello
+- Consumo nocturno atípico.
 
-- Incremento en el consumo nocturno desde el 18 de octubre.
-- No se apagan los AA.
+### BC 371 - Caucasia
 
-## BC 514 - Centro Comercial Único
+- Incremento en el consumo nocturno.
 
-- Datos insuficientes.
+<!-- ### BC 398 - Mariquita -->
 
-## BC 659 - Girardot
+<!-- ### BC 424 - Honda -->
 
-- No apaga AA.
-- Incremento en el consumo del totalizador los domingos.
+<!-- ### BC 453 - Pitalito -->
 
-## BC 66 - Palmira
+### BC 459 - Campo Alegre
 
-- Tendencia a reducción en consumo nocturno.
-- Consumo nocturno atípico el 5 y 19 de octubre.
+- Pendiente de actualización de firmware.
 
-## BC 776 - Lebrija
+<!-- ### BC 495 - El Bosque -->
 
-- Consumos nocturnos atípicos los días 15, 16 y 17 de octubre.
+<!-- ### BC 496 - Iwanna -->
 
-## BC 78 - El Cacique
+### BC 514 - Centro Comercial Único
+- En levantamiento de línea base para la potencia. Patrón de consumo inconcluso.
 
-- Consumo nocturno atípico el 16 y 17 de octubre.
-- Consumo el lunes festivo 17 de octubre.
+### BC 523 - Olímpica
 
-## BC 793 - Profesionales
+- Pendiente de actualización de firmware.
 
-- Reducción en el consumo nocturno después del 10 de octubre.
+<!-- ### BC 534 - Buganviles -->
 
-## BC 796 - Girón
+<!-- ### BC 613 - La America -->
 
-- Consumo nocturno esporádico.
+### BC 656 - Mayales
 
-## BC 799 - Floridablanca
+- Incremento atípico en el consumo de fin de semana.
 
-- Consumo nocturno atípico entre el 6 y 10 de octubre.
+### BC 659 - Girardot
 
-## BC 824 - Ventura Plaza
+- Incremento significante en el consumo de los días domingo.
 
-- Reducción en el consumo promedio diurno del totalizador.
+<!-- ### BC 678 - Paseo de la Castellana -->
 
-## BC 834 - San Mateo
+### BC 750 - Roosevelt
 
-- Reducción en el consumo promedio diurno del totalizador.
-- Consumo nocturno esporádico, pero con tendencia a reducción.
+- Ruido en el consumo.
+- Pendiente de actualización de firmware.
 
-## BC 863 - Los Patios
+<!-- ### BC 764 - Jamundí -->
 
-- Reducción en el consumo promedio diurno del totalizador.
+<!-- ### BC 776 - Lebrija -->
 
-## BC 88 - Cúcuta
+### BC 784 - Centro Colon
 
-- Pérdida de datos hasta el 25 de octubre por falla en actualización remota.
+- Consumo irregular con respecto a la línea base (revsar tablero interactivo para mayor información).
 
-## BC 90 - Megamall
+<!-- ### BC 787 - Bocagrande Carrera Tercera -->
 
-- Consumo nocturno esporádico.
+<!-- ### BC 789 - Manga -->
+
+<!-- ### BC 792 - Paseo del comercio -->
+
+<!-- ### BC 793 - Profesionales -->
+
+### BC 796 - Girón
+- Incremento en el consumo de las mañanas.
+- Reducción en el consumo nocturno.
+
+<!-- ### BC 799 - Floridablanca -->
+
+<!-- ### BC 816 - Calle 10 -->
+
+<!-- ### BC 824 - Ventura Plaza -->
+
+<!-- ### BC 825 - Astrocentro -->
+
+### BC 834 - San Mateo
+
+- Incremento atípico en el consumo nocturno.
+
+<!-- ### BC 863 - Los Patios -->
