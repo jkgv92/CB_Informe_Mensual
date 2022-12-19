@@ -7,6 +7,8 @@ NIGHT_HOURS = [0, 1, 2, 3, 4, 5, 19, 20, 21, 22, 23]
 BASELINE = ['2022-08-01', '2022-10-31']
 STUDY = ['2022-11-01', '2022-11-30']
 
+MONTH_NAME = 'Noviembre'
+
 DATE_INTERVALS_TO_DISCARD = {
 }
 

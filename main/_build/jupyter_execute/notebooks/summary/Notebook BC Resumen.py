@@ -54,6 +54,8 @@ from library_report_v2 import Configuration as repcfg
 get_ipython().run_line_magic('load_ext', 'autoreload')
 get_ipython().run_line_magic('autoreload', '2')
 
+month_name = cfg.MONTH_NAME
+
 
 # ## Preprocessing
 
@@ -93,7 +95,6 @@ df = pro.datetime_attributes(df)
 df_bl, df_st = pro.split_into_baseline_and_study(df, baseline=cfg.BASELINE, study=cfg.STUDY, inclusive='left')
 
 study_daterange = pd.Series(pd.date_range(start=cfg.STUDY[0], end=cfg.STUDY[1], freq='D'))
-month_name = study_daterange.dt.month_name(locale='spanish').mode()[0].lower()
 
 
 # In[4]:
@@ -179,8 +180,6 @@ fig = px.bar(
 fig.show()
 
 
-# Podemos ver que Paseo de la Castellana y Centro Colón tienen un consumo especialmente alto comparado con las demás sedes.
-
 # In[9]:
 
 
@@ -194,7 +193,7 @@ fig = px.bar(
 fig.show()
 
 
-# Un indicador ampliamente utilizado es el consumo anual por unidad de área. Al comparar las sedes de Paseo de la Castellana y Centro Colón es evidente que el consumo elevado no es simplemente debido a un mayor área. Estos valores para el indicador se deben interpretar dentro del contexto de un periodo "Niña".
+# Un indicador ampliamente utilizado es el consumo anual por unidad de área. Estos valores para el indicador se deben interpretar dentro del contexto de un periodo "Niña".
 # 
 # A continuación mostramos la distribución geográfica de las intensidades de consumo para las diferentes sedes.
 

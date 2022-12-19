@@ -18,7 +18,7 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 import json
-
+import locale
 import plotly.io as pio
 import plotly.graph_objects as go
 import plotly.express as px
@@ -57,6 +57,8 @@ def show_response_contents(df):
     print(json.dumps(list(df['variable'].unique()), sort_keys=True, indent=4))
     print(json.dumps(list(df['device'].unique()), sort_keys=True, indent=4))
 
+month_name = cfg.MONTH_NAME
+
 
 # ## Preprocessing
 
@@ -86,7 +88,9 @@ df = pro.datetime_attributes(df)
 df_bl, df_st = pro.split_into_baseline_and_study(df, baseline=cfg.BASELINE, study=cfg.STUDY, inclusive='left')
 
 study_daterange = pd.Series(pd.date_range(start=cfg.STUDY[0], end=cfg.STUDY[1], freq='D'))
-month_name = study_daterange.dt.month_name(locale='spanish').mode()[0].lower()
+
+
+
 
 
 # df_cons = df.query("variable == 'front-consumo-activa'")
