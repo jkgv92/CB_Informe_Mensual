@@ -1,0 +1,65 @@
+Traceback (most recent call last):
+  File "/Users/juancarlosgonzalez/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/Users/juancarlosgonzalez/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/juancarlosgonzalez/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/juancarlosgonzalez/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/juancarlosgonzalez/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/juancarlosgonzalez/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/juancarlosgonzalez/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/juancarlosgonzalez/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import pandas as pd
+import numpy as np
+import datetime as dt
+import json
+import locale
+import plotly.io as pio
+import plotly.graph_objects as go
+import plotly.express as px
+import pyppdf.patch_pyppeteer
+
+pio.renderers.default = "notebook"
+pio.templates.default = "plotly_white"
+
+
+# this enables relative path imports
+import os
+from dotenv import load_dotenv
+load_dotenv()
+_PROJECT_PATH: str = os.environ["_project_path"]
+_PICKLED_DATA_FILENAME: str = os.environ["_pickled_data_filename"]
+
+import sys
+from pathlib import Path
+project_path = Path(_PROJECT_PATH)
+sys.path.append(str(project_path))
+
+import config_v2 as cfg
+
+from library_report_v2 import Cleaning as cln
+from library_report_v2 import Graphing as grp
+from library_report_v2 import Processing as pro
+from library_report_v2 import Configuration as repcfg
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+[0;32m/var/folders/br/__n9tzz53dqdxn0vpyzdg5840000gn/T/ipykernel_6084/3508228901.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      7[0m [0;32mimport[0m [0mplotly[0m[0;34m.[0m[0mgraph_objects[0m [0;32mas[0m [0mgo[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      8[0m [0;32mimport[0m [0mplotly[0m[0;34m.[0m[0mexpress[0m [0;32mas[0m [0mpx[0m[0;34m[0m[0;34m[0m[0m
+[0;32m----> 9[0;31m [0;32mimport[0m [0mpyppdf[0m[0;34m.[0m[0mpatch_pyppeteer[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     10[0m [0;34m[0m[0m
+[1;32m     11[0m [0mpio[0m[0;34m.[0m[0mrenderers[0m[0;34m.[0m[0mdefault[0m [0;34m=[0m [0;34m"notebook"[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mModuleNotFoundError[0m: No module named 'pyppdf'
+ModuleNotFoundError: No module named 'pyppdf'
+
