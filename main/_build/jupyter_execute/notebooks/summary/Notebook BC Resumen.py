@@ -5,9 +5,9 @@
 # 
 # # Resumen
 # 
-# Noviembre de 2022
+# Diciembre de 2022
 
-# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de noviembre de 2022. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
+# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de diciembre de 2022. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
 
 # ## Definitions
 # 
@@ -23,6 +23,7 @@ import json
 import plotly.io as pio
 import plotly.graph_objects as go
 import plotly.express as px
+import pyppdf.patch_pyppeteer
 
 pio.renderers.default = "notebook"
 pio.templates.default = "plotly_white"
@@ -75,7 +76,6 @@ df_info = df_info.rename(columns=info_rename)
 df_info = df_info.loc[:, list(info_rename.values())]
 df_info['automated'] = df_info['automated'].map({'Sí':True,'NO':False})
 
-df_info['hvac_capacity_kw'] = df_info['hvac_capacity_kw'] * repcfg.KW_PER_TR
 
 
 # In[3]:
@@ -151,6 +151,7 @@ front_tot = front_month[["value","device_name"]].reset_index(drop=True).set_inde
 front_tot["Consumo - MWh"] = front_tot["value"]/1000
 front_tot.drop(["value"], axis=1, inplace=True)
 front_tot.reset_index(inplace=True, drop=False)
+front_tot['Consumo - MWh'] = np.abs(front_tot['Consumo - MWh'])
 sizes = front_tot.sort_values(by='Consumo - MWh', ascending=False)
 
 

@@ -22,6 +22,7 @@ import locale
 import plotly.io as pio
 import plotly.graph_objects as go
 import plotly.express as px
+import pyppdf.patch_pyppeteer
 
 pio.renderers.default = "notebook"
 pio.templates.default = "plotly_white"
@@ -171,7 +172,7 @@ fig.show()
 
 front_cons_total = front_month.iloc[-1]["value"]
 # dif_mes_anterior =front_month.iloc[-1]["value"] - past_months.iloc[-1]["value"]
-print(f"El consumo de energía de la semana pasada fue {front_cons_total:.0f}kWh")
+print(f"El consumo de energía del mes pasado fue {front_cons_total:.0f}kWh")
 
 
 # In[10]:
@@ -220,7 +221,7 @@ if (cargas_daily_nighttime_cons.shape[0] > 0):
 total_night_cons = cargas_daily_nighttime_cons.query("variable == 'front-consumo-activa'")
 consumo_nocturno = total_night_cons["value"].sum()
 
-print(f"Durante la semana pasada se consumió un total de {consumo_nocturno:.0f}kWh fuera del horario establecido.")
+print(f"Durante el mes pasado se consumió un total de {consumo_nocturno:.0f}kWh fuera del horario establecido.")
 
 
 # In[12]:

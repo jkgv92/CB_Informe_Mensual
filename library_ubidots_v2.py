@@ -16,15 +16,6 @@ class Configuration:
                   "device.label", "device.name", "timestamp"]
     LST_HEADERS = ['value', 'variable', 'device', 'device_name', 'timestamp']
 
-    COLUMNS = {
-        'value.value':'value',
-        'variable.id':'variable_id',
-        'variable.label':'variable_label',
-        'device.label':'device_label',
-        'device.name':'device_name',
-        'timestamp':'timestamp'
-    }
-
     DATE_FORMAT = "%Y-%m-%d"
     DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%S"
     LOCAL_TIMEZONE = 'America/Bogota'
@@ -140,40 +131,28 @@ class Ubidots:
                               right_on='timestamp', how='left')
         return df
 
-    def get_data_from_var_ids(lst_var_id, start_timestamp, end_timestamp, token=_TOKEN):
+    def get_raw_data(lst_var_id, lst_var_fields, start_timestamp, end_timestamp, token, join=False):
         req_url = "https://industrial.api.ubidots.com/api/v1.6/data/raw/series"
 
-        headers = {
+        headers_list = {
             "Accept": "*/*",
             "X-Auth-Token": token,
             "Content-Type": "application/json"
         }
 
         # lst_var_id must be passed as a list
-        if isinstance(lst_var_id, str):
-            lst_var_id = [lst_var_id]
-        elif not isinstance(lst_var_id, list):
+        if not isinstance(lst_var_id, list):
             lst_var_id = list(lst_var_id)
 
         payload = json.dumps({
             "variables": lst_var_id,
-            "columns": list(Configuration.COLUMNS.keys()),
-            "join_dataframes": False,
+            "columns": lst_var_fields,
+            "join_dataframes": join,
             "start": start_timestamp,
             "end": end_timestamp
         })
 
-        # make request
-        r = requests.request("POST", req_url, data=payload,  headers=headers)
-        r.close()
-
-        # parse response
-        results = r.json()['results']
-        df = Ubidots.flatten_bulk_raw_response(results)
-        df["datetime"] = pd.to_datetime(df["timestamp"], unit='ms')
-        df = Ubidots.convert_timezone(df)
-
-        return df
+        return requests.request("POST", req_url, data=payload,  headers=headers_list)
 
     def get_var_id_for_multiple_devices(lst_devices, token):
         lst_var_id = []
@@ -242,13 +221,43 @@ class Ubidots:
 
         return Ubidots.get_var_id_for_multiple_devices(device_id, _TOKEN)
 
-    def str_date_to_int_timestamp_ms(date_string):
-        element = dt.datetime.strptime(date_string, Configuration.DATE_FORMAT)
+    def make_request(VAR_IDS_TO_REQUEST, date_interval):
+        # the request must be made in millisecond timestamps
+        start_timestamp = Ubidots.str_date_to_int_timestamp_ms(
+            date_interval['start'], Configuration.DATE_FORMAT)
+        end_timestamp = Ubidots.str_date_to_int_timestamp_ms(
+            date_interval['end'], Configuration.DATE_FORMAT)
+
+        # The request is made with an array of all variable IDs.
+        response = Ubidots.get_raw_data(
+            VAR_IDS_TO_REQUEST,
+            Configuration.LST_VAR_FIELDS,
+            start_timestamp,
+            end_timestamp,
+            _TOKEN,
+            join=False
+        )
+
+        # The connection is left open by default
+        response.close()
+        return response
+
+    def str_date_to_int_timestamp_ms(date_string, date_format):
+        element = dt.datetime.strptime(date_string, date_format)
         return int(dt.datetime.timestamp(element)) * 1000
 
+    def parse_response(lst_response, DCT_VAR_ID_TO_LABEL):
+        lst_df = []
+        for res in lst_response:
+            df_temp = Ubidots.flatten_bulk_raw_response(
+                res.json()['results'], Configuration.LST_HEADERS)
+            df_temp = Ubidots.parse_flat_data(df_temp, DCT_VAR_ID_TO_LABEL)
 
-    def flatten_bulk_raw_response(r_json_data):
-        headers = list(Configuration.COLUMNS.values())
+            lst_df.append(df_temp)
+
+        return pd.concat(lst_df)
+
+    def flatten_bulk_raw_response(r_json_data, headers):
         lst_df_idx = []
         for idx in range(len(r_json_data)):
             df_idx = pd.DataFrame(r_json_data[idx], columns=headers)
@@ -256,6 +265,18 @@ class Ubidots:
 
         return pd.concat(lst_df_idx).reset_index(drop=True)
 
+    def parse_flat_data(df, DCT_VAR_ID_TO_LABEL):
+        # The Ubidots API does not return a variable-label field
+        # and naming is inconsistent, so labels must be mapped from ids.
+        df['variable'] = df['variable'].map(DCT_VAR_ID_TO_LABEL)
+
+        # datetimes are human readable
+        df["datetime"] = pd.to_datetime(df["timestamp"], unit='ms')
+        df = Ubidots.convert_timezone(df)
+
+        df.drop_duplicates(
+            subset=['timestamp', 'variable', 'device'], inplace=True)
+        return df.drop(columns='timestamp')
 
     def convert_timezone(obj, from_tz='utc', to_tz='America/Bogota'):
         if isinstance(obj, str):
@@ -322,30 +343,3 @@ class Ubidots:
             devices["device_id"].append(JSON_item['id'])
 
         return pd.DataFrame(devices)
-
-    
-    def get_data_robust(LST_VAR_IDS, LST_DATE_INTERVALS, SUBSET_SIZE):
-        lst_df = []
-        n_vars = len(LST_VAR_IDS)
-        for idx in range(0, Ubidots.ceildiv(len(LST_VAR_IDS), SUBSET_SIZE)):
-            idx_start = idx * SUBSET_SIZE
-            idx_end = (idx + 1) * SUBSET_SIZE
-            subset_list_ids = LST_VAR_IDS[idx_start:idx_end]
-
-            for interval in LST_DATE_INTERVALS:
-                # the request must be made in millisecond timestamps
-                start_timestamp = Ubidots.str_date_to_int_timestamp_ms(interval[0])
-                end_timestamp = Ubidots.str_date_to_int_timestamp_ms(interval[1])
-
-                df_r = Ubidots.get_data_from_var_ids(subset_list_ids, start_timestamp, end_timestamp)
-
-                lst_df.append(df_r)
-
-            current_idx = idx_end+1
-            
-            if (current_idx > n_vars):
-                current_idx = n_vars
-
-            print(f"Progress: {100*(current_idx)/n_vars:0.1f}%")
-
-        return pd.concat(lst_df)

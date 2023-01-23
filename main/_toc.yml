@@ -5,7 +5,7 @@ format: jb-book
 root: intro
 chapters:
   - file: notebooks/summary/Notebook BC Resumen
-  - file: Hallazgos
+  # - file: Hallazgos
 
   - file: notebooks/individual/Notebook BC 044 - Piedecuesta
   - file: notebooks/individual/Notebook BC 061 - Carrera Primera

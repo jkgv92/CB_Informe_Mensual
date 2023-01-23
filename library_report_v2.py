@@ -1,8 +1,6 @@
 import numpy as np
 import pandas as pd
 import datetime as dt
-import holidays
-
 
 import scipy.stats as stats
 
@@ -12,8 +10,6 @@ import plotly.io as pio
 pio.renderers.default = "notebook"
 pio.templates.default = "plotly_white"
 
-from pandas.tseries.holiday import *
-from pandas.tseries.offsets import CustomBusinessDay
 
 class Configuration:
     PRIMARY_PALETTE = ['#d5752d', '#59595b']
@@ -47,56 +43,6 @@ class Configuration:
         5: 'sábado',
         6: 'domingo',
     }
-
-    KW_PER_TR = 3.51685
-
-
-class ColombianBusinessCalendar(AbstractHolidayCalendar):
-    """
-    Adaptado del LinkedIn de Lema Daniel.
-    """
-    def strict_next_monday(datetime: dt.datetime) -> dt.datetime:
-        """
-        Si el festivo cae en un día diferente a lunes, se corre al próximo lunes.
-        """
-        if datetime.weekday() > 0:
-            return datetime + dt.timedelta(7-datetime.weekday())
-        return datetime
-
-    rules = [
-        # festivos fijos
-        Holiday('Año nuevo', month=1, day=1),
-        Holiday('Día del trabajo', month=5, day=1),
-        Holiday('Día de la independencia', month=7, day=20),
-        Holiday('Batalla de Boyacá', month=8, day=7),
-        Holiday('Inmaculada Concepción', month=12, day=8),
-        Holiday('Navidad', month=12, day=25),
-        # festivos relativos a la pascua
-        Holiday('Jueves santo', month=1, day=1, offset=[pd.offsets.Easter(), pd.offsets.Day(-3)]),
-        Holiday('Viernes santo', month=1, day=1, offset=[pd.offsets.Easter(), pd.offsets.Day(-2)]),
-        Holiday('Ascención de Jesús', month=1, day=1, offset=[pd.offsets.Easter(), pd.offsets.Day(43)]),
-        Holiday('Corpus Christi', month=1, day=1, offset=[pd.offsets.Easter(), pd.offsets.Day(64)]),
-        Holiday('Sagrado Corazón de Jesús', month=1, day=1, offset=[pd.offsets.Easter(), pd.offsets.Day(71)]),
-        # festivos desplazables (Emiliani)
-        Holiday('Epifanía del señor', month=1, day=6, observance=strict_next_monday),
-        Holiday('Día de San José', month=3, day=19, observance=strict_next_monday),
-        Holiday('San Pedro y San Pablo', month=6, day=29, observance=strict_next_monday),
-        Holiday('Asunción de la Virgen', month=8, day=15, observance=strict_next_monday),
-        Holiday('Día de la raza', month=10, day=12, observance=strict_next_monday),
-        Holiday('Todos los santos', month=11, day=1, observance=strict_next_monday),
-        Holiday('Independencia de Cartagena', month=11, day=11, observance=strict_next_monday)
-    ]
-    
-# To check for business days use this function:
-Colombian_BD = CustomBusinessDay(calendar=ColombianBusinessCalendar())
-
-# Like this:
-# from library_report_v2 import Colombian_BD
-# business_days = pd.date_range(start='2022-10-01', end='2023-01-01', freq=Colombian_BD)
-
-# If you require a list of dates then this works:
-# list_of_business_days = list(business_days.strftime('%Y-%m-%d'))
-
 
 class Cleaning:
     # abbreviated as cln
@@ -398,7 +344,7 @@ class Processing:
         return x.quantile(0.975)
 
 
-    def datetime_attributes(df, boolean_encode_day_type=False):
+    def datetime_attributes(df):
         df['hour'] = df.index.hour
         df['day'] = df.index.day
         df['dow'] = df.index.dayofweek.map(Configuration.dct_dow)
@@ -406,27 +352,6 @@ class Processing:
         df['week'] = df.index.isocalendar().week
         df['month'] = df.index.month
         df['year'] = df.index.year
-
-        list_of_business_days = list(
-            pd.date_range(
-                start=df.index.date.min().strftime('%Y-%m-%d'), 
-                end=df.index.date.max().strftime('%Y-%m-%d'), 
-                freq=Colombian_BD
-            )
-            .strftime('%Y-%m-%d')
-        )
-
-        df['business'] = df.index.date.astype(str)
-        df['business'] = df['business'].isin(list_of_business_days)
-        df['holiday'] = (df.index.day_of_week == 0) & (~df['business'])
-        df['sunday_or_holiday'] = (df.index.day_of_week == 6) | (df['holiday'])
-
-        if (boolean_encode_day_type is False):
-            df['type_of_day'] = 'Laboral'
-            df.loc[(df.index.day_of_week == 5), 'type_of_day'] = 'Sábado'
-            df.loc[df['sunday_or_holiday'], 'type_of_day'] = 'Domingo/Festivo'
-            df = df.drop(columns=['business','holiday','sunday_or_holiday'])
-
         return df
 
     def split_into_baseline_and_study(df, baseline=None, study=None, inclusive='both'):
