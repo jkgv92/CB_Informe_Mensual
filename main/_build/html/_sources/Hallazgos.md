@@ -8,8 +8,7 @@ Febrero de 2023
 4. Es normal que los consumos de AA fluctuen entre días y semanas, producto del clima.
 
 ## Observaciones generales:
-La gran mayoría de la sedes tuvo un comportamiento normal. Ninguna de las sedes que mostró cambios significantes en el consumo o el perfil de carga lo hizo de manera atípicamente alta o baja. Aunque los intervalos de confianza para Sabana de Torres dan la impresión de una reducción atípica, aún se encuentra en etapa de levantamiento de línea base y tiene datos insuficientes para hablar de cambios significantes. Las sedes de Cartagena mostraron una tendencia a la reducción.
-
+Se puede afirmar que las sedes presentaron un comportamiento de consumo normal durante el período analizado, con base en su consumo histórico. Cabe destacar que la sede Las Palmas mostró una disminución significativa en su consumo nocturno de energía, lo que indica una buena gestión y es importante continuar fomentando estas buenas prácticas y seguir implementando estrategias para lograr cada vez mayores ahorros de energía.
 
 ### Sedes que vieron una reducción en el consumo.
 - BOCAGRANDE CARRERA TERCERA

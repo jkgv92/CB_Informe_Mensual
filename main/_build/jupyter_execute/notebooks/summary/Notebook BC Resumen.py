@@ -171,6 +171,8 @@ intensity = df_info_vs_cons[['device_name', 'yearly_kwh_per_m2']].sort_values(by
 # In[8]:
 
 
+sizes = sizes.query("device_name != 'BC 197 - Guatapuri'")
+
 fig = px.bar(
     sizes.round(2), 
     x="device_name", 
@@ -449,7 +451,7 @@ fig = go.Figure(data=[go.Sankey(
                       'BC 764 - Jamundí',                 
                       'BC 424 - Honda',                   
                       'BC 613 - La America',              
-                      'BC 197 - Guatapuri',               
+                     #'BC 197 - Guatapuri',               
                       'BC 776 - Lebrija',                 
                       'BC 792 - Paseo del comercio',      
                       'BC 061 - Carrera Primera',         
