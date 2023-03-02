@@ -1,5 +1,5 @@
 # Observaciones
-Noviembre de 2022
+Febrero de 2023
 ## Tener presente:
 
 1. Las pérdidas de datos en el totalizador pueden hacer parecer como que los consumos de AA o Iluminación superan al totalizador.
@@ -10,74 +10,77 @@ Noviembre de 2022
 ## Observaciones generales:
 La gran mayoría de la sedes tuvo un comportamiento normal. Ninguna de las sedes que mostró cambios significantes en el consumo o el perfil de carga lo hizo de manera atípicamente alta o baja. Aunque los intervalos de confianza para Sabana de Torres dan la impresión de una reducción atípica, aún se encuentra en etapa de levantamiento de línea base y tiene datos insuficientes para hablar de cambios significantes. Las sedes de Cartagena mostraron una tendencia a la reducción.
 
+
 ### Sedes que vieron una reducción en el consumo.
-- Piedecuesta
-- Mariquita
-- El Bosque
-- Buganviles
-- Paseo de la Castellana
-- Jamundí
-- Centro Colon
-- Manga
-- Floridablanca
+- BOCAGRANDE CARRERA TERCERA
+- LAS PALMAS
+- CALLE 10
+- CAUCASIA
+- EL BOSQUE
+- PASEO DE LA CASTELLANA
+- CENTRO COLON
+- MANGA
+- BARRANCABERMEJA
+- SAN MATEO
 
 ### Sedes que vieron un incremento en el consumo.
-- Carrera Primera
-- Banca Colombia Cartagena
-- Caucasia
+- Piedecuesta
+- Palmira
+- FLORIDABLANCA
+- GIRON
+- ROOSEVELT
+- LA AMERICA
+- BUGANVILES
+- IWANNA
+- CAMPO ALEGRE
+
+### TOP 5 Sedes con mayor consumo nocturno.
+- IWANNA
+- CARRERA PRIMERA
+- GIRARDOT
+- PASEO DE LA CASTELLANA
+- CENTRO COLON
 <!-- - Centro Comercial Único -->
 
 ## Observaciones específicas:
 
 <!-- ### BC 044 - Piedecuesta -->
 
-### BC 061 - Carrera Primera
+<!-- ### BC 061 - Carrera Primera -->
 
-- Incremento atípico en el consumo de fin de semana.
-
-<!-- ### BC 66 - Palmira -->
+<!-- ### BC 66 - Palmira --z
 
 <!-- ### BC 78 - El Cacique -->
 
-### BC 88 - Cúcuta
-
-- Incremento atípico en el consumo de los días domingo.
+<!-- ### BC 88 - Cúcuta -->
 
 <!-- ### BC 90 - Megamall -->
 
 <!-- ### BC 185 - Llano Grande Palmira -->
 
-### BC 205 - Villa Colombia
+<!--### BC 205 - Villa Colombia -->
 
-- Ruido en el consumo.
+### BC 210 - Banca Colombia Cartagen
 
-### BC 210 - Banca Colombia Cartagena
-- Incremento en el consumo de las mañanas.
+- Incremento respecto a la línea base, cambio en el patrón de consumo.
 
-### BC 216 - Sabana de Torres
-
-- Consumo nocturno significativo de AA.
-- En etapa de levantamiento de línea base.
+<!-- ### BC 216 - Sabana de Torres -->
 
 <!-- ### BC 253 - Puerta del Norte -->
 
 ### BC 291 - Las Palmas
 
-- Consumo nocturno significativo de AA.
-- El consumo nocturno suma 34.2%.
+- Se presenta una disminución de 1917 kWh respecto al mes de enero en los consumos nocturnos, con un ahorro del 27 % del consumo total.
 
 <!-- ### BC 302 - Quebrada Seca -->
 
-### BC 306 - Barrancabermeja
+<!-- ### BC 306 - Barrancabermeja -->
 
-- Consumo anómalo a partir del 28 de noviembre.
-
-### BC 311 - Bello
-- Consumo nocturno atípico.
+<!-- ### BC 311 - Bello -->
 
 ### BC 371 - Caucasia
 
-- Incremento en el consumo nocturno.
+- Reducción en el consumo, cambio en el patrón de consumo.
 
 <!-- ### BC 398 - Mariquita -->
 
@@ -91,10 +94,11 @@ La gran mayoría de la sedes tuvo un comportamiento normal. Ninguna de las sedes
 
 <!-- ### BC 495 - El Bosque -->
 
-<!-- ### BC 496 - Iwanna -->
+### BC 496 - Iwanna
 
-### BC 514 - Centro Comercial Único
-- En levantamiento de línea base para la potencia. Patrón de consumo inconcluso.
+- Consumo nocturno significativo.
+
+<!--### BC 514 - Centro Comercial Único -->
 
 ### BC 523 - Olímpica
 
@@ -104,15 +108,15 @@ La gran mayoría de la sedes tuvo un comportamiento normal. Ninguna de las sedes
 
 <!-- ### BC 613 - La America -->
 
-### BC 656 - Mayales
+<!-- ### BC 656 - Mayales -->
 
-- Incremento atípico en el consumo de fin de semana.
-
-### BC 659 - Girardot
-
-- Incremento significante en el consumo de los días domingo.
+<!-- ### BC 659 - Girardot -->
 
 <!-- ### BC 678 - Paseo de la Castellana -->
+
+### BC 741 - Calima
+
+- Incremento en el consumo nocturno 290 kWh respecto al mes anterior.
 
 ### BC 750 - Roosevelt
 
@@ -123,9 +127,9 @@ La gran mayoría de la sedes tuvo un comportamiento normal. Ninguna de las sedes
 
 <!-- ### BC 776 - Lebrija -->
 
-### BC 784 - Centro Colon
+<!--### BC 784 - Centro Colon -->
 
-- Consumo irregular con respecto a la línea base (revsar tablero interactivo para mayor información).
+<!-- Consumo irregular con respecto a la línea base (revsar tablero interactivo para mayor información).  -->
 
 <!-- ### BC 787 - Bocagrande Carrera Tercera -->
 
@@ -136,7 +140,7 @@ La gran mayoría de la sedes tuvo un comportamiento normal. Ninguna de las sedes
 <!-- ### BC 793 - Profesionales -->
 
 ### BC 796 - Girón
-- Incremento en el consumo de las mañanas.
+
 - Reducción en el consumo nocturno.
 
 <!-- ### BC 799 - Floridablanca -->
@@ -147,8 +151,6 @@ La gran mayoría de la sedes tuvo un comportamiento normal. Ninguna de las sedes
 
 <!-- ### BC 825 - Astrocentro -->
 
-### BC 834 - San Mateo
-
-- Incremento atípico en el consumo nocturno.
+<!--### BC 834 - San Mateo -->
 
 <!-- ### BC 863 - Los Patios -->

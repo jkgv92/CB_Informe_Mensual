@@ -5,7 +5,7 @@ format: jb-book
 root: intro
 chapters:
   - file: notebooks/summary/Notebook BC Resumen
-  # - file: Hallazgos
+  - file: Hallazgos
 
   - file: notebooks/individual/Notebook BC 044 - Piedecuesta
   - file: notebooks/individual/Notebook BC 061 - Carrera Primera
@@ -36,6 +36,7 @@ chapters:
   - file: notebooks/individual/Notebook BC 656 - Mayales
   - file: notebooks/individual/Notebook BC 659 - Girardot
   - file: notebooks/individual/Notebook BC 678 - Paseo de la Castellana
+  - file: notebooks/individual/Notebook BC 741 - Calima
   - file: notebooks/individual/Notebook BC 750 - Roosevelt
   - file: notebooks/individual/Notebook BC 764 - Jamundí
   - file: notebooks/individual/Notebook BC 776 - Lebrija
