@@ -14,6 +14,7 @@ chapters:
   - file: notebooks/individual/Notebook BC 88 - Cúcuta
   - file: notebooks/individual/Notebook BC 90 - Megamall
   - file: notebooks/individual/Notebook BC 185 - Llano Grande Palmira
+  - file: notebooks/individual/Notebook BC 197 - Guatapuri 
   - file: notebooks/individual/Notebook BC 205 - Villa Colombia
   - file: notebooks/individual/Notebook BC 210 - Banca Colombia Cartagena
   - file: notebooks/individual/Notebook BC 216 - Sabana de Torres
@@ -50,5 +51,6 @@ chapters:
   - file: notebooks/individual/Notebook BC 816 - Calle 10
   - file: notebooks/individual/Notebook BC 824 - Ventura Plaza
   - file: notebooks/individual/Notebook BC 825 - Astrocentro
+  - file: notebooks/individual/Notebook BC 829 - Unicentro Cali
   - file: notebooks/individual/Notebook BC 834 - San Mateo
   - file: notebooks/individual/Notebook BC 863 - Los Patios

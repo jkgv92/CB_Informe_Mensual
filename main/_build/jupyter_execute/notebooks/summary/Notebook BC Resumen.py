@@ -5,9 +5,9 @@
 # 
 # # Resumen
 # 
-# Febrero de 2023
+# Marzo de 2023
 
-# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de febrero de 2023. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
+# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de Marzo de 2023. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
 
 # ## Definitions
 # 
@@ -254,7 +254,7 @@ fig.update_layout(title_text="Mapa de intensidad de consumo [kWh/m^2-año]", fon
 fig.show()
 
 
-# De las cinco sedes monitoreadas en Cartagena, únicamente Paseo de la Castellana y Centro Colón tienen problemas con la intensidad de consumo. También podemos notar que en general entre sedes cercanas hay intensidades de consumo similares.
+# De las sedes monitoreadas las que presentan mayor intensidad de consumo son Paseo de la Castellana, Iwanna, Bocagrande Carrera Tercera y  Centro Colón. También podemos notar que en general entre sedes cercanas hay intensidades de consumo similares.
 
 # In[11]:
 

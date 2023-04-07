@@ -1,5 +1,5 @@
 # Observaciones
-Febrero de 2023
+Marzo de 2023
 ## Tener presente:
 
 1. Las pérdidas de datos en el totalizador pueden hacer parecer como que los consumos de AA o Iluminación superan al totalizador.
@@ -8,44 +8,48 @@ Febrero de 2023
 4. Es normal que los consumos de AA fluctuen entre días y semanas, producto del clima.
 
 ## Observaciones generales:
-Se puede afirmar que las sedes presentaron un comportamiento de consumo normal durante el período analizado, con base en su consumo histórico. Cabe destacar que la sede Las Palmas mostró una disminución significativa en su consumo nocturno de energía, lo que indica una buena gestión y es importante continuar fomentando estas buenas prácticas y seguir implementando estrategias para lograr cada vez mayores ahorros de energía.
+Durante el mes de marzo, se observó que las sedes mantuvieron un patrón de consumo coherente con su historial. Sin embargo, es importante mencionar que la sede "Bocagrande Carrera Tercera" presentó una variación en su consumo de aire acondicionado nocturno. Este aumento se debió a trabajos realizados a partir del 28 de febrero, que se extendieron por una semana y generaron que el sistema de aire acondicionado permaneciera encendido hasta el 17 de marzo. Como resultado, el consumo nocturno en esta sede aumentó en 4,184 kWh en comparación con el mes anterior, lo que equivale a un incremento del 67.8% del consumo nocturno.
 
 ### Sedes que vieron una reducción en el consumo.
-- BOCAGRANDE CARRERA TERCERA
-- LAS PALMAS
-- CALLE 10
-- CAUCASIA
-- EL BOSQUE
-- PASEO DE LA CASTELLANA
-- CENTRO COLON
-- MANGA
-- BARRANCABERMEJA
-- SAN MATEO
-
-### Sedes que vieron un incremento en el consumo.
-- Piedecuesta
-- Palmira
-- FLORIDABLANCA
+- BANCA COLOMBIA CARTAGENA
+- CARRERA PRIMERA
+- PALMIRA
 - GIRON
-- ROOSEVELT
-- LA AMERICA
-- BUGANVILES
-- IWANNA
 - CAMPO ALEGRE
 
+### Sedes que vieron un incremento en el consumo.
+- BOCAGRANDE CARRERA TERCERA
+- LEBRIJA
+- MANGA
+- CENTRO COLON
+- VENTURA PLAZA
+- EL BOSQUE
+- CALLE 10
+- LLANO GRANDE PALMIRA
+- PROFESIONALES
+- SAN MATEO
+
+
+
 ### TOP 5 Sedes con mayor consumo nocturno.
+- BOCAGRANDE CARRERA TERCERA
 - IWANNA
-- CARRERA PRIMERA
-- GIRARDOT
 - PASEO DE LA CASTELLANA
 - CENTRO COLON
+- GIRARDOT
+
+
+
+
 <!-- - Centro Comercial Único -->
 
 ## Observaciones específicas:
 
 <!-- ### BC 044 - Piedecuesta -->
 
-<!-- ### BC 061 - Carrera Primera -->
+### BC 061 - Carrera Primera
+
+- La reducción en el consumo nocturno en comparación con el mes anterior fue del 39.5%, lo que equivale a una disminución de 1069 kWh.
 
 <!-- ### BC 66 - Palmira --z
 
@@ -61,15 +65,13 @@ Se puede afirmar que las sedes presentaron un comportamiento de consumo normal d
 
 ### BC 210 - Banca Colombia Cartagen
 
-- Incremento respecto a la línea base, cambio en el patrón de consumo.
+- Dismunición respecto a la línea base, cambio en el patrón de consumo a partir 17 marzo.
 
 <!-- ### BC 216 - Sabana de Torres -->
 
 <!-- ### BC 253 - Puerta del Norte -->
 
-### BC 291 - Las Palmas
-
-- Se presenta una disminución de 1917 kWh respecto al mes de enero en los consumos nocturnos, con un ahorro del 27 % del consumo total.
+<!--### BC 291 - Las Palmas -->
 
 <!-- ### BC 302 - Quebrada Seca -->
 
@@ -77,9 +79,7 @@ Se puede afirmar que las sedes presentaron un comportamiento de consumo normal d
 
 <!-- ### BC 311 - Bello -->
 
-### BC 371 - Caucasia
-
-- Reducción en el consumo, cambio en el patrón de consumo.
+<!-- ### BC 371 - Caucasia -->
 
 <!-- ### BC 398 - Mariquita -->
 
@@ -99,9 +99,7 @@ Se puede afirmar que las sedes presentaron un comportamiento de consumo normal d
 
 <!--### BC 514 - Centro Comercial Único -->
 
-### BC 523 - Olímpica
-
-- Pendiente de actualización de firmware.
+<!--### BC 523 - Olímpica -->
 
 <!-- ### BC 534 - Buganviles -->
 
@@ -113,14 +111,9 @@ Se puede afirmar que las sedes presentaron un comportamiento de consumo normal d
 
 <!-- ### BC 678 - Paseo de la Castellana -->
 
-### BC 741 - Calima
+<!--### BC 741 - Calima -->
 
-- Incremento en el consumo nocturno 290 kWh respecto al mes anterior.
-
-### BC 750 - Roosevelt
-
-- Ruido en el consumo.
-- Pendiente de actualización de firmware.
+<!-- ### BC 750 - Roosevelt -->
 
 <!-- ### BC 764 - Jamundí -->
 
@@ -138,9 +131,7 @@ Se puede afirmar que las sedes presentaron un comportamiento de consumo normal d
 
 <!-- ### BC 793 - Profesionales -->
 
-### BC 796 - Girón
-
-- Reducción en el consumo nocturno.
+<!-- ### BC 796 - Girón -->
 
 <!-- ### BC 799 - Floridablanca -->
 
