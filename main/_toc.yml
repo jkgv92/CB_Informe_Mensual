@@ -17,7 +17,7 @@ chapters:
   - file: notebooks/individual/Notebook BC 197 - Guatapuri 
   - file: notebooks/individual/Notebook BC 205 - Villa Colombia
   - file: notebooks/individual/Notebook BC 210 - Banca Colombia Cartagena
-  - file: notebooks/individual/Notebook BC 216 - Sabana de Torres
+  #- file: notebooks/individual/Notebook BC 216 - Sabana de Torres
   - file: notebooks/individual/Notebook BC 253 - Puerta del Norte
   - file: notebooks/individual/Notebook BC 291 - Las Palmas
   - file: notebooks/individual/Notebook BC 302 - Quebrada Seca
@@ -31,13 +31,13 @@ chapters:
   - file: notebooks/individual/Notebook BC 495 - El Bosque
   - file: notebooks/individual/Notebook BC 496 - Iwanna
   - file: notebooks/individual/Notebook BC 514 - Centro Comercial Único
-  - file: notebooks/individual/Notebook BC 523 - Olímpica
+  #- file: notebooks/individual/Notebook BC 523 - Olímpica
   - file: notebooks/individual/Notebook BC 534 - Buganviles
   - file: notebooks/individual/Notebook BC 613 - La America
   - file: notebooks/individual/Notebook BC 656 - Mayales
   - file: notebooks/individual/Notebook BC 659 - Girardot
   - file: notebooks/individual/Notebook BC 678 - Paseo de la Castellana
-  - file: notebooks/individual/Notebook BC 741 - Calima
+  #- file: notebooks/individual/Notebook BC 741 - Calima
   - file: notebooks/individual/Notebook BC 750 - Roosevelt
   - file: notebooks/individual/Notebook BC 764 - Jamundí
   - file: notebooks/individual/Notebook BC 776 - Lebrija
@@ -51,6 +51,9 @@ chapters:
   - file: notebooks/individual/Notebook BC 816 - Calle 10
   - file: notebooks/individual/Notebook BC 824 - Ventura Plaza
   - file: notebooks/individual/Notebook BC 825 - Astrocentro
-  - file: notebooks/individual/Notebook BC 829 - Unicentro Cali
+  #- file: notebooks/individual/Notebook BC 829 - Unicentro Cali
   - file: notebooks/individual/Notebook BC 834 - San Mateo
   - file: notebooks/individual/Notebook BC 863 - Los Patios
+  - file: notebooks/individual/Notebook BC - S.A. Granada
+  #- file: notebooks/individual/Notebook BC - Sede Adm Twins bay
+  - file: notebooks/individual/Notebook BC - S.A. Valledupar

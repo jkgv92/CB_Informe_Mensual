@@ -1,55 +1,36 @@
 # Observaciones
-Marzo de 2023
+Abril de 2023
 ## Tener presente:
 
 1. Las pérdidas de datos en el totalizador pueden hacer parecer como que los consumos de AA o Iluminación superan al totalizador.
 2. Cuando se registran potencias iguales a cero usualmente es por un mantenimiento, o alguna manipulación del equipo.
 3. Las sedes con consumos nocturnos de AA son la mejor oportunidad de ahorro. Es importante identificar cuáles exhiben este patrón porque realmente se encienden los aires, y cuáles simplemente tienen otros equipos conectados al circuito de AA.
-4. Es normal que los consumos de AA fluctuen entre días y semanas, producto del clima.
+4. Es normal que los consumos de AA fluctúen entre días y semanas, producto del clima.
 
 ## Observaciones generales:
-Durante el mes de marzo, se observó que las sedes mantuvieron un patrón de consumo coherente con su historial. Sin embargo, es importante mencionar que la sede "Bocagrande Carrera Tercera" presentó una variación en su consumo de aire acondicionado nocturno. Este aumento se debió a trabajos realizados a partir del 28 de febrero, que se extendieron por una semana y generaron que el sistema de aire acondicionado permaneciera encendido hasta el 17 de marzo. Como resultado, el consumo nocturno en esta sede aumentó en 4,184 kWh en comparación con el mes anterior, lo que equivale a un incremento del 67.8% del consumo nocturno.
+Durante el mes de abril, se observó que las sedes mantuvieron un patrón de consumo coherente con su historial:
 
-### Sedes que vieron una reducción en el consumo.
-- BANCA COLOMBIA CARTAGENA
-- CARRERA PRIMERA
-- PALMIRA
-- GIRON
-- CAMPO ALEGRE
-
-### Sedes que vieron un incremento en el consumo.
-- BOCAGRANDE CARRERA TERCERA
-- LEBRIJA
-- MANGA
-- CENTRO COLON
-- VENTURA PLAZA
-- EL BOSQUE
-- CALLE 10
-- LLANO GRANDE PALMIRA
-- PROFESIONALES
-- SAN MATEO
-
-
-
-### TOP 5 Sedes con mayor consumo nocturno.
-- BOCAGRANDE CARRERA TERCERA
-- IWANNA
+### Sedes que vieron una reducción en el consumo, respecto al mes de marzo
+- BUGANVILES
+- EL CACIQUE
 - PASEO DE LA CASTELLANA
+
+
+### Sedes que vieron un incremento en el consumo, respecto al mes de marzo.
+- CARRERA PRIMERA
 - CENTRO COLON
-- GIRARDOT
 
-
-
-
-<!-- - Centro Comercial Único -->
 
 ## Observaciones específicas:
 
-<!-- ### BC 044 - Piedecuesta -->
+
+### BC 044 - Piedecuesta
+
+- Se presenta novedad bajo consumo carga AA desde desde el 24 abril a 1 mayo, validar si se presentaron trabajos en la sede
 
 ### BC 061 - Carrera Primera
 
-- La reducción en el consumo nocturno en comparación con el mes anterior fue del 39.5%, lo que equivale a una disminución de 1069 kWh.
+- Se presento novedad carga AA prendido desde el 5 al 17 abril.
 
 <!-- ### BC 66 - Palmira --z
 
@@ -59,13 +40,20 @@ Durante el mes de marzo, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 90 - Megamall -->
 
-<!-- ### BC 185 - Llano Grande Palmira -->
+### BC 185 - Llano Grande Palmira
+
+- Se presenta cambio en el patrón de consumo en el sistema de AA para los días sábados y domingos carga encendida.
 
 <!--### BC 205 - Villa Colombia -->
 
-### BC 210 - Banca Colombia Cartagen
+<!--### BC 210 - Banca Colombia Cartagen -->
 
-- Dismunición respecto a la línea base, cambio en el patrón de consumo a partir 17 marzo.
+
+### BC 197 - Guatapuri
+
+- Validar que trabajo se realizo el 20 abril debido a que bajo el consumo de la carga de AA en las horas nocturnas, replicar acción de mejora en otras sedes.
+
+<!-- ### BC 205 - Villa Colombia -->
 
 <!-- ### BC 216 - Sabana de Torres -->
 
@@ -75,7 +63,9 @@ Durante el mes de marzo, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 302 - Quebrada Seca -->
 
-<!-- ### BC 306 - Barrancabermeja -->
+### BC 306 - Barrancabermeja
+
+- Cambio en el patron de consumo de la carga AA, a partir del 26 abril.
 
 <!-- ### BC 311 - Bello -->
 
@@ -87,9 +77,9 @@ Durante el mes de marzo, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 453 - Pitalito -->
 
-### BC 459 - Campo Alegre
+<!-- ### BC 459 - Campo Alegre -->
 
-- Pendiente de actualización de firmware.
+<!-- Pendiente de actualización de firmware. -->
 
 <!-- ### BC 495 - El Bosque -->
 
@@ -111,7 +101,10 @@ Durante el mes de marzo, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 678 - Paseo de la Castellana -->
 
-<!--### BC 741 - Calima -->
+### BC 741 - Calima
+
+- Se desmonto monitoreo por adecuación en la sede.
+
 
 <!-- ### BC 750 - Roosevelt -->
 
@@ -141,6 +134,14 @@ Durante el mes de marzo, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 825 - Astrocentro -->
 
+### BC 829 - Unicentro Cali
+
+- Se desmonto monitoreo por adecuación en la sede.
+
 <!--### BC 834 - San Mateo -->
 
 <!-- ### BC 863 - Los Patios -->
+
+<!-- ### - Valledupar -->
+
+<!-- ### BC 863 - Granada -->
