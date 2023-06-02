@@ -1,5 +1,12 @@
 # Observaciones
-Abril de 2023
+
+<div align="right">
+
+<span style="font-size: smaller;">Reporte mensual elaborado 02/06/2023</span>
+
+</div>
+
+Mayo de 2023
 ## Tener presente:
 
 1. Las pérdidas de datos en el totalizador pueden hacer parecer como que los consumos de AA o Iluminación superan al totalizador.
@@ -8,17 +15,18 @@ Abril de 2023
 4. Es normal que los consumos de AA fluctúen entre días y semanas, producto del clima.
 
 ## Observaciones generales:
-Durante el mes de abril, se observó que las sedes mantuvieron un patrón de consumo coherente con su historial:
+Durante el mes de Mayo, se observó que las sedes mantuvieron un patrón de consumo coherente con su historial:
 
-### Sedes que vieron una reducción en el consumo, respecto al mes de marzo
-- BUGANVILES
-- EL CACIQUE
-- PASEO DE LA CASTELLANA
-
-
-### Sedes que vieron un incremento en el consumo, respecto al mes de marzo.
-- CARRERA PRIMERA
+### Sedes que vieron una reducción en el consumo, respecto al mes de abril:
+- LLANO GRANDE PALMIRA
+- LEBRIJA
 - CENTRO COLON
+
+
+### Sedes que vieron un incremento en el consumo, respecto al mes de abril:
+- BUGANVILES
+- BOCA GRANDE CARRERA TERCERA
+- PALMIRA
 
 
 ## Observaciones específicas:
@@ -26,13 +34,13 @@ Durante el mes de abril, se observó que las sedes mantuvieron un patrón de con
 
 ### BC 044 - Piedecuesta
 
-- Se presenta novedad bajo consumo carga AA desde desde el 24 abril a 1 mayo, validar si se presentaron trabajos en la sede
+- Para la sede BC Piedecuesta, se realizó la normalización del punto de medida Frontera y de los AA el 02/05/2025. Como resultado, se observó que el consumo del mes de mayo es superior al valor de referencia establecido en la línea base la cual presentaba novedad para carga AA.
 
-### BC 061 - Carrera Primera
+<!-- ### BC 061 - Carrera Primera --> 
 
-- Se presento novedad carga AA prendido desde el 5 al 17 abril.
+### BC 66 - Palmira
 
-<!-- ### BC 66 - Palmira --z
+- Para la sede BC Palmira, es importante validar el consumo registrado durante los días "sábados" y "domingos". Durante estos días, se observa una disminución en el consumo, como es típico en los fines de semana. Sin embargo, es notable que los niveles de consumo siguen siendo mayores en comparación con los valores establecidos en la línea base. Esto sugiere la necesidad de validar dicha sede.
 
 <!-- ### BC 78 - El Cacique -->
 
@@ -40,18 +48,16 @@ Durante el mes de abril, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 90 - Megamall -->
 
-### BC 185 - Llano Grande Palmira
+<!-- ### BC 185 - Llano Grande Palmira -->
 
-- Se presenta cambio en el patrón de consumo en el sistema de AA para los días sábados y domingos carga encendida.
+<!-- ### BC 205 - Villa Colombia -->
 
-<!--### BC 205 - Villa Colombia -->
-
-<!--### BC 210 - Banca Colombia Cartagen -->
+<!-- ### BC 210 - Banca Colombia Cartagen -->
 
 
-### BC 197 - Guatapuri
+<!-- ### BC 197 - Guatapuri -->
 
-- Validar que trabajo se realizo el 20 abril debido a que bajo el consumo de la carga de AA en las horas nocturnas, replicar acción de mejora en otras sedes.
+<!-- Validar que trabajo se realizo el 20 abril debido a que bajo el consumo de la carga de AA en las horas nocturnas, replicar acción de mejora en otras sedes. -->
 
 <!-- ### BC 205 - Villa Colombia -->
 
@@ -63,9 +69,7 @@ Durante el mes de abril, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 302 - Quebrada Seca -->
 
-### BC 306 - Barrancabermeja
-
-- Cambio en el patron de consumo de la carga AA, a partir del 26 abril.
+<!-- ### BC 306 - Barrancabermeja -->
 
 <!-- ### BC 311 - Bello -->
 
@@ -85,13 +89,15 @@ Durante el mes de abril, se observó que las sedes mantuvieron un patrón de con
 
 ### BC 496 - Iwanna
 
-- Consumo nocturno significativo.
+- Se registró una novedad de alto consumo nocturno en la sede. Durante una visita en el sitio, se identificó que el equipo de aire acondicionado de 5 TR ubicado en el segundo piso de la sucursal no estaba incluido en la automatización del sistema. Esta situación fue normalizada para el 31 de mayo, lo que permitirá generar ahorros significativos en el consumo de energía.
 
 <!--### BC 514 - Centro Comercial Único -->
 
 <!--### BC 523 - Olímpica -->
 
-<!-- ### BC 534 - Buganviles -->
+### BC 534 - Buganviles
+
+- Se identificó un cambio en el patrón de consumo en la sede debido a trabajos realizados. Se normalizó el consumo para el 28 de mayo.
 
 <!-- ### BC 613 - La America -->
 
@@ -128,7 +134,9 @@ Durante el mes de abril, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 799 - Floridablanca -->
 
-<!-- ### BC 816 - Calle 10 -->
+### BC 816 - Calle 10
+
+- Se ha notado una disminución en el consumo a partir del 27 de mayo. Es importante investigar y determinar qué acción o cambio en la sede ha ocasionado este nuevo patrón de consumo.
 
 <!-- ### BC 824 - Ventura Plaza -->
 

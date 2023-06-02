@@ -103,9 +103,17 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introducción
+                </a>
+            </li>
+        </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="notebooks/summary/Notebook%20BC%20Resumen.html">
@@ -350,7 +358,7 @@ const thebe_selector_output = ".output, .cell_output"
              <!-- To handle the deprecated key -->
             
             <div class="navbar_extra_footer">
-            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
             
         </div>
@@ -406,6 +414,52 @@ title="Fullscreen mode"
   </span>
 
 </button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Hallazgos.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
 <label for="__page-toc"
   class="headerbtn headerbtn-page-toc"
   
@@ -439,13 +493,13 @@ title="Fullscreen mode"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sedes-que-vieron-una-reduccion-en-el-consumo-respecto-al-mes-de-marzo">
-     Sedes que vieron una reducción en el consumo, respecto al mes de marzo
+    <a class="reference internal nav-link" href="#sedes-que-vieron-una-reduccion-en-el-consumo-respecto-al-mes-de-abril">
+     Sedes que vieron una reducción en el consumo, respecto al mes de abril:
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sedes-que-vieron-un-incremento-en-el-consumo-respecto-al-mes-de-marzo">
-     Sedes que vieron un incremento en el consumo, respecto al mes de marzo.
+    <a class="reference internal nav-link" href="#sedes-que-vieron-un-incremento-en-el-consumo-respecto-al-mes-de-abril">
+     Sedes que vieron un incremento en el consumo, respecto al mes de abril:
     </a>
    </li>
   </ul>
@@ -461,23 +515,8 @@ title="Fullscreen mode"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bc-061-carrera-primera">
-     BC 061 - Carrera Primera
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bc-185-llano-grande-palmira">
-     BC 185 - Llano Grande Palmira
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bc-197-guatapuri">
-     BC 197 - Guatapuri
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bc-306-barrancabermeja">
-     BC 306 - Barrancabermeja
+    <a class="reference internal nav-link" href="#bc-66-palmira">
+     BC 66 - Palmira
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -486,8 +525,18 @@ title="Fullscreen mode"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bc-534-buganviles">
+     BC 534 - Buganviles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bc-741-calima">
      BC 741 - Calima
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bc-816-calle-10">
+     BC 816 - Calle 10
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -527,13 +576,13 @@ title="Fullscreen mode"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sedes-que-vieron-una-reduccion-en-el-consumo-respecto-al-mes-de-marzo">
-     Sedes que vieron una reducción en el consumo, respecto al mes de marzo
+    <a class="reference internal nav-link" href="#sedes-que-vieron-una-reduccion-en-el-consumo-respecto-al-mes-de-abril">
+     Sedes que vieron una reducción en el consumo, respecto al mes de abril:
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sedes-que-vieron-un-incremento-en-el-consumo-respecto-al-mes-de-marzo">
-     Sedes que vieron un incremento en el consumo, respecto al mes de marzo.
+    <a class="reference internal nav-link" href="#sedes-que-vieron-un-incremento-en-el-consumo-respecto-al-mes-de-abril">
+     Sedes que vieron un incremento en el consumo, respecto al mes de abril:
     </a>
    </li>
   </ul>
@@ -549,23 +598,8 @@ title="Fullscreen mode"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bc-061-carrera-primera">
-     BC 061 - Carrera Primera
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bc-185-llano-grande-palmira">
-     BC 185 - Llano Grande Palmira
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bc-197-guatapuri">
-     BC 197 - Guatapuri
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bc-306-barrancabermeja">
-     BC 306 - Barrancabermeja
+    <a class="reference internal nav-link" href="#bc-66-palmira">
+     BC 66 - Palmira
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -574,8 +608,18 @@ title="Fullscreen mode"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bc-534-buganviles">
+     BC 534 - Buganviles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bc-741-calima">
      BC 741 - Calima
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bc-816-calle-10">
+     BC 816 - Calle 10
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -597,7 +641,10 @@ title="Fullscreen mode"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="observaciones">
 <h1>Observaciones<a class="headerlink" href="#observaciones" title="Permalink to this headline">#</a></h1>
-<p>Abril de 2023</p>
+<div align="right">
+<p><span style="font-size: smaller;">Reporte mensual elaborado 02/06/2023</span></p>
+</div>
+<p>Mayo de 2023</p>
 <section id="tener-presente">
 <h2>Tener presente:<a class="headerlink" href="#tener-presente" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
@@ -609,20 +656,21 @@ title="Fullscreen mode"
 </section>
 <section id="observaciones-generales">
 <h2>Observaciones generales:<a class="headerlink" href="#observaciones-generales" title="Permalink to this headline">#</a></h2>
-<p>Durante el mes de abril, se observó que las sedes mantuvieron un patrón de consumo coherente con su historial:</p>
-<section id="sedes-que-vieron-una-reduccion-en-el-consumo-respecto-al-mes-de-marzo">
-<h3>Sedes que vieron una reducción en el consumo, respecto al mes de marzo<a class="headerlink" href="#sedes-que-vieron-una-reduccion-en-el-consumo-respecto-al-mes-de-marzo" title="Permalink to this headline">#</a></h3>
+<p>Durante el mes de Mayo, se observó que las sedes mantuvieron un patrón de consumo coherente con su historial:</p>
+<section id="sedes-que-vieron-una-reduccion-en-el-consumo-respecto-al-mes-de-abril">
+<h3>Sedes que vieron una reducción en el consumo, respecto al mes de abril:<a class="headerlink" href="#sedes-que-vieron-una-reduccion-en-el-consumo-respecto-al-mes-de-abril" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>BUGANVILES</p></li>
-<li><p>EL CACIQUE</p></li>
-<li><p>PASEO DE LA CASTELLANA</p></li>
+<li><p>LLANO GRANDE PALMIRA</p></li>
+<li><p>LEBRIJA</p></li>
+<li><p>CENTRO COLON</p></li>
 </ul>
 </section>
-<section id="sedes-que-vieron-un-incremento-en-el-consumo-respecto-al-mes-de-marzo">
-<h3>Sedes que vieron un incremento en el consumo, respecto al mes de marzo.<a class="headerlink" href="#sedes-que-vieron-un-incremento-en-el-consumo-respecto-al-mes-de-marzo" title="Permalink to this headline">#</a></h3>
+<section id="sedes-que-vieron-un-incremento-en-el-consumo-respecto-al-mes-de-abril">
+<h3>Sedes que vieron un incremento en el consumo, respecto al mes de abril:<a class="headerlink" href="#sedes-que-vieron-un-incremento-en-el-consumo-respecto-al-mes-de-abril" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>CARRERA PRIMERA</p></li>
-<li><p>CENTRO COLON</p></li>
+<li><p>BUGANVILES</p></li>
+<li><p>BOCA GRANDE CARRERA TERCERA</p></li>
+<li><p>PALMIRA</p></li>
 </ul>
 </section>
 </section>
@@ -631,44 +679,29 @@ title="Fullscreen mode"
 <section id="bc-044-piedecuesta">
 <h3>BC 044 - Piedecuesta<a class="headerlink" href="#bc-044-piedecuesta" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>Se presenta novedad bajo consumo carga AA desde desde el 24 abril a 1 mayo, validar si se presentaron trabajos en la sede</p></li>
+<li><p>Para la sede BC Piedecuesta, se realizó la normalización del punto de medida Frontera y de los AA el 02/05/2025. Como resultado, se observó que el consumo del mes de mayo es superior al valor de referencia establecido en la línea base la cual presentaba novedad para carga AA.</p></li>
 </ul>
+<!-- ### BC 061 - Carrera Primera --> 
 </section>
-<section id="bc-061-carrera-primera">
-<h3>BC 061 - Carrera Primera<a class="headerlink" href="#bc-061-carrera-primera" title="Permalink to this headline">#</a></h3>
+<section id="bc-66-palmira">
+<h3>BC 66 - Palmira<a class="headerlink" href="#bc-66-palmira" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>Se presento novedad carga AA prendido desde el 5 al 17 abril.</p></li>
+<li><p>Para la sede BC Palmira, es importante validar el consumo registrado durante los días “sábados” y “domingos”. Durante estos días, se observa una disminución en el consumo, como es típico en los fines de semana. Sin embargo, es notable que los niveles de consumo siguen siendo mayores en comparación con los valores establecidos en la línea base. Esto sugiere la necesidad de validar dicha sede.</p></li>
 </ul>
-<!-- ### BC 66 - Palmira --z
-
 <!-- ### BC 78 - El Cacique -->
 <!-- ### BC 88 - Cúcuta -->
 <!-- ### BC 90 - Megamall -->
-</section>
-<section id="bc-185-llano-grande-palmira">
-<h3>BC 185 - Llano Grande Palmira<a class="headerlink" href="#bc-185-llano-grande-palmira" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Se presenta cambio en el patrón de consumo en el sistema de AA para los días sábados y domingos carga encendida.</p></li>
-</ul>
-<!--### BC 205 - Villa Colombia -->
-<!--### BC 210 - Banca Colombia Cartagen -->
-</section>
-<section id="bc-197-guatapuri">
-<h3>BC 197 - Guatapuri<a class="headerlink" href="#bc-197-guatapuri" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Validar que trabajo se realizo el 20 abril debido a que bajo el consumo de la carga de AA en las horas nocturnas, replicar acción de mejora en otras sedes.</p></li>
-</ul>
+<!-- ### BC 185 - Llano Grande Palmira -->
+<!-- ### BC 205 - Villa Colombia -->
+<!-- ### BC 210 - Banca Colombia Cartagen -->
+<!-- ### BC 197 - Guatapuri -->
+<!-- Validar que trabajo se realizo el 20 abril debido a que bajo el consumo de la carga de AA en las horas nocturnas, replicar acción de mejora en otras sedes. -->
 <!-- ### BC 205 - Villa Colombia -->
 <!-- ### BC 216 - Sabana de Torres -->
 <!-- ### BC 253 - Puerta del Norte -->
 <!--### BC 291 - Las Palmas -->
 <!-- ### BC 302 - Quebrada Seca -->
-</section>
-<section id="bc-306-barrancabermeja">
-<h3>BC 306 - Barrancabermeja<a class="headerlink" href="#bc-306-barrancabermeja" title="Permalink to this headline">#</a></h3>
-<ul class="simple">
-<li><p>Cambio en el patron de consumo de la carga AA, a partir del 26 abril.</p></li>
-</ul>
+<!-- ### BC 306 - Barrancabermeja -->
 <!-- ### BC 311 - Bello -->
 <!-- ### BC 371 - Caucasia -->
 <!-- ### BC 398 - Mariquita -->
@@ -681,11 +714,16 @@ title="Fullscreen mode"
 <section id="bc-496-iwanna">
 <h3>BC 496 - Iwanna<a class="headerlink" href="#bc-496-iwanna" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
-<li><p>Consumo nocturno significativo.</p></li>
+<li><p>Se registró una novedad de alto consumo nocturno en la sede. Durante una visita en el sitio, se identificó que el equipo de aire acondicionado de 5 TR ubicado en el segundo piso de la sucursal no estaba incluido en la automatización del sistema. Esta situación fue normalizada para el 31 de mayo, lo que permitirá generar ahorros significativos en el consumo de energía.</p></li>
 </ul>
 <!--### BC 514 - Centro Comercial Único -->
 <!--### BC 523 - Olímpica -->
-<!-- ### BC 534 - Buganviles -->
+</section>
+<section id="bc-534-buganviles">
+<h3>BC 534 - Buganviles<a class="headerlink" href="#bc-534-buganviles" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Se identificó un cambio en el patrón de consumo en la sede debido a trabajos realizados. Se normalizó el consumo para el 28 de mayo.</p></li>
+</ul>
 <!-- ### BC 613 - La America -->
 <!-- ### BC 656 - Mayales -->
 <!-- ### BC 659 - Girardot -->
@@ -707,7 +745,12 @@ title="Fullscreen mode"
 <!-- ### BC 793 - Profesionales -->
 <!-- ### BC 796 - Girón -->
 <!-- ### BC 799 - Floridablanca -->
-<!-- ### BC 816 - Calle 10 -->
+</section>
+<section id="bc-816-calle-10">
+<h3>BC 816 - Calle 10<a class="headerlink" href="#bc-816-calle-10" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>Se ha notado una disminución en el consumo a partir del 27 de mayo. Es importante investigar y determinar qué acción o cambio en la sede ha ocasionado este nuevo patrón de consumo.</p></li>
+</ul>
 <!-- ### BC 824 - Ventura Plaza -->
 <!-- ### BC 825 - Astrocentro -->
 </section>
