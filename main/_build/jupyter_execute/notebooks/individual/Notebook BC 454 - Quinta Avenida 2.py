@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # BC - S.A. Valledupar
+# # BC 454 - Quinta Avenida 2
 
 # In[1]:
 
 
-DEVICE_NAME = 'BC - S.A. Valledupar'
+DEVICE_NAME = 'BC 454 - Quinta Avenida 2'
 import warnings
 warnings.filterwarnings("ignore")
 

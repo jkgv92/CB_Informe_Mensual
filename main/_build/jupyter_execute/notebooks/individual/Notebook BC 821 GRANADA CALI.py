@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # BC - S.A. Granada
+# # BC 821 GRANADA CALI
 
 # In[1]:
 
 
-DEVICE_NAME = 'BC - S.A. Granada'
+DEVICE_NAME = 'BC 821 GRANADA CALI'
 import warnings
 warnings.filterwarnings("ignore")
 

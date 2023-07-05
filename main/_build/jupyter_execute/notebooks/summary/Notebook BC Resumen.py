@@ -5,9 +5,9 @@
 # 
 # # Resumen
 # 
-# Mayo de 2023
+# Junio de 2023
 
-# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de Mayo 2023. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
+# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de junio 2023. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
 
 # ## Definitions
 # 
@@ -91,6 +91,9 @@ df = df.rename(columns={'variable_label':'variable','device_label':'device',})
 
 df = df.sort_values(by=['variable','datetime'])
 df = pro.datetime_attributes(df)
+
+# Agrego esta linea codigo para quitar estas dos sedes que generar ruido por datos altos
+df = df[~df["device_name"].isin(["BC 829 - Unicentro Cali", "BC 454 - Quinta Avenida 2"])]
 
 df_bl, df_st = pro.split_into_baseline_and_study(df, baseline=cfg.BASELINE, study=cfg.STUDY, inclusive='left')
 
@@ -254,7 +257,7 @@ fig.update_layout(title_text="Mapa de intensidad de consumo [kWh/m^2-año]", fon
 fig.show()
 
 
-# De las sedes monitoreadas las que presentan mayor intensidad de consumo son Paseo de la Castellana, Iwanna, Centro Colón y Buganviles. También podemos notar que en general entre sedes cercanas hay intensidades de consumo similares.
+# De las sedes monitoreadas las que presentan mayor intensidad de consumo son Paseo de la Castellana, Centro Colón, Bocagrande Carrera Tercera y Ventura Plaza. También podemos notar que en general entre sedes cercanas hay intensidades de consumo similares.
 
 # In[11]:
 
