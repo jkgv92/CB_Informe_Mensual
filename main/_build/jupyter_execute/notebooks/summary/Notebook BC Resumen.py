@@ -5,9 +5,9 @@
 # 
 # # Resumen
 # 
-# Junio de 2023
+# Julio de 2023
 
-# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de junio 2023. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
+# ¡Hola!, te presentamos el informe correspondiente a tus consumos del mes de Julio 2023. A continuación vas a encontrar un resumen de los consumos realizados de forma acumulada. Para esto encontrarás una serie de gráficas diseñadas para dar un vistazo a los consumos por sede. Finalmente, encontrarás un informe detallado para cada sede.
 
 # ## Definitions
 # 
@@ -199,7 +199,7 @@ fig = px.bar(
 fig.show()
 
 
-# Un indicador ampliamente utilizado es el consumo anual por unidad de área. Estos valores para el indicador se deben interpretar dentro del contexto de un periodo "Niña".
+# Un indicador ampliamente utilizado es el consumo anual por unidad de área.
 # 
 # A continuación mostramos la distribución geográfica de las intensidades de consumo para las diferentes sedes.
 
@@ -257,7 +257,7 @@ fig.update_layout(title_text="Mapa de intensidad de consumo [kWh/m^2-año]", fon
 fig.show()
 
 
-# De las sedes monitoreadas las que presentan mayor intensidad de consumo son Paseo de la Castellana, Centro Colón, Bocagrande Carrera Tercera y Ventura Plaza. También podemos notar que en general entre sedes cercanas hay intensidades de consumo similares.
+# De las sedes monitoreadas las que presentan mayor intensidad de consumo son Paseo de la Castellana, Centro Colón, Megamall y El bosque. También podemos notar que en general entre sedes cercanas hay intensidades de consumo similares.
 
 # In[11]:
 

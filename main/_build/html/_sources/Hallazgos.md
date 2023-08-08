@@ -2,11 +2,11 @@
 
 <div align="right">
 
-<span style="font-size: smaller;">Reporte mensual elaborado 04/07/2023</span>
+<span style="font-size: smaller;">Reporte mensual elaborado 08/08/2023</span>
 
 </div>
 
-Junio de 2023
+Julio de 2023
 ## Tener presente:
 
 1. Las pérdidas de datos en el totalizador pueden hacer parecer como que los consumos de AA o Iluminación superan al totalizador.
@@ -15,16 +15,18 @@ Junio de 2023
 4. Es normal que los consumos de AA fluctúen entre días y semanas, producto del clima.
 
 ## Observaciones generales:
-Durante el mes de Junio, se observó que las sedes mantuvieron un patrón de consumo coherente con su historial:
+Durante el mes de Julio, se observó que las sedes mantuvieron un patrón de consumo coherente con su historial:
 
-### Sedes que vieron una reducción en el consumo, respecto al mes de mayo:
-- IWANNA
+### Sedes que vieron una reducción en el consumo, respecto al mes de junio:
+- CALLE 10
+- VENTURA PLAZA
+- BOCAGRANDE CARRERA TERCERA
+
+
+### Sedes que vieron un incremento en el consumo, respecto al mes de junio:
 - BUGANVILES
-- CENTRO COMERCIAL ÚNICO
-
-
-### Sedes que vieron un incremento en el consumo, respecto al mes de mayo:
-- GIRARDOT
+- CAUCASIA
+- EL BOSQUE
 
 
 
@@ -33,13 +35,13 @@ Durante el mes de Junio, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 044 - Piedecuesta
 
-- Para la sede BC Piedecuesta, se realizó la normalización del punto de medida Frontera y de los AA el 02/05/2025. Como resultado, se observó que el consumo del mes de mayo es superior al valor de referencia establecido en la línea base la cual presentaba novedad para carga AA. -->
+- Para la sede BC Piedecuesta, se realizó la normalización del punto de medida Frontera y de los AA el 02/05/2025. Como resultado, se observó que el consumo del mes de junio es superior al valor de referencia establecido en la línea base la cual presentaba novedad para carga AA. -->
 
 <!-- ### BC 061 - Carrera Primera --> 
 
-<!-- ### BC 66 - Palmira -->
+### BC 66 - Palmira
 
-- Para la sede BC Palmira, es importante validar el consumo registrado durante los días "sábados" y "domingos". Durante estos días, se observa una disminución en el consumo, como es típico en los fines de semana. Sin embargo, es notable que los niveles de consumo siguen siendo mayores en comparación con los valores establecidos en la línea base. Esto sugiere la necesidad de validar dicha sede.
+- Se recomienda programar el encendido del aire acondicionado a partir de las 7 am, ya que se ha observado que la hora promedio de activación de los equipos es a las 6 am
 
 <!-- ### BC 78 - El Cacique -->
 
@@ -47,7 +49,9 @@ Durante el mes de Junio, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 90 - Megamall -->
 
-<!-- ### BC 185 - Llano Grande Palmira -->
+### BC 185 - Llano Grande Palmira
+
+- Se ha identificado un patrón de consumos atípicos durante los fines de semana en la sede. Dado que la automatización no está presente, se recomienda realizar una validación del termostato para abordar estas variaciones en el consumo.
 
 <!-- ### BC 205 - Villa Colombia -->
 
@@ -55,7 +59,7 @@ Durante el mes de Junio, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 197 - Guatapuri -->
 
-<!-- Validar que trabajo se realizo el 20 mayo debido a que bajo el consumo de la carga de AA en las horas nocturnas, replicar acción de mejora en otras sedes. -->
+<!-- Validar que trabajo se realizo el 20 junio debido a que bajo el consumo de la carga de AA en las horas nocturnas, replicar acción de mejora en otras sedes. -->
 
 <!-- ### BC 205 - Villa Colombia -->
 
@@ -75,9 +79,11 @@ Durante el mes de Junio, se observó que las sedes mantuvieron un patrón de con
 
 ### BC 311 - Bello
 
-- Se ha identificado una novedad en el consumo de energía en la sede durante los días festivos. Se requiere validar y solucionar novedad de aire acondicionado para lograr una disminución en el consumo durante estos días especiales.
+- Se ha identificado una novedad en el consumo de energía en la sede durante los días festivos.
 
-<!-- ### BC 371 - Caucasia -->
+### BC 371 - Caucasia
+
+- Se presenta novedad en medida AA a partir del 5 julio, se presentaron trabajos en la sede por reposición de aire y planta electrica. Se presenta novedad en la medida de AA.
 
 <!-- ### BC 398 - Mariquita -->
 
@@ -87,35 +93,36 @@ Durante el mes de Junio, se observó que las sedes mantuvieron un patrón de con
 
 ### BC 454 - Quinta Avenida
 
-- Se normaliza medida a partir del 10 junio.
+- Se ha normalizado la medida a partir del 10 julio, se incluye en el dashboard e informe de control. Es
+importante tener en cuenta que se está construyendo la línea base para futuras referencias.
 
 ### BC 459 - Campo Alegre
 
--  Se presenta novedad de AA, encendido entre el 6 y el 7 junio.
+- Se debe validar sistema de AA, debido a que presenta comportamiento de consumo atipico a partir del 15 julio.
 
 <!-- Pendiente de actualización de firmware. -->
 
-<!-- ### BC 495 - El Bosque -->
+### BC 495 - El Bosque
 
-### BC 496 - Iwanna
+- Se presenta alerta por carga climitazación en horario nocturno para el sabado 22 julio. Validar si se presentaron trabajos en la sede.
 
-- Se ha observado una disminución del 35% en el consumo de energía, equivalente a 4096 kWh, durante el mes de junio en comparación con el mes anterior, después de normalizar el sistema de aire acondicionado. Estos ahorros representan una reducción significativa y beneficiosa para la sede.
+<!-- ### BC 496 - Iwanna -->
 
 <!--### BC 514 - Centro Comercial Único -->
 
 <!--### BC 523 - Olímpica -->
 
-### BC 534 - Buganviles
+<!-- ### BC 534 - Buganviles -->
 
-- A partir del 10 de junio, se ha detectado un cambio en el patrón de consumo con un aumento de energía en los equipos de aire acondicionado en la sucursal. Se ha identificado que este cambio se debe al reemplazo de los equipos de aire acondicionado en la sucursal. El sistema se encuentra en proceso pruebas y estabilización.
+### BC 613 - La America
 
-<!-- ### BC 613 - La America -->
+- Se presentó un cambio en el consumo nocturno para el 12 de julio. Se deben validar temas de automatización en la sede.
 
 <!-- ### BC 656 - Mayales -->
 
 ### BC 659 - Girardot
 
-- Se presenta novedad en la cual se realizó un ajuste en el equipo de aire acondicionado y el termostato para cumplir con el requerimiento del subgerente de la sucursal. Esto resultó en un aumento del consumo promedio diario de 86.59 kWh/día, lo que representa un aumento del 25% en comparación con la línea base.
+- El consumo de julio disminuyó un 6.5% respecto a junio, posiblemente debido a los ajustes realizados en equipos de aire y termostatos que se tenian reportados.
 
 <!-- ### BC 678 - Paseo de la Castellana -->
 
@@ -134,15 +141,11 @@ Durante el mes de Junio, se observó que las sedes mantuvieron un patrón de con
 
 - Se ha identificado una novedad en el consumo de energía en la sede durante los días festivos. Se requiere validar y solucionar novedad de aire acondicionado para lograr una disminución en el consumo durante estos días especiales.
 
-<!-- Consumo irregular con respecto a la línea base (revsar tablero interactivo para mayor información).  -->
+<!-- Consumo irregular con respecto a la línea base (revsar tablero interactivo para junior información).  -->
 
-### BC 787 - Bocagrande Carrera Tercera
+<!-- ### BC 787 - Bocagrande Carrera Tercera -->
 
-- Se presenta novedad relacionada con el aire acondicionado, el cual estuvo encendido desde el 14 de junio, generando activación de alarmas de notificación. Sin embargo, dicha novedad fue resuelta el 17 de junio.
-    
-### BC 789 - Manga
-
-- Se mantiene novedad de “carga de aire acondicionado vuelve a presentarse a partir del 25 de mayo, ya que la carga del aire se incrementó durante el horario nocturno”.
+<!-- ### BC 789 - Manga -->
 
 <!-- ### BC 792 - Paseo del comercio -->
 
@@ -154,9 +157,8 @@ Durante el mes de Junio, se observó que las sedes mantuvieron un patrón de con
 
 <!-- ### BC 816 - Calle 10 -->
 
-### BC 824 - Ventura Plaza
+<!-- ### BC 824 - Ventura Plaza -->
 
-- Del 13 al 27 de junio, se observó una disminución en el consumo del sistema de aire acondicionado en la sede Ventura Plaza. Se recomienda verificar si se realizaron trabajos en la sede durante ese período que puedan haber contribuido a esta reducción.
 
 <!-- ### BC 825 - Astrocentro -->
 
