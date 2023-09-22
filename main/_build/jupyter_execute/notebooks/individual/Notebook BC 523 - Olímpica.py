@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # BC - Sede Adm Twins bay
+# # BC 523 - Olímpica
 
 # In[1]:
 
 
-DEVICE_NAME = 'BC - Sede Adm Twins bay'
+DEVICE_NAME = 'BC 523 - Olímpica'
 import warnings
 warnings.filterwarnings("ignore")
 
